@@ -8,7 +8,7 @@ type extraFieldFields = {
 
 export type Field = Schema.FieldDefinition & extraFieldFields;
 
-export type ArrayOfType = Schema.ArrayOfType;
+export type ArrayOfType = any;
 
 type widthExtraFieldFields<T> = Omit<T, "fields"> & {
   fields: Field[];

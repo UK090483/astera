@@ -24,8 +24,6 @@ const Seo: React.FC<SeoProps> = (props) => {
   if (!seo) return null;
   const { metaTitle, metaDesc, shareDesc, shareGraphic } = seo;
 
-  return null;
-
   const canUrl = `nooooo`;
   const is404 = pathname === "/404";
   const title = is404 ? titlePrefix + "404" : titlePrefix + metaTitle;
