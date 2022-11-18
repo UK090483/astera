@@ -4,7 +4,15 @@ import { SectionContextProvider } from "./SectionContext";
 
 interface SectionProps {
   width?: "full" | "m" | "l" | "s" | "responsive";
-  bg?: "white" | "grey" | "black" | "primary" | "secondary" | "dark-grey";
+  bg?:
+    | "white"
+    | "grey"
+    | "black"
+    | "primary"
+    | "secondary"
+    | "secondary-light"
+    | "dark-grey";
+
   className?: string;
   id?: string;
   noPadding?: boolean;
@@ -34,9 +42,11 @@ export const Section: React.FC<SectionProps> = (props) => {
     asInner: InnerComponent = "div",
     style,
     noProse,
+    noPadding,
   } = props;
 
-  const shouldInvert = bg === "dark-grey" || bg === "primary";
+  const shouldInvert = bg === "dark-grey" || bg === "secondary";
+
   return (
     <SectionContextProvider bgColor={bg} width={width}>
       <Component
@@ -44,7 +54,8 @@ export const Section: React.FC<SectionProps> = (props) => {
         id={id}
         className={clsx({
           "bg-white": bg === "white",
-          "bg-primary": bg === "primary",
+          "bg-primary-light": bg === "primary",
+          "bg-secondary-light": bg === "secondary-light",
           "bg-secondary": bg === "secondary",
           "bg-grey-light": bg === "grey",
           "bg-grey-dark": bg === "dark-grey",
@@ -63,12 +74,13 @@ export const Section: React.FC<SectionProps> = (props) => {
         <InnerComponent
           style={style}
           className={clsx(
-            "mx-auto px-sides",
+            "mx-auto ",
             {
-              "container max-w-7xl": width === "l",
-              "container max-w-5xl": width === "m",
+              "px-sides": !noPadding || noPadding === null,
+              "max-w-5xl": width === "l",
+              "container max-w-4xl": width === "m",
               container: width === "responsive",
-              "container typo typo-spacings max-w-2xl": !noProse,
+              "container typo typo-spacings ": !noProse,
               "typo-invert": shouldInvert,
             },
             className

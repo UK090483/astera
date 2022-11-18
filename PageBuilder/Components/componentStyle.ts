@@ -23,7 +23,13 @@ export function colorList(skip?: string | string[]) {
   return list.filter((listItem) => !skip.includes(listItem.value));
 }
 
-type colorResult = "primary" | "secondary" | "grey" | "dark-grey";
+export type colorResult =
+  | "primary"
+  | "secondary"
+  | "secondary-light"
+  | "grey"
+  | "dark-grey";
+
 type spaceResult = "s" | "m" | "l" | "xl" | "xxl" | "none";
 
 const group = {
@@ -64,8 +70,9 @@ const backgroundColor = {
   group: "style",
   options: {
     list: [
-      { title: "Primary", value: "primary" },
-      { title: "Secondary", value: "secondary" },
+      { title: "Coper", value: "primary" },
+      { title: "Petrol", value: "secondary" },
+      { title: "Petrol-light", value: "secondary-light" },
       { title: "Grey", value: "grey" },
       { title: "Dark-Grey", value: "dark-grey" },
     ],

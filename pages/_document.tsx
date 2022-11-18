@@ -16,7 +16,7 @@ class MyDocument extends Document {
         </Head>
 
         <body
-          className={`break-words typo-colors typo-sizes typo-weights  ${
+          className={`bg-white-dark max-w-[2500px] mx-auto break-words typo-colors typo-sizes typo-weights  ${
             isDevelopment ? "debug-screens" : ""
           } `}
         >

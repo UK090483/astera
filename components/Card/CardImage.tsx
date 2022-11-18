@@ -1,33 +1,47 @@
-import SanityImage, { ISanityImageProps } from "@components/SanityImage";
+import SanityImage from "@components/SanityImage";
 import clsx from "clsx";
 import * as React from "react";
+import { useCardContext } from "./CardContext";
 
-interface ICardImageProps extends ISanityImageProps {
+interface ICardImageProps {
   variant?: "aspect" | "round" | "square" | "intrinsic";
+  showTitle?: boolean;
+  elevated?: boolean;
+  half?: boolean;
 }
 
 const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
-  const { variant = "aspect", ...rest } = props;
+  const { variant = "aspect", showTitle, elevated, half } = props;
+  const { mainImage, title } = useCardContext();
 
-  if (!props.src) return null;
+  if (!mainImage) return null;
 
   return (
-    <div className="w-full">
+    <div className={clsx("w-full ", { "md:w-1/2": half, "mb-8": !half })}>
       <div
-        className={clsx("shadow-xl overflow-hidden   relative", {
-          "w-full aspect-w-3 aspect-h-2 rounded-lg": variant === "aspect",
-          "w-full aspect-w-1 aspect-h-1 rounded-lg ": variant === "square",
-          "w-60 h-60 mx-auto rounded-full ": variant === "round",
-
-          "w-full": variant === "intrinsic",
-        })}
+        className={clsx(
+          "overflow-hidden relative typo-bright flex justify-center items-center",
+          {
+            "w-full aspect-w-3 aspect-h-2": variant === "aspect",
+            "w-full aspect-w-1 aspect-h-1": variant === "square",
+            "w-60 h-60 mx-auto rounded-full": variant === "round",
+            "w-full": variant === "intrinsic",
+            "shadow-xl": elevated,
+          }
+        )}
       >
         <SanityImage
-          {...rest}
+          src={mainImage}
           fill={variant !== "intrinsic"}
-          className=" object-cover "
+          className="object-cover"
           sizes="600px"
         />
+
+        {showTitle && (
+          <div className="absolute inset-0 flex justify-center items-center">
+            <h1>{title}</h1>
+          </div>
+        )}
       </div>
     </div>
   );

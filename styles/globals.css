@@ -4,14 +4,14 @@
 
 @layer base {
   .typo-colors {
-    --tw-typo-body: #374151;
-    --tw-typo-headings: #111827;
+    --tw-typo-body: #003333;
+    --tw-typo-headings: #007267;
     --tw-typo-lead: #4b5563;
     --tw-typo-links: #111827;
     --tw-typo-bold: #111827;
     --tw-typo-light: #d1d5db;
     --tw-typo-invert-body: #d1d5db;
-    --tw-typo-invert-headings: #fff;
+    --tw-typo-invert-headings: #b4d6d1;
     --tw-typo-invert-lead: #9ca3af;
     --tw-typo-invert-links: #fff;
     --tw-typo-invert-bold: #fff;
@@ -26,12 +26,17 @@
     --tw-typo-bold: var(--tw-typo-invert-bold);
     --tw-typo-invert-light: var(--tw-typo-invert-light);
   }
+  .typo-bright {
+    --tw-typo-headings: #fff;
+  }
 
-  .typo-colors :where(p, a, ul, ol, blockquote) {
+  .typo-colors :where(p, a, ul, ol, blockquote, .typo-color) {
     color: var(--tw-typo-body);
+    font-family: var(--lexend-font);
   }
   .typo-colors :where(h1, h2, h3, h4) {
     color: var(--tw-typo-headings);
+    font-family: var(--eb_garamond-font);
   }
   .typo-colors :where(a) {
     color: var(--tw-typo-link);
@@ -51,21 +56,25 @@
     @apply font-bold;
   }
 
-  .typo-sizes :where(h1) {
+  .typo-sizes :where(h1, .h1-size) {
+    @apply text-6xl lg:text-7xl;
+  }
+  .typo-sizes :where(h2, .h2-size) {
     @apply text-4xl lg:text-5xl;
   }
-  .typo-sizes :where(h2) {
-    @apply text-3xl lg:text-4xl;
-  }
-  .typo-sizes :where(h3) {
+  .typo-sizes :where(h3, .h3-size) {
     @apply text-2xl lg:text-3xl;
   }
+  .typo-sizes :where(p, .p-size) {
+    @apply text-base lg:text-xl;
+  }
+
   .typo-sizes :where(ul, ol):not(.list-none) li {
     @apply mb-3;
   }
 
   .typo :where(ul):not(.list-none) {
-    @apply list-disc pl-[0.8em];
+    @apply text-base lg:text-xl list-disc pl-[0.8em];
   }
   .typo :where(ol):not(.list-none) {
     @apply list-decimal pl-[1.1em];
@@ -79,5 +88,9 @@
     @apply italic relative pl-3 border-l-8 py-3 font-semibold;
     color: var(--tw-typo-bold);
     border-color: var(--tw-typo-light);
+  }
+
+  .typo-body {
+    font-family: var(--lexend-font);
   }
 }

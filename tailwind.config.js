@@ -18,7 +18,7 @@ module.exports = {
         menu: "800px",
       },
       spacing: {
-        sides: "0.5rem",
+        sides: "1rem",
       },
       height: {
         hero: "calc(100vh - 60px)",
@@ -31,9 +31,14 @@ module.exports = {
           dark: "#222428",
         },
         black: "#000000",
-        white: "#ffffff",
-        primary: "#392BD4",
-        secondary: "#C6D42B",
+        white: { dark: "#F2F2F2", DEFAULT: "#ffffff" },
+        primary: { DEFAULT: "#BF664A", light: "#FDF3F1" },
+        secondary: {
+          extraDark: "#002827",
+          dark: "#003333",
+          DEFAULT: "#007267",
+          light: "#B4D6D1",
+        },
         bgWhite: "#fafafa",
         red: "#D22D30",
       },

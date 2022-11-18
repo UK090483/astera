@@ -14,49 +14,40 @@ const Nav: React.FC = () => {
   const { data } = usePageBuilderContext();
   const navItems = data?.menu.mainNav;
   const langSwitchData = data?.menu.langSwitcher;
-  const scrolled = useScrollThreshold(300);
+  // const scrolled = useScrollThreshold(100);
 
   return (
     <>
-      <nav
-        className={clsx(
-          "flex justify-between w-full text-white transition-colors ",
-          {
-            "bg-transparent ": !scrolled,
-          },
-          {
-            "bg-white text-black": scrolled,
-          }
-        )}
-      >
-        <Link aria-label="Home" internal="/">
-          <Logo />
-        </Link>
+      <nav className={clsx(" text-white transition-colors w-full ")}>
+        <div className="container flex justify-between w-full mx-auto px-sides">
+          <Link aria-label="Home" internal="/">
+            <Logo />
+          </Link>
 
-        <HeaderNavigation
-          //@ts-ignore
-          items={navItems || []}
-          className="items-center justify-center hidden  menu:flex "
-        />
-
-        <div className="flex gap-4   flex-shrink-0 items-center">
-          <LangSwitch
-            className="hidden menu:flex"
-            LangSwitcherResult={langSwitchData}
+          <HeaderNavigation
+            //@ts-ignore
+            items={navItems || []}
+            className="items-center justify-center hidden  menu:flex "
           />
-        </div>
 
-        <button
-          data-testid="menu-overlay-toggle "
-          onClick={() => setOpen((s) => !s)}
-          aria-label={"Open the menu"}
-          aria-expanded={open}
-          className="menu:hidden mr-2"
-        >
-          <Svg className="w-[30px] h-[30px] fill-current" icon="hamburger" />
-        </button>
+          <div className="flex gap-4 flex-shrink-0 items-center">
+            <LangSwitch
+              className="hidden menu:flex"
+              LangSwitcherResult={langSwitchData}
+            />
+          </div>
 
-        {/* {mainLogo && (
+          <button
+            data-testid="menu-overlay-toggle "
+            onClick={() => setOpen((s) => !s)}
+            aria-label={"Open the menu"}
+            aria-expanded={open}
+            className="menu:hidden mr-2"
+          >
+            <Svg className="w-[30px] h-[30px] fill-current" icon="hamburger" />
+          </button>
+
+          {/* {mainLogo && (
           <div
             className={`
             transition-transform
@@ -73,6 +64,7 @@ const Nav: React.FC = () => {
             </div>
           </div>
         )} */}
+        </div>
       </nav>
       <NavigationMobile
         //@ts-ignore

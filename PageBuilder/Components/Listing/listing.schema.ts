@@ -33,6 +33,14 @@ const listingSchema: ObjectDefinition = {
     ...buildVariantFields(items),
     ...buildFilterFields(items),
     ...buildReferenceListFields(items),
+
+    {
+      group: "content",
+      title: "Title",
+      name: "title",
+      type: "headerRichText",
+      localize: true,
+    },
   ],
   preview: {
     select: {

@@ -1,10 +1,11 @@
 import clsx from "clsx";
 import * as React from "react";
-import { useState } from "react";
-import { ICarouselContextState, useCarouselContext } from "./CarouselContext";
+
+import { useCarouselContext } from "./CarouselContext";
 
 interface ICarouselItemWrapProps {
   nextOnClick?: boolean;
+  className?: string;
   children: (props: {
     activeItemIndex: number;
     lastActiveItemIndex: null | number;
@@ -12,13 +13,13 @@ interface ICarouselItemWrapProps {
 }
 
 function CarouselItemWrap(props: ICarouselItemWrapProps) {
-  const { children, nextOnClick = true } = props;
+  const { children, nextOnClick = true, className } = props;
   const { activeItemIndex, lastActiveItemIndex, next } = useCarouselContext();
 
   return (
     <ul
       onClick={() => nextOnClick && next()}
-      className={clsx("w-full grid grid-cols-1 grid-rows-1")}
+      className={className || clsx("w-full grid grid-cols-1 grid-rows-1")}
     >
       {children && children({ activeItemIndex, lastActiveItemIndex })}
     </ul>

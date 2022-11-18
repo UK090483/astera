@@ -2,7 +2,7 @@ import { withLocalization } from "./helper/withLocalization";
 import { navigationSchema } from "./Navigation/navigation.schema";
 
 import pageSchema from "./ContentTypes/Page/page.schema";
-import postSchema from "./ContentTypes/Post/post.schema";
+import newsSchema from "./ContentTypes/news/news.schema";
 import personSchema from "./ContentTypes/Person/person.schema";
 
 import heroSchema from "./Components/Hero/hero.schema";
@@ -20,15 +20,24 @@ import EmbedHtmlSchema from "./RichText/Plugs/EmbedHTML/EmbedHtml.schema";
 import VideoPlugSchema from "./RichText/Plugs/videoPlug/video.schema";
 import linkSchema from "./Objects/link/link.schema";
 import { locale } from "./constants";
+import { SettingsDocument } from "./Settings/settings.schema";
+import linkMarkSchema from "./RichText/marks/linkMark/linkMark.schema";
+import personSectionSchema from "./Components/Person/PersonSection";
+import testimonialItem from "./Objects/Testimonial/testimonial.item.schema";
+import newsSectionSchema from "./Components/News/NewsSection";
 
 const localizedSchema = withLocalization(
   [
+    SettingsDocument,
     ...navigationSchema,
     ...seoSchema,
     defaultImage,
+    testimonialItem,
     linkSchema,
+    linkMarkSchema,
     pageSchema,
-    postSchema,
+    newsSchema,
+    newsSectionSchema,
     heroSchema,
     sectionSchema,
     listingSchema,
@@ -39,6 +48,7 @@ const localizedSchema = withLocalization(
     defaultRichTextSchema,
     heroRichTextSchema,
     personSchema,
+    personSectionSchema,
   ],
   locale
 );

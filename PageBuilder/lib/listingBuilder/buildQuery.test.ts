@@ -100,7 +100,7 @@ describe("Build listing Query", () => {
     const res = await runTestQuery(
       builderItems,
       getData({
-        list: { contentType: "A", AVariant: "variantC", BVariant: "variantB" },
+        list: { contentType: "A", AVariants: "variantC", BVariant: "variantB" },
       })
     );
     expect(res.list?.variant).toBe("variantC");

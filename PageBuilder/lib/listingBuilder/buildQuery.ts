@@ -1,3 +1,4 @@
+import { items } from "PageBuilder/Components/Listing/listing.items";
 import { listingBuilderItem, listingBuilderItemFilter } from "./types";
 
 const getVariant = (items: listingBuilderItem[]) =>
@@ -5,7 +6,7 @@ const getVariant = (items: listingBuilderItem[]) =>
     .filter((i) => !!i.variants)
     .reduce(
       (acc, item) =>
-        acc + `contentType == "${item.name}" => ${item.name}Variant,`,
+        acc + `contentType == "${item.name}" => ${item.name}Variants,`,
       "select("
     ) + "),";
 
@@ -31,7 +32,9 @@ const getFilterQuery = (item: listingBuilderItem) => {
 };
 
 const getReferenceQuery = (item: listingBuilderItem) => {
-  return `contentType == "${item.name}" => [...${item.name}Items[]->],`;
+  return `contentType == "${item.name}" => [...${item.name}Items[]${
+    item.items?.every((i) => i.type !== "reference") ? "" : "->"
+  }],`;
 };
 
 const getItemQuery = (items: listingBuilderItem[]) => {

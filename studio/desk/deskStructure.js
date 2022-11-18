@@ -32,6 +32,10 @@ export default () =>
             .title("Settings")
             .items([
               S.documentListItem()
+                .schemaType("baseConfig")
+                .title("Base Settings")
+                .id("baseConfig"),
+              S.documentListItem()
                 .schemaType("seoConfig")
                 .title("Seo")
                 .id("seoConfig"),
@@ -43,6 +47,6 @@ export default () =>
         ),
 
       S.listItem().title("Page").child(S.documentTypeList("page")),
-      S.listItem().title("Post").child(S.documentTypeList("post")),
+      S.listItem().title("News").child(S.documentTypeList("news")),
       S.listItem().title("Person").child(S.documentTypeList("person")),
     ]);

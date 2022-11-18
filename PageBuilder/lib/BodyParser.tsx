@@ -18,6 +18,7 @@ const BodyParser: React.FC<BodyParserProps> = ({ components }) => {
             const Component = components[block._type].component;
             return <Component key={block._key} {...block} />;
           }
+
           return (
             <div key={block._key}>
               Component {JSON.stringify(block._type)} is not defined. Add it to

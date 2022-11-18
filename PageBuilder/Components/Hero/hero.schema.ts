@@ -17,7 +17,7 @@ const HeroObject: ObjectDefinition = {
     {
       title: "Content",
       name: "content",
-      type: "heroRichText",
+      type: "headerRichText",
       localize: true,
     },
   ],

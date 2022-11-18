@@ -1,4 +1,4 @@
-import { localizedQueryFn } from "../../helper/withLocalization";
+import { localizedQueryFn, localizeValue } from "../../helper/withLocalization";
 
 import { defaultRichTextQuery } from "../../RichText/defaultRichText.query";
 import { ImageResult, IMAG_PROJECTION } from "../../constants";
@@ -6,6 +6,7 @@ import {
   componentStyleProjection,
   componentStyleResult,
 } from "../componentStyle";
+import { headerRichTextQueryResult } from "PageBuilder/RichText/headerRichText.query";
 
 export const sectionBlockQuery: localizedQueryFn = (locale) => `
 _type == "section" => {
@@ -13,7 +14,9 @@ _type == "section" => {
   _type,
   title,
   type,
-  imagePosition,
+  headerPosition,
+  textDirection,
+  ${localizeValue("header")},
   'image':image{${IMAG_PROJECTION}},
   'content':(coalesce(content_${locale},content))[]{${defaultRichTextQuery(
   locale
@@ -27,9 +30,10 @@ export type SectionResult = {
   textDirection?: "left" | "center" | "right";
   content?: null | any;
   bgImage?: ImageResult;
-  imagePosition?: "l" | "r" | null;
+  headerPosition?: "l" | "r" | null;
   image?: ImageResult;
   type?: "m" | "l" | "s";
+  header?: headerRichTextQueryResult;
   _key: string;
 } & componentStyleResult;
 

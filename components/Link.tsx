@@ -14,22 +14,12 @@ export interface LinkProps
 }
 
 export const Link: React.FC<LinkProps> = (props) => {
-  const {
-    href,
-    children,
-    className,
-    internal,
-    locale,
-    onClick,
-    scroll,
-    role,
-    ...rest
-  } = props;
+  const { href, children, className, internal, locale, onClick, scroll, role } =
+    props;
 
-  if (!internal) {
+  if (href) {
     return (
       <a
-        {...rest}
         href={href}
         role={role}
         className={className}
@@ -41,17 +31,18 @@ export const Link: React.FC<LinkProps> = (props) => {
     );
   }
 
+  if (!internal) return null;
+
   return (
     <NextLink
-      legacyBehavior
+      onClick={onClick}
       href={internal}
       passHref
       locale={locale}
       scroll={scroll}
+      className={className}
     >
-      <a {...rest} onClick={onClick} role={role} className={className}>
-        {children}
-      </a>
+      {children}
     </NextLink>
   );
 };

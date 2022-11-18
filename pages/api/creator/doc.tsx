@@ -2,16 +2,12 @@ import { config } from "@lib/SanityService/config";
 import createClient, { SanityClient } from "@sanity/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import request from "request";
-
 import { faker } from "@faker-js/faker";
 
 faker.setLocale("de");
 
-import { randPost, randSlug, randImg, randTextRange } from "@ngneat/falso";
-import { DocumentDefinition } from "PageBuilder/types";
-
 import { v4 as uuid } from "uuid";
+import { uniqueId } from "lodash";
 const client = createClient({
   ...config,
   token: process.env.SANITY_CREATOR_TOKEN,
@@ -34,8 +30,11 @@ type createDocumentProps = {
   // item: DocumentDefinition;
 };
 
-async function createDocument({ client }: createDocumentProps) {
-  const image = await createImage({ client });
+const person = async () => {
+  const image = await createImage({
+    client,
+    url: "https://i.pravatar.cc/1000",
+  });
   const mainImage = {
     _type: "defaultImage",
     alt: "ss",
@@ -44,24 +43,88 @@ async function createDocument({ client }: createDocumentProps) {
       _type: "reference",
     },
   };
-  return client.create({
-    _type: "post",
+
+  const name = faker.name.fullName();
+
+  return {
+    _type: "person",
     _id: `__fakeItem__${uuid()}`,
-    title: faker.random.words(3),
-    title_en: "En" + faker.random.words(3),
+    title: name,
+    title_en: "En_" + name,
+    subTitle: faker.random.words(2),
+    subTitle_en: "en_" + faker.random.words(2),
+    description: faker.lorem.paragraph(),
+    description_en: "En_" + faker.lorem.paragraph(),
+    slug: { _type: "slug", current: faker.helpers.slugify(name) },
+    slug_en: { _type: "slug", current: faker.helpers.slugify(name) + "_en" },
+    mainImage,
+    body: [
+      {
+        _key: uniqueId(),
+        _type: "hero",
+        title: "Hero",
+      },
+      {
+        _key: uniqueId(),
+        _type: "personSection",
+        title: "Person Section",
+      },
+    ],
+  };
+};
+const news = async () => {
+  return {
+    _type: "news",
+    _id: `__fakeItem__${uuid()}`,
+    category: faker.helpers.arrayElement([
+      "financeDeal",
+      "privateEquityDeal",
+      "event",
+      "person",
+    ]),
+    title: faker.random.words(Math.floor(Math.random() * 10)),
+    title_en: "En" + faker.random.words(Math.floor(Math.random() * 10)),
+
     description: faker.lorem.words(10),
     description_en: faker.lorem.words(10) + "En",
     slug: { _type: "slug", current: faker.lorem.slug() },
     slug_en: { _type: "slug", current: faker.lorem.slug() + "en" },
-    mainImage,
-  });
+    startDate: faker.date
+      .between("2020-01-01T00:00:00.000Z", "2022-01-01T00:00:00.000Z")
+      .toISOString()
+      .split("T")[0],
+    // mainImage,
+
+    body: [
+      {
+        _key: uniqueId(),
+        _type: "hero",
+        title: "Hero",
+      },
+      {
+        _key: uniqueId(),
+        _type: "newsSection",
+        title: "News Section",
+      },
+    ],
+  };
+};
+
+async function createDocument({ client }: createDocumentProps) {
+  const p = await person();
+  const n = await news();
+
+  await client.create(p);
+
+  return client.create(n);
 }
 
 type createImageProps = {
   client: SanityClient;
+  url: string;
 };
-async function createImage({ client }: createImageProps) {
-  const fetchResult = await fetch(faker.image.abstract(1234, 2345));
+async function createImage({ client, url }: createImageProps) {
+  const fetchResult = await fetch(url);
   const body = await fetchResult.body;
   if (body) {
     return await client.assets.upload("image", body, { label: "__fakeItem__" });

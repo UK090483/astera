@@ -16,8 +16,8 @@ const sectionSchema: ObjectDefinition = {
       title: "Style",
     },
     {
-      name: "image",
-      title: "Image",
+      name: "header",
+      title: "Header",
     },
   ],
   fields: [
@@ -37,6 +37,14 @@ const sectionSchema: ObjectDefinition = {
     },
 
     {
+      group: "header",
+      name: "header",
+      type: "headerRichText",
+      title: "Header",
+      localize: true,
+    },
+
+    {
       title: "Text Direction",
       name: "textDirection",
       type: "string",
@@ -49,15 +57,10 @@ const sectionSchema: ObjectDefinition = {
         ],
       },
     },
+
     {
-      title: "Image",
-      name: "image",
-      type: "defaultImage",
-      group: "image",
-    },
-    {
-      title: "Image Position",
-      name: "imagePosition",
+      title: "Header Position",
+      name: "headerPosition",
       type: "string",
       options: {
         list: [
@@ -65,8 +68,7 @@ const sectionSchema: ObjectDefinition = {
           { title: "Right", value: "r" },
         ],
       },
-      group: "image",
-      hidden: (props: any) => !props?.parent?.image,
+      group: "header",
     },
   ],
 };

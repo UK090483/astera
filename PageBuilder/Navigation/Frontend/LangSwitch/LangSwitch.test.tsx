@@ -49,12 +49,4 @@ describe("<LangSwitch/>", () => {
     });
     expect(screen.getByRole("link")).toHaveAttribute("href", "/test1");
   });
-
-  it("should show Active language ", () => {
-    customRender({
-      className: "testClassName",
-      LangSwitcherResult: { ...getLang("test1"), ...getLang("test2") },
-    });
-    expect(screen.getAllByRole("link")[0]).toHaveClass("border-2");
-  });
 });

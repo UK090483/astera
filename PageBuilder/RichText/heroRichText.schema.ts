@@ -1,6 +1,6 @@
 import { ArrayDefinition } from "../types";
-const defaultRichText: ArrayDefinition = {
-  name: "heroRichText",
+const headerRichText: ArrayDefinition = {
+  name: "headerRichText",
   type: "array",
 
   of: [
@@ -29,4 +29,4 @@ const defaultRichText: ArrayDefinition = {
   ],
 };
 
-export default defaultRichText;
+export default headerRichText;

@@ -60,24 +60,24 @@ describe("<Carousel/>", () => {
     expect(s.getByRole("listitem")).toHaveTextContent("4");
   });
 
-  it("should have navigation buttons", () => {
-    expect(s.getByLabelText("carousel button next"));
-    expect(s.getByLabelText("carousel button previous"));
-  });
-  it("should navigate forward ", () => {
-    fireEvent.click(s.getByLabelText("carousel button next"));
-    expect(s.getByRole("listitem")).toHaveTextContent("2");
-    fireEvent.click(s.getByLabelText("carousel button next"));
-    expect(s.getByRole("listitem")).toHaveTextContent("3");
-    fireEvent.click(s.getByLabelText("carousel button next"));
-    expect(s.getByRole("listitem")).toHaveTextContent("4");
-    fireEvent.click(s.getByLabelText("carousel button next"));
-    expect(s.getByRole("listitem")).toHaveTextContent("1");
-  });
-  it("should navigate backward ", () => {
-    fireEvent.click(s.getByLabelText("carousel button previous"));
-    expect(s.getByRole("listitem")).toHaveTextContent("4");
-    fireEvent.click(s.getByLabelText("carousel button previous"));
-    expect(s.getByRole("listitem")).toHaveTextContent("3");
-  });
+  // it("should have navigation buttons", () => {
+  //   expect(s.getByLabelText("carousel button next"));
+  //   expect(s.getByLabelText("carousel button previous"));
+  // });
+  // it("should navigate forward ", () => {
+  //   fireEvent.click(s.getByLabelText("carousel button next"));
+  //   expect(s.getByRole("listitem")).toHaveTextContent("2");
+  //   fireEvent.click(s.getByLabelText("carousel button next"));
+  //   expect(s.getByRole("listitem")).toHaveTextContent("3");
+  //   fireEvent.click(s.getByLabelText("carousel button next"));
+  //   expect(s.getByRole("listitem")).toHaveTextContent("4");
+  //   fireEvent.click(s.getByLabelText("carousel button next"));
+  //   expect(s.getByRole("listitem")).toHaveTextContent("1");
+  // });
+  // it("should navigate backward ", () => {
+  //   fireEvent.click(s.getByLabelText("carousel button previous"));
+  //   expect(s.getByRole("listitem")).toHaveTextContent("4");
+  //   fireEvent.click(s.getByLabelText("carousel button previous"));
+  //   expect(s.getByRole("listitem")).toHaveTextContent("3");
+  // });
 });

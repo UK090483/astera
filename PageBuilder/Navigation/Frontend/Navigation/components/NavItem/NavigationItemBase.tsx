@@ -8,23 +8,38 @@ export type NavItemBaseProps = {
   bold?: boolean;
   place?: "link" | "dropdown" | "header" | "dropdown/link";
   item: NavItem;
+  align?: "center" | "left";
+
+  className?: string;
 };
 
 export const NavigationItemBase: React.FC<NavItemBaseProps> = (props) => {
-  const { children, icon, hover, bold, place, item } = props;
+  const {
+    children,
+    icon,
+    hover,
+    bold,
+    place,
+    item,
+    align = "center",
+    className,
+  } = props;
   const active = useIsActive(item);
 
   return (
     <span
       className={clsx(
-        "block w-full px-5 py-4 leading-none whitespace-nowrap transition-colors font-bold text-base-mobile xl:text-base truncate ",
+        "block w-full px-5 py-4 leading-none whitespace-nowrap transition-colors text-base-mobile xl:text-base truncate ",
         "hover:underline decoration-2  underline-offset-4",
         {
           "text-black hover:bg-black  hover:text-white ":
             place === "dropdown/link",
           "font-bold": bold,
           "underline ": active,
-        }
+          "text-center": align === "center",
+          "text-left pl-0": align === "left",
+        },
+        className
       )}
     >
       {children}

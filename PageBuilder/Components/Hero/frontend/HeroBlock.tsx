@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import SanityImage from "@components/SanityImage";
+import clsx from "clsx";
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
 import RichText from "PageBuilder/RichText/frontend/RichText";
 import React from "react";
@@ -13,21 +14,22 @@ const Hero: React.FC<heroResult> = (props) => {
 
   const _image = image && image.url ? image : data?.mainImage;
 
-  const _content = content ? (
-    <RichText content={content} />
-  ) : (
-    <h1>{data?.title}</h1>
-  );
+  const hasContent = content && content.length > 0;
 
   return (
     <div
       data-testid="heroBlock"
-      className=" flex flex-col h-hero-mobile  sm:h-hero pt-11 lg:pt-16 relative justify-center items-center "
+      className={clsx(
+        "flex flex-col pt-11 lg:pt-16 relative justify-center items-center h-[300px] ",
+        { "h-[500px] md:h-[600px]": hasContent }
+      )}
     >
       {_image && <SanityImage fill className=" object-cover " src={_image} />}
-      <div className="typo typo-invert max-w-3xl px-sides  flex flex-col items-center text-center justify-center  mx-auto  absolute inset-0 ">
-        {_content}
-      </div>
+      {hasContent && (
+        <div className="typo typo-bright max-w-3xl px-sides  flex flex-col items-center text-center justify-center  mx-auto  absolute inset-0 mt-36">
+          {content && <RichText content={content} />}
+        </div>
+      )}
     </div>
   );
 };

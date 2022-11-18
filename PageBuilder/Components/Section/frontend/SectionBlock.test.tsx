@@ -18,27 +18,7 @@ describe("SectionBlock", () => {
       "testTitle"
     );
   });
-  it("renders Image", () => {
-    customRender(<SectionBlock _key="testKey" image={testImage()} />);
-    expect(screen.getByAltText("testImage"));
-  });
-  it("renders Image l", () => {
-    customRender(
-      <SectionBlock _key="testKey" image={testImage()} content={testText()} />
-    );
-    expect(screen.getByAltText("testImage"));
-  });
-  it("renders Image r", () => {
-    customRender(
-      <SectionBlock
-        _key="testKey"
-        image={testImage()}
-        content={testText()}
-        imagePosition="r"
-      />
-    );
-    expect(screen.getByAltText("testImage"));
-  });
+
   it("renders content", () => {
     customRender(<SectionBlock _key="testKey" content={testText()} />);
     expect(screen.getByText("testText"));

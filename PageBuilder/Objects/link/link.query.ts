@@ -1,8 +1,9 @@
 import { SLUG_PROJECTION } from "PageBuilder/constants";
 import { localizedQueryFn } from "PageBuilder/helper/withLocalization";
 
-type linkQueryProps = {
-  slugQuery: string;
+export type linkResult = {
+  internal?: string;
+  href?: string;
 };
 
 const linkProjection: localizedQueryFn = (locale) => `

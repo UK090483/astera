@@ -15,27 +15,39 @@ import fetchStaticPath from "PageBuilder/lib/next/fetchStaticPath";
 import fetchStaticProps from "PageBuilder/lib/next/fetchStaticProps";
 
 import { pageQuery } from "PageBuilder/ContentTypes/Page/page.query";
+import { PersonSection } from "PageBuilder/Components/Person/frontend/PersonSection";
+import { personQuery } from "PageBuilder/ContentTypes/Person/person.query";
+import { NewsSection } from "PageBuilder/Components/News/frontend/NewsSection";
+import { newsQuery } from "PageBuilder/ContentTypes/news/news.query";
 
 export type PageResult = { content?: any };
 
 const Page = () => {
   return (
-    <BodyParser
-      components={{
-        hero: {
-          component: HeroBlock,
-        },
-        section: {
-          component: SectionBlock,
-        },
-        listing: {
-          component: ListingBlock,
-        },
-        imageGalleryPlug: {
-          component: GalleryPlug,
-        },
-      }}
-    />
+    <>
+      <BodyParser
+        components={{
+          hero: {
+            component: HeroBlock,
+          },
+          section: {
+            component: SectionBlock,
+          },
+          listing: {
+            component: ListingBlock,
+          },
+          imageGalleryPlug: {
+            component: GalleryPlug,
+          },
+          personSection: {
+            component: PersonSection,
+          },
+          newsSection: {
+            component: NewsSection,
+          },
+        }}
+      />
+    </>
   );
 };
 
@@ -53,7 +65,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     getSanityClient,
     items: {
       page: { query: pageQuery },
-      post: { query: pageQuery },
+      news: { query: newsQuery },
+      person: { query: personQuery },
     },
   });
 };

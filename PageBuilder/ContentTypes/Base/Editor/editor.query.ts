@@ -12,9 +12,10 @@ import {
 import { sectionBlockQuery } from "../../../Components/Section/section.query";
 import { sectionType } from "../../../Components/Section/SectionType";
 import { localizedQueryFn } from "../../../helper/withLocalization";
-import { Block } from "../../../types";
 
 export const editorQuery: localizedQueryFn = (locale) => `
+_type,
+_key,
 ${heroQueryProjection(locale)}
 ${sectionBlockQuery(locale)}
 ${listProjection(locale)}

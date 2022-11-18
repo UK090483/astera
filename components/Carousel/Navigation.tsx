@@ -14,7 +14,7 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
   if (itemCount < 2) return <></>;
 
   return (
-    <div className={`w-full flex justify-between ${className}`}>
+    <div className={`w-full  flex justify-between ${className}`}>
       <button
         className="px-3"
         onClick={prev}

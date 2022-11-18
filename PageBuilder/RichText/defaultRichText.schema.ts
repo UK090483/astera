@@ -17,7 +17,7 @@ const defaultRichText: ArrayDefinition = {
       ],
 
       marks: {
-        annotations: [{ type: "link" }],
+        annotations: [{ type: "linkMark" }],
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },

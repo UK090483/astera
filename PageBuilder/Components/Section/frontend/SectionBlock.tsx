@@ -5,6 +5,7 @@ import clsx from "clsx";
 import React from "react";
 import type { SectionResult } from "../section.query";
 import { ImageResult } from "PageBuilder/constants";
+import { headerRichTextQueryResult } from "PageBuilder/RichText/headerRichText.query";
 
 const SectionBlock: React.FC<SectionResult> = (props) => {
   const {
@@ -14,13 +15,14 @@ const SectionBlock: React.FC<SectionResult> = (props) => {
     title,
     image,
     type,
-    imagePosition = "l",
+    headerPosition = "l",
     backgroundColor,
     textDirection,
+    header,
   } = props;
 
   const hasImage = image && image.url;
-  const autoType = hasImage ? "m" : "s";
+  const autoType = hasImage ? "m" : "l";
 
   return (
     <>
@@ -37,10 +39,10 @@ const SectionBlock: React.FC<SectionResult> = (props) => {
           "text-right": textDirection === "right",
         })}
       >
-        {hasImage ? (
-          <WithImage place={imagePosition || "l"} image={image}>
+        {header ? (
+          <WithHeader place={headerPosition || "l"} header={header}>
             {content && <RichText content={content} />}
-          </WithImage>
+          </WithHeader>
         ) : (
           <>{content && <RichText content={content} />} </>
         )}
@@ -72,6 +74,30 @@ const WithImage: React.FC<{
         />
       </div>
       <div className={"lg:col-span-2 "}>{children}</div>
+    </>
+  );
+};
+
+const WithHeader: React.FC<{
+  place: "l" | "r";
+  header: headerRichTextQueryResult;
+}> = ({ children, place = "l", header }) => {
+  return (
+    <>
+      <div
+        className={clsx("md:flex gap-12 ", {
+          " md:flex-row-reverse ": place === "r",
+        })}
+      >
+        <div
+          className={clsx(" mb-6 md:w-1/4 ", {
+            "md:text-right": place !== "r",
+          })}
+        >
+          <RichText content={header} />
+        </div>
+        <div className="">{children}</div>
+      </div>
     </>
   );
 };

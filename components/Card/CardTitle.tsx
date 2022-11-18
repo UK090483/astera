@@ -1,7 +1,17 @@
 import * as React from "react";
+import { useCardContext } from "./CardContext";
 
-export interface ICardTitleProps {}
-export const CardTitle: React.FunctionComponent<ICardTitleProps> = (props) => {
-  const { children } = props;
-  return <h3 className="line-clamp-2 ">{children}</h3>;
+export interface ICardTitleProps {
+  className?: string;
+}
+export const CardTitle: React.FunctionComponent<ICardTitleProps> = ({
+  className,
+}) => {
+  const { title } = useCardContext();
+
+  return (
+    <h2 className={`typo-body text-secondary-dark  p-size   ${className}`}>
+      {title}
+    </h2>
+  );
 };

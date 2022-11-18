@@ -1,5 +1,6 @@
 import { listingBuilderItem } from "PageBuilder/lib/listingBuilder/types";
 import { ArrayOfType } from "PageBuilder/types";
+import { colorList } from "../componentStyle";
 
 const customItem: ArrayOfType = {
   name: "bla",
@@ -15,11 +16,19 @@ const customItem: ArrayOfType = {
       name: "description",
       type: "text",
       title: "Description",
-      description: "should be between 50 and 160 characters",
-      validation: (Rule: any) => [
-        Rule.max(160).error("should not be more than 160 characters"),
-        Rule.min(50).warning("should be at least 50 characters"),
-      ],
+      // description: "should be between 50 and 160 characters",
+      // validation: (Rule: any) => [
+      //   Rule.max(160).error("should not be more than 160 characters"),
+      //   Rule.min(50).warning("should be at least 50 characters"),
+      // ],
+    },
+    {
+      title: "Background Color",
+      name: "bgColor",
+      type: "string",
+      options: {
+        list: [...colorList()],
+      },
     },
     {
       name: "mainImage",
@@ -48,6 +57,13 @@ export const items: listingBuilderItem[] = [
 
     title: "Person",
     items: [{ type: "reference", to: [{ type: "person" }] }],
+    filter: [
+      {
+        title: "All",
+        value: "all",
+        queryFilter: { filter: `defined(_id)` },
+      },
+    ],
   },
   {
     name: "page",
@@ -56,25 +72,34 @@ export const items: listingBuilderItem[] = [
     items: [{ type: "reference", to: [{ type: "page" }] }],
   },
   {
-    name: "post",
-    title: "Post",
+    name: "news",
+    title: "News",
     filter: [
+      {
+        title: "Last 8",
+        value: "last 8",
+        queryFilter: {
+          filter: `defined(_id)`,
+          order: "startDate",
+          slice: { start: 0, end: 10 },
+        },
+      },
       {
         title: "All",
         value: "all",
-        queryFilter: { filter: `defined(_id)` },
-      },
-      {
-        title: "With A",
-        value: "withA",
-        queryFilter: { filter: `title match "a*"` },
+        queryFilter: {
+          filter: `defined(_id)`,
+          order: "startDate",
+          slice: { start: 0, end: 6 },
+        },
       },
     ],
     variants: [
       { value: "grid", title: "Grid" },
       { value: "list", title: "List" },
+      { value: "carousel", title: "Carousel" },
     ],
-    items: [{ type: "reference", to: [{ type: "post" }] }],
+    items: [{ type: "reference", to: [{ type: "news" }] }],
   },
   {
     name: "custom",

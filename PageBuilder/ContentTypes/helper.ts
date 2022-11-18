@@ -2,7 +2,7 @@ import { Field, DocumentDefinition } from "../types";
 import { ImageResult, IMAG_PROJECTION, REMOTE_URL } from "../constants";
 import { localizeValue } from "../helper/withLocalization";
 
-export const getSlugField = () => ({
+export const getSlugField = (props?: { group?: string | false }) => ({
   name: "slug",
   type: "slug",
   title: "Slug",
@@ -21,9 +21,26 @@ export const getSlugField = () => ({
       return true;
     }).error(),
   ],
-  group: "base",
+  group: props?.group === false ? undefined : props?.group || "base",
   localize: true,
 });
+
+export const getSubTitleField = ({
+  group,
+  title,
+}: {
+  group?: string;
+  title?: string;
+}) => {
+  return {
+    name: "subTitle",
+    type: "string",
+    title: title || "Subtitle",
+    validation: (Rule: any) => Rule.required(),
+    localize: true,
+    ...(group ? { group } : {}),
+  };
+};
 
 type createContentTypeProps = {
   fields: Field[];
