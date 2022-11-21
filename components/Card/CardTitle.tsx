@@ -9,9 +9,5 @@ export const CardTitle: React.FunctionComponent<ICardTitleProps> = ({
 }) => {
   const { title } = useCardContext();
 
-  return (
-    <h2 className={`typo-body text-secondary-dark  p-size   ${className}`}>
-      {title}
-    </h2>
-  );
+  return <h2 className={`typo-body   p-size   ${className}`}>{title}</h2>;
 };

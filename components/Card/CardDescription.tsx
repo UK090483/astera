@@ -4,10 +4,11 @@ import { useCardContext } from "./CardContext";
 interface ICardDescriptionProps {
   widthDate?: boolean;
   small?: boolean;
+  className?: string;
 }
 export const CardDescription: React.FunctionComponent<
   ICardDescriptionProps
-> = ({ widthDate, small }) => {
+> = ({ widthDate, small, className }) => {
   const { description, startDate } = useCardContext();
 
   const dateString = startDate
@@ -15,10 +16,8 @@ export const CardDescription: React.FunctionComponent<
     : "date Missing";
 
   return (
-    <p className={`${small && "text-base"} `}>
-      {widthDate && (
-        <span className=" text-secondary   font-bold pr-1">{dateString}</span>
-      )}
+    <p className={`${small && "text-base"} ${className && className}`}>
+      {widthDate && <span className={`font-bold pr-1 `}>{dateString}</span>}
       {description}
     </p>
   );

@@ -1,19 +1,26 @@
 import { AIcon } from "@components/AIcon";
+import clsx from "clsx";
 import * as React from "react";
 import { useCardContext } from "./CardContext";
 
-export interface ICardCategoryProps {}
+export interface ICardCategoryProps {
+  className?: string;
+  white?: boolean;
+}
 
-export const CardCategory: React.FC<ICardCategoryProps> = (props) => {
+export const CardCategory: React.FC<ICardCategoryProps> = ({ white }) => {
   const { category } = useCardContext();
   if (!category) return null;
 
   return (
-    <div>
-      {category === "financeDeal" && <AIcon className=" fill-secondary" />}
-      {category === "privateEquityDeal" && <AIcon className="fill-primary " />}
-      {category === "event" && <AIcon className="fill-primary " />}
-      {category === "person" && <AIcon className="fill-secondary-dark " />}
-    </div>
+    <AIcon
+      className={clsx("w-12 shrink-0 ", {
+        "fill-primary": category === "financeDeal",
+        "fill-secondary": category === "privateEquityDeal",
+        "fill-bordeaux ": category === "event",
+        "fill-primary-dark": category === "person",
+        "fill-white": white,
+      })}
+    />
   );
 };

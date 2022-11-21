@@ -12,11 +12,11 @@ interface ICarouselProps extends Omit<useCarouselProps, "items"> {
 function Carousel(props: ICarouselProps) {
   const { children, ...rest } = props;
 
-  const ref = React.useRef<HTMLDivElement>(null);
+  const ref = React.useRef<HTMLUListElement>(null);
 
   return (
     <CarouselContextProvider items={children} {...rest}>
-      <div ref={ref} className="w-full flex overflow-scroll pb-12 pl-side">
+      <ul ref={ref} className="w-full flex overflow-scroll pl-side py-4">
         <CarouselItemWrap className="flex items-center gap-12">
           {({ activeItemIndex }) => {
             return children.map((i, index) => {
@@ -34,7 +34,7 @@ function Carousel(props: ICarouselProps) {
             });
           }}
         </CarouselItemWrap>
-      </div>
+      </ul>
     </CarouselContextProvider>
   );
 }
