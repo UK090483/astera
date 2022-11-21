@@ -10,7 +10,7 @@ export function AIcon(props: IAIconProps) {
     <svg
       viewBox="0 0 30 30"
       xmlns="http://www.w3.org/2000/svg"
-      className={`w-10 ` + className}
+      className={className ? className : ` w-10 `}
     >
       <path d="M24.7346 17.771C26.0074 20.6647 26.7477 21.9456 27.995 22.4845C29.2679 20.2793 30 17.7222 30 14.9926C30 7.43874 24.4211 1.19095 17.1611 0.142416L24.7346 17.771Z" />
       <path d="M18.4381 13.572L14.5909 4.6486L10.7438 13.572H18.4381Z" />
