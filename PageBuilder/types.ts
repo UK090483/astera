@@ -1,6 +1,6 @@
 import { PortableTextBlock } from "@portabletext/types/dist/portableText";
-import { Schema } from "sanity-v3-dev-prev/node_modules/@sanity/types/src/schema/types";
 
+import { Schema } from "./SanityTypes/src/schema/types";
 export type Block = PortableTextBlock;
 type extraFieldFields = {
   localize?: boolean;

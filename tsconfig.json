@@ -56,6 +56,7 @@
     "**/*.js",
   ],
   "exclude": [
+    "**/*.schema.tsx",
     "node_modules",
     "studio/**",
     "cypress",
