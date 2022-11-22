@@ -90,7 +90,7 @@ const WithHeader: React.FC<{
         })}
       >
         <div
-          className={clsx(" mb-6 md:w-1/4 ", {
+          className={clsx(" mb-6 md:w-1/4  shrink-0 ", {
             "md:text-right": place !== "r",
           })}
         >

@@ -5,7 +5,7 @@ export const SLUG_PROJECTION = (locale?: string) =>
 
 export type SlugResult = string;
 
-export const REMOTE_URL = "https://remoteUrl.com/";
+export const REMOTE_URL = "https://astera-konradullrich.vercel.app/";
 
 export const IMAG_PROJECTION = `
 crop,

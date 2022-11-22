@@ -34,7 +34,7 @@
     color: var(--tw-typo-body);
     font-family: var(--lexend-font);
   }
-  .typo-colors :where(h1, h2, h3, h4) {
+  .typo-colors :where(h1, h2, h3, h4, .typo-header) {
     color: var(--tw-typo-headings);
     font-family: var(--eb_garamond-font);
   }
@@ -92,5 +92,31 @@
 
   .typo-body {
     font-family: var(--lexend-font);
+  }
+
+  .connectedDots .bullet {
+    @apply text-primary;
+  }
+
+  .text-right .connectedDots li {
+    @apply flex-row-reverse;
+  }
+  .text-right .connectedDots .bullet {
+    @apply ml-12 mr-0;
+  }
+
+  .connectedDots .bullet {
+    @apply w-8 shrink-0  flex flex-col  items-center mr-12;
+  }
+
+  .connectedDots .line {
+    @apply my-1;
+  }
+
+  .connectedDots li:last-child .line {
+    background-color: transparent;
+    /* You need to turn on relative positioning so the line is placed relative to the item rather than absolutely on the page */
+
+    /* Use padding to space things out rather than margins as the line would get broken up otherwise */
   }
 }

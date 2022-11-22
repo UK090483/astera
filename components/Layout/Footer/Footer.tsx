@@ -21,9 +21,9 @@ const Footer: React.FC = () => {
     >
       <BigA />
       <Section as="div" width="l">
-        <div className=" flex ">
+        <div className=" flex flex-wrap ">
           <div className=" w-1/3  whitespace-pre-wrap">
-            <p className=" text-primary   font-bold">Kontakt</p>
+            <p className=" text-primary  font-bold">Kontakt</p>
             <div className="grid grid-cols-[40px_1fr]">
               <svg
                 width="16"
@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className=" w-1/3">
-            <p className=" text-primary ">Menü</p>
+            <p className=" text-primary">Menü</p>
             {data?.menu.mainNav && (
               <HeaderNavigation
                 NavigationItemBase={(props) => (

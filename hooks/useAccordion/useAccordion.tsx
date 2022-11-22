@@ -2,12 +2,16 @@ import React, { useRef } from "react";
 
 const isTest = process.env.NODE_ENV === "test";
 
-const useAccordion = () => {
-  const ref = useRef<HTMLDivElement>(
+type useAccordionProps = {
+  initOpen?: boolean;
+};
+
+const useAccordion = (props?: useAccordionProps) => {
+  const ref = useRef<HTMLUListElement>(
     //@ts-ignore
     isTest ? { getBoundingClientRect: () => ({ height: 200 }) } : null
   );
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(!!props?.initOpen);
   const [height, setHeight] = React.useState(0);
 
   React.useEffect(() => {

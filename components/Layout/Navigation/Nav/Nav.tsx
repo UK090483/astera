@@ -35,6 +35,9 @@ const Nav: React.FC = () => {
               className="hidden menu:flex"
               LangSwitcherResult={langSwitchData}
             />
+            <a href="">
+              <Letter></Letter>
+            </a>
           </div>
 
           <button
@@ -46,24 +49,6 @@ const Nav: React.FC = () => {
           >
             <Svg className="w-[30px] h-[30px] fill-current" icon="hamburger" />
           </button>
-
-          {/* {mainLogo && (
-          <div
-            className={`
-            transition-transform
-            ${
-              !scrolled ? "" : "translate-x-full"
-            } absolute top-14 -translate-y-0.5 right-0 border-t-0 border-r-0 bg-white  border-2 border-black p-2`}
-          >
-            <div className="relative w-[200px] h-11 lg:w-[360px] lg:h-16">
-              <SanityImage
-                image={mainLogo.image}
-                layout={"fill"}
-                objectFit="contain"
-              />
-            </div>
-          </div>
-        )} */}
         </div>
       </nav>
       <NavigationMobile
@@ -86,3 +71,28 @@ const Nav: React.FC = () => {
 };
 
 export default Nav;
+
+const Letter = () => {
+  return (
+    <svg
+      width="34.5"
+      viewBox="0 0 30 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M28.297 1H1V19.998H28.297V1Z"
+        stroke="white"
+        stroke-width="2"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="M1 1L14.676 13.676L28.325 1.027"
+        stroke="white"
+        stroke-width="2"
+        stroke-miterlimit="10"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+};

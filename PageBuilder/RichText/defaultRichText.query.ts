@@ -8,6 +8,7 @@ import {
 } from "./Plugs/ImagePlug/ImagePlug.query";
 import { linkMarkProjection } from "./marks/linkMark/linkMark.query";
 import { listProjection } from "PageBuilder/Components/Listing/listing.query";
+import { dealsPlugQuery } from "./Plugs/Deals/deals.query";
 const markDefs: localizedQueryFn = (locale) => `
 markDefs[]{
    ...,
@@ -25,13 +26,8 @@ _type == 'block'=> {
 ${embedQuery}
 ${videoPlugQuery}
 ${imagePlugProjection}
+${dealsPlugQuery(locale)}
 `;
-
-// export const defaultRichTextQuery: localizedQueryFn = (locale) => `
-
-// ...,
-
-// `;
 
 export type defaultRichTextQueryResult = (
   | Block

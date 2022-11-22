@@ -90,7 +90,7 @@ const news = async () => {
     slug: { _type: "slug", current: faker.lorem.slug() },
     slug_en: { _type: "slug", current: faker.lorem.slug() + "en" },
     startDate: faker.date
-      .between("2020-01-01T00:00:00.000Z", "2022-01-01T00:00:00.000Z")
+      .between("2018-01-01T00:00:00.000Z", "2022-01-01T00:00:00.000Z")
       .toISOString()
       .split("T")[0],
     // mainImage,
@@ -111,10 +111,10 @@ const news = async () => {
 };
 
 async function createDocument({ client }: createDocumentProps) {
-  const p = await person();
+  // const p = await person();
   const n = await news();
 
-  await client.create(p);
+  // await client.create(p);
 
   return client.create(n);
 }

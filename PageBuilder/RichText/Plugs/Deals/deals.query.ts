@@ -2,26 +2,20 @@ import {
   localizedQueryFn,
   localizeValue,
 } from "PageBuilder/helper/withLocalization";
-import {
-  ImageResult,
-  IMAG_PROJECTION,
-  SLUG_PROJECTION,
-} from "../../../constants";
+import { SLUG_PROJECTION } from "../../../constants";
 
 export const dealsPlugQuery: localizedQueryFn = (locale) => `
 _type == 'dealsPlug'=>{
     _type,
     _key,
-     'items': *[ _type == 'news' && category in ['privateEquityDeal','financeDeal'] ][] | order(startDate asc){
+     'items': *[ _type == 'news' && category in ['privateEquityDeal','financeDeal'] ][] | order(startDate desc){
         _id,
         startDate,
         category,
         ${localizeValue("title", locale)},
         ${localizeValue("description", locale)},
         'slug': ${SLUG_PROJECTION(locale)},
-     },
-
-    
+     },  
 },
 `;
 

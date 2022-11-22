@@ -15,7 +15,12 @@ const defaultRichText: ArrayDefinition = {
         { title: "H3", value: "h3" },
         { title: "H4", value: "h4" },
       ],
-
+      lists: [
+        { title: "Bullet", value: "bullet" },
+        { title: "Numbered", value: "number" },
+        { title: "Arrows", value: "arrows" },
+        { title: "Connected Dots", value: "connectedDots" },
+      ],
       marks: {
         annotations: [{ type: "linkMark" }],
         decorators: [
@@ -30,6 +35,7 @@ const defaultRichText: ArrayDefinition = {
     { type: "embed" },
     { type: "videoPlug" },
     { type: "imagePlug" },
+    { type: "dealsPlug" },
   ],
 };
 

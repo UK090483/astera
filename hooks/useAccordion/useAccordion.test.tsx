@@ -4,13 +4,13 @@ import { renderHook, act } from "@testing-library/react";
 import useAccordion from "./useAccordion";
 
 const TestComponent = () => {
-  const { ref, maxHeight } = useAccordion();
+  const { ref, maxHeight } = useAccordion({});
 
   return (
     <div data-testid="outer" style={{ maxHeight, overflow: "hidden" }}>
-      <div ref={ref} data-testid="inner ">
+      <ul ref={ref} data-testid="inner ">
         Accordion Test Text
-      </div>
+      </ul>
     </div>
   );
 };

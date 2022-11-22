@@ -5,6 +5,8 @@ import { componentStyleResult } from "../../componentStyle";
 import List from "@components/Lists/ListWrap";
 import Card from "@components/Card/Card";
 import RichText from "PageBuilder/RichText/frontend/RichText";
+import { NewsCard } from "PageBuilder/ContentTypes/news/frontend/NewsCard";
+import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard";
 
 const presetMap: Record<
   string,
@@ -71,19 +73,34 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
             <RichText content={title} />
           </div>
         )}
-
         <List.wrap items={items} useKey="key">
+          {(props) => <PersonCard {...props} />}
+        </List.wrap>
+      </Section>
+    );
+  }
+  if (contentType === "news") {
+    return (
+      <Section
+        width="l"
+        noProse
+        noPadding
+        {...rest}
+        bg={backgroundColor}
+        {...section}
+      >
+        {title && (
+          <div className="typo typo-spacings  mt-12 mb-24 text-center">
+            <RichText content={title} />
+          </div>
+        )}
+        <List.wrap
+          variant={variant === "carousel" ? "carousel" : "grid"}
+          items={items}
+          useKey="key"
+        >
           {(props) => {
-            return (
-              <Card.Wrap {...props} noLink className="mb-12">
-                <Card.Image variant="round" elevated />
-                <Card.Info center>
-                  <Card.Title />
-                  <Card.SubTitle />
-                  <Card.Link text={"Zum CV"} asButton={true} className="mt-6" />
-                </Card.Info>
-              </Card.Wrap>
-            );
+            return <NewsCard {...props} />;
           }}
         </List.wrap>
       </Section>
@@ -114,15 +131,13 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
                 {["news", "news_carousel"].includes(contentTypeKey) && (
                   <>
                     <div className=" flex gap-4 justify-between">
-                      <Card.Title className=" line-clamp-2 h-[60px]" />
+                      <Card.Title className="line-clamp-2 h-[60px] text-secondary-dark" />
                       <Card.Category />
                     </div>
                   </>
                 )}
-
                 <Card.Description {...cardDescription} />
-
-                <Card.Link />
+                <Card.Link className="text-primary" />
               </Card.Info>
             </Card.Wrap>
           );

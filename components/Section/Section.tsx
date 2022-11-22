@@ -74,10 +74,10 @@ export const Section: React.FC<SectionProps> = (props) => {
         <InnerComponent
           style={style}
           className={clsx(
-            "mx-auto ",
+            "mx-auto",
             {
               "px-sides": !noPadding || noPadding === null,
-              "max-w-5xl": width === "l",
+              "max-w-6xl": width === "l",
               "container max-w-4xl": width === "m",
               container: width === "responsive",
               "container typo typo-spacings ": !noProse,

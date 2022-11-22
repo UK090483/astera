@@ -25,6 +25,7 @@ import linkMarkSchema from "./RichText/marks/linkMark/linkMark.schema";
 import personSectionSchema from "./Components/Person/PersonSection";
 import testimonialItem from "./Objects/Testimonial/testimonial.item.schema";
 import newsSectionSchema from "./Components/News/NewsSection";
+import { dealsPlugSchema } from "./RichText/Plugs/Deals/deals.shema";
 
 const localizedSchema = withLocalization(
   [
@@ -37,6 +38,7 @@ const localizedSchema = withLocalization(
     linkMarkSchema,
     pageSchema,
     newsSchema,
+    dealsPlugSchema,
     newsSectionSchema,
     heroSchema,
     sectionSchema,
