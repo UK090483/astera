@@ -18,8 +18,6 @@ export default function handler(req: NextRequest) {
     const imageId = searchParams.get("imageId");
     const imageUrl = builder.image({ _ref: imageId }).width(1000).url();
 
-    console.log({ imageId, imageUrl });
-
     const title = hasTitle
       ? searchParams.get("title")?.slice(0, 100)
       : "My default title";

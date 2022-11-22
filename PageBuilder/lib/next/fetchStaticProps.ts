@@ -44,7 +44,7 @@ const fetchStaticProps = async (
     const s = context.params?.slug && context.params?.slug[1];
     //@ts-ignore
     const q = items[t].query(context.locale);
-    query = `*[ _type =="${t}" &&  (slug.current == "${s}" || slug_${context.locale}.current == "${s}") ][0]{
+    query = `*[ _type == "${t}" &&  (slug.current == "${s}" || slug_${context.locale}.current == "${s}") ][0]{
       ${q}
      }`;
   }
@@ -52,8 +52,6 @@ const fetchStaticProps = async (
   console.time(context.params?.slug && context.params?.slug[1]);
   const res = await getSanityClient(!!context.preview).fetch(query);
   console.timeEnd(context.params?.slug && context.params?.slug[1]);
-
-  console.log(res);
 
   if (res) {
     return { props: { data: res, query }, revalidate: 1 };
