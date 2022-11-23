@@ -33,6 +33,8 @@ interface AppPropsWithStaticProps {
 }
 
 function App({ Component, pageProps }: AppPropsWithStaticProps) {
+  console.log(pageProps.data.body);
+
   return (
     <div className={ebGaramond.variable + " " + lexend.variable}>
       <ErrorBoundary>
