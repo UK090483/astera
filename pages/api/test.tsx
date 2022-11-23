@@ -4,7 +4,7 @@ import createClient from "@sanity/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
-  req: NextApiRequest,
+  _req: NextApiRequest,
   res: NextApiResponse
 ) {
   const sanityClient = createClient({ ...config });
