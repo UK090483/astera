@@ -9,7 +9,7 @@ const LinkMark: PortableTextMarkComponent<linkMarkResult> = (props) => {
   const className = useButtonStyle();
 
   return (
-    <Link className={className} {...value}>
+    <Link className={value?.asButton ? className : " text-primary "} {...value}>
       {children}
     </Link>
   );

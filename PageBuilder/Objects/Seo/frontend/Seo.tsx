@@ -48,7 +48,7 @@ const Seo: React.FC<SeoProps> = (props) => {
             url:
               hostName +
               ogImageEndpoint +
-              `?imageId=${shareGraphic?.asset._ref}`,
+              `?imageId=${shareGraphic?.asset?._ref}`,
             width: 1200,
             height: 630,
           },
