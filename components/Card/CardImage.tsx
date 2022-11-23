@@ -4,14 +4,15 @@ import * as React from "react";
 import { useCardContext } from "./CardContext";
 
 interface ICardImageProps {
-  variant?: "aspect" | "round" | "square" | "intrinsic";
+  variant?: "aspect" | "round" | "square" | "intrinsic" | "fillContainer";
   showTitle?: boolean;
   elevated?: boolean;
   half?: boolean;
+  className?: string;
 }
 
 const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
-  const { variant = "aspect", showTitle, elevated, half } = props;
+  const { variant = "aspect", showTitle, elevated, half, className } = props;
   const { mainImage, title } = useCardContext();
 
   if (!mainImage) return null;
@@ -25,9 +26,11 @@ const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
             "w-full aspect-w-3 aspect-h-2": variant === "aspect",
             "w-full aspect-w-1 aspect-h-1": variant === "square",
             "w-60 h-60 mx-auto rounded-full": variant === "round",
+            "w-full h-full ": variant === "fillContainer",
             "w-full": variant === "intrinsic",
             "shadow-xl": elevated,
-          }
+          },
+          className
         )}
       >
         <SanityImage

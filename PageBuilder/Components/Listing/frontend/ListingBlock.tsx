@@ -126,7 +126,12 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         {(props) => {
           return (
             <Card.Wrap {...props} {...cardWrap}>
-              <Card.Image {...cardImage} />
+              <Card.Image
+                showTitle
+                half
+                variant="fillContainer"
+                className=" min-h-[350px]  lg:min-h-[600px] "
+              />
               <Card.Info {...cardInfo}>
                 <Card.Description {...cardDescription} className="mb-4" />
                 <Card.Link className="text-primary" />
