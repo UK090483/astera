@@ -38,7 +38,7 @@ const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
         />
 
         {showTitle && (
-          <div className="absolute inset-0 flex justify-center items-center">
+          <div className="absolute text-center inset-0 flex justify-center items-center">
             <h1>{title}</h1>
           </div>
         )}

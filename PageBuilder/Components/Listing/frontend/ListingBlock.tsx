@@ -128,15 +128,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
             <Card.Wrap {...props} {...cardWrap}>
               <Card.Image {...cardImage} />
               <Card.Info {...cardInfo}>
-                {["news", "news_carousel"].includes(contentTypeKey) && (
-                  <>
-                    <div className=" flex gap-4 justify-between">
-                      <Card.Title className="line-clamp-2 h-[60px] text-secondary-dark" />
-                      <Card.Category />
-                    </div>
-                  </>
-                )}
-                <Card.Description {...cardDescription} />
+                <Card.Description {...cardDescription} className="mb-4" />
                 <Card.Link className="text-primary" />
               </Card.Info>
             </Card.Wrap>

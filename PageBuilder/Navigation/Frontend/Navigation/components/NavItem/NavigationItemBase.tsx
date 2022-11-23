@@ -29,7 +29,7 @@ export const NavigationItemBase: React.FC<NavItemBaseProps> = (props) => {
   return (
     <span
       className={clsx(
-        "block w-full px-5 py-4 leading-none whitespace-nowrap transition-colors text-base-mobile xl:text-base truncate ",
+        "block w-full px-5 py-4 tracking-wider leading-none whitespace-nowrap transition-colors text-base-mobile xl:text-base truncate ",
         "hover:underline decoration-2  underline-offset-4",
         {
           "text-black hover:bg-black  hover:text-white ":

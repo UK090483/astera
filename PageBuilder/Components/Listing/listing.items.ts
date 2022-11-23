@@ -1,45 +1,56 @@
+import { withLocalization } from "../../helper/withLocalization";
 import { listingBuilderItem } from "PageBuilder/lib/listingBuilder/types";
 import { ArrayOfType } from "PageBuilder/types";
 import { colorList } from "../componentStyle";
 
-const customItem: ArrayOfType = {
-  name: "bla",
-  type: "object",
-  fields: [
+import { locale } from "../../constants";
+
+const customItem: ArrayOfType = withLocalization(
+  [
     {
-      name: "title",
-      type: "string",
-      title: "Title",
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
-      name: "description",
-      type: "text",
-      title: "Description",
-      // description: "should be between 50 and 160 characters",
-      // validation: (Rule: any) => [
-      //   Rule.max(160).error("should not be more than 160 characters"),
-      //   Rule.min(50).warning("should be at least 50 characters"),
-      // ],
-    },
-    {
-      title: "Background Color",
-      name: "bgColor",
-      type: "string",
-      options: {
-        list: [...colorList()],
-      },
-    },
-    {
-      name: "mainImage",
-      type: "image",
-    },
-    {
-      name: "link",
-      type: "link",
+      //@ts-ignore
+      name: "bla",
+      type: "object",
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Title",
+          // validation: (Rule: any) => Rule.required(),
+          localize: true,
+        },
+        {
+          name: "description",
+          type: "text",
+          title: "Description",
+          localize: true,
+          // description: "should be between 50 and 160 characters",
+          // validation: (Rule: any) => [
+          //   Rule.max(160).error("should not be more than 160 characters"),
+          //   Rule.min(50).warning("should be at least 50 characters"),
+          // ],
+        },
+        {
+          title: "Background Color",
+          name: "bgColor",
+          type: "string",
+          options: {
+            list: [...colorList()],
+          },
+        },
+        {
+          name: "mainImage",
+          type: "image",
+        },
+        {
+          name: "link",
+          type: "link",
+        },
+      ],
     },
   ],
-};
+  locale
+)[0];
 
 export type listingItem = {
   name: string;

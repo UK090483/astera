@@ -1,4 +1,4 @@
-import Carousel, { chunkItems } from "@components/Carousel/CarouselCss";
+import Carousel from "@components/Carousel/CarouselCss";
 
 import clsx from "clsx";
 import * as React from "react";
@@ -41,17 +41,6 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
             </li>
           ))}
       </Carousel>
-      // <Carousel>
-      //   {chunkItems(items, 3).map((chunk, index) => (
-      //     <li key={index}>
-      //       <ul className="grid items-center grid-cols-3 gap-4">
-      //         {chunk.map((i, index) => (
-      //           <li key={index}>{children({ ...i, index })}</li>
-      //         ))}
-      //       </ul>
-      //     </li>
-      //   ))}
-      //</Carousel>
     );
   }
 
