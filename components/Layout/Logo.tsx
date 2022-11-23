@@ -5,7 +5,7 @@ import React from "react";
 export const Logo: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <svg
-      className={` w-48  py-8 h-full fill-current ${className}`}
+      className={`w-40  md:w-48  py-8 h-full fill-current ${className}`}
       viewBox="0 0 366 104"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
