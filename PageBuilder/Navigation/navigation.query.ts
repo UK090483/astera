@@ -2,7 +2,7 @@ import { localizedQueryFn } from "PageBuilder/helper/withLocalization";
 import { SLUG_PROJECTION, locale } from "../constants";
 
 const locales = locale;
-const items = [{ name: "mainNav" }];
+const items = [{ name: "mainNav" }, { name: "footerNav" }];
 
 export const navigationQuery: localizedQueryFn = (locale) => {
   const link = `

@@ -113,9 +113,9 @@ const Footer: React.FC = () => {
                   className=" typo-color"
                 />
               )}
-              className=" flex "
+              className="flex"
               //@ts-ignore
-              items={data?.menu.mainNav}
+              items={data?.menu.footerNav}
             />
           )}
           <p>© All Rights Reserved © {year} ASTERA Legal </p>

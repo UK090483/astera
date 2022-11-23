@@ -13,6 +13,7 @@ export type NavigationResult<
 > = {
   menu: {
     mainNav: MenuItem<L>[];
+    footerNav: MenuItem<L>[];
     bla: string;
     langSwitcher?: LangSwitcherResult;
   };

@@ -22,8 +22,19 @@ const navigationSettingsDocument: DocumentDefinition = {
       title: "Main Navigation",
       of: [
         { type: "navigationItem" },
-        { type: "navigationDropdown" },
-        { type: "navigationMegaMenu" },
+        // { type: "navigationDropdown" },
+        // { type: "navigationMegaMenu" },
+      ],
+      // validation: (Rule) => Rule.required(),
+    },
+    {
+      name: "footerNav",
+      type: "array",
+      title: "Footer Navigation",
+      of: [
+        { type: "navigationItem" },
+        // { type: "navigationDropdown" },
+        // { type: "navigationMegaMenu" },
       ],
       // validation: (Rule) => Rule.required(),
     },
