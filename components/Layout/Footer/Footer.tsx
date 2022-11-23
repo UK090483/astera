@@ -22,9 +22,14 @@ const Footer: React.FC = () => {
       <BigA />
       <Section as="div" width="l">
         <div className=" flex flex-wrap ">
-          <div className=" w-1/3  whitespace-pre-wrap">
+          <div className=" w-full  whitespace-pre-wrap">
             <p className=" text-primary  font-bold">Kontakt</p>
-            <div className="grid grid-cols-[40px_1fr]">
+            <a
+              href={`${data?.footer?.addressLink}`}
+              className="grid grid-cols-[40px_1fr]"
+              target="_blank"
+              rel="noreferrer"
+            >
               <svg
                 width="16"
                 height="19"
@@ -40,7 +45,7 @@ const Footer: React.FC = () => {
               </svg>
 
               <p>{data?.footer?.address}</p>
-            </div>
+            </a>
             <div className="grid grid-cols-[40px_1fr] pt-8">
               <svg
                 width="20"
@@ -59,7 +64,10 @@ const Footer: React.FC = () => {
               <p> {data?.footer?.phoneNumber}</p>
             </div>
 
-            <div className="grid grid-cols-[40px_1fr] pt-8">
+            <a
+              href={`mailto:${data?.footer?.emailAddress}`}
+              className="grid grid-cols-[40px_1fr] pt-8"
+            >
               <svg
                 width="22"
                 height="17"
@@ -76,10 +84,10 @@ const Footer: React.FC = () => {
                 />
               </svg>
 
-              <p> {data?.footer?.emailAddress}</p>
-            </div>
+              <p>{data?.footer?.emailAddress}</p>
+            </a>
           </div>
-          <div className=" w-1/3">
+          {/* <div className=" w-1/3">
             <p className=" text-primary">Menü</p>
             {data?.menu.mainNav && (
               <HeaderNavigation
@@ -95,7 +103,7 @@ const Footer: React.FC = () => {
                 items={data?.menu.mainNav}
               />
             )}
-          </div>
+          </div>*/}
         </div>
 
         <div className=" flex justify-center items-center ">
