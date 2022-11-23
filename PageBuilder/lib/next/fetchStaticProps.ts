@@ -55,6 +55,8 @@ const fetchStaticProps = async (
 
   console.log(JSON.stringify(res, null, 4));
 
+  console.log(query);
+
   if (res) {
     return { props: { data: res, query }, revalidate: 1 };
   }
