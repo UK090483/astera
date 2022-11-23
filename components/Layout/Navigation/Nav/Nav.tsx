@@ -13,59 +13,67 @@ const Nav: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const { data } = usePageBuilderContext();
   const navItems = data?.menu.mainNav;
+
   const langSwitchData = data?.menu.langSwitcher;
   // const scrolled = useScrollThreshold(100);
 
   return (
     <>
       <nav className={clsx(" text-white transition-colors w-full ")}>
-        <div className="container flex justify-between w-full mx-auto px-sides">
+        <div className="container flex justify-between items-center w-full mx-auto px-sides">
           <Link aria-label="Home" internal="/">
             <Logo />
           </Link>
 
-          <HeaderNavigation
-            //@ts-ignore
-            items={navItems || []}
-            className="items-center justify-center hidden  menu:flex "
-          />
-
-          <div className="flex gap-4 flex-shrink-0 items-center">
-            <LangSwitch
-              className="hidden menu:flex"
-              LangSwitcherResult={langSwitchData}
-            />
-            <a href="">
+          <div className=" h-full items-center justify-center ">
+            {navItems && (
+              <HeaderNavigation
+                //@ts-ignore
+                items={navItems || []}
+                className="items-center justify-center hidden  menu:flex "
+              />
+            )}
+          </div>
+          <div className="flex gap-4 flex-shrink-0 items-center  justify-end ">
+            <LangSwitch className="flex" LangSwitcherResult={langSwitchData} />
+            <a href={`mailto:${data?.footer?.emailAddress}`}>
               <Letter></Letter>
             </a>
           </div>
 
-          <button
-            data-testid="menu-overlay-toggle "
-            onClick={() => setOpen((s) => !s)}
-            aria-label={"Open the menu"}
-            aria-expanded={open}
-            className="menu:hidden mr-2"
-          >
-            <Svg className="w-[30px] h-[30px] fill-current" icon="hamburger" />
-          </button>
+          {navItems && (
+            <button
+              data-testid="menu-overlay-toggle"
+              onClick={() => setOpen((s) => !s)}
+              aria-label={"Open the menu"}
+              aria-expanded={open}
+              className="menu:hidden mr-2"
+            >
+              <Svg
+                className="w-[30px] h-[30px] fill-current"
+                icon="hamburger"
+              />
+            </button>
+          )}
         </div>
       </nav>
-      <NavigationMobile
-        //@ts-ignore
-        items={navItems}
-        open={open}
-        closeMenu={() => {
-          setOpen(false);
-        }}
-      >
-        <LangSwitch
-          LangSwitcherResult={langSwitchData}
-          onClick={() => {
+      {navItems && (
+        <NavigationMobile
+          //@ts-ignore
+          items={navItems}
+          open={open}
+          closeMenu={() => {
             setOpen(false);
           }}
-        />
-      </NavigationMobile>
+        >
+          <LangSwitch
+            LangSwitcherResult={langSwitchData}
+            onClick={() => {
+              setOpen(false);
+            }}
+          />
+        </NavigationMobile>
+      )}
     </>
   );
 };
