@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "pageBuilder"
+    "name": "ASTERA"
   },
   "plugins": [
     "@sanity/base",
