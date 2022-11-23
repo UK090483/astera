@@ -53,6 +53,8 @@ const fetchStaticProps = async (
   const res = await getSanityClient(!!context.preview).fetch(query);
   console.timeEnd(context.params?.slug && context.params?.slug[1]);
 
+  console.log(JSON.stringify(res, null, 4));
+
   if (res) {
     return { props: { data: res, query }, revalidate: 1 };
   }
