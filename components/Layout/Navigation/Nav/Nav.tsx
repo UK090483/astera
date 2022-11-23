@@ -83,13 +83,13 @@ const Letter = () => {
       <path
         d="M28.297 1H1V19.998H28.297V1Z"
         stroke="white"
-        stroke-width="2"
+        strokeWidth="2"
         strokeMiterlimit="10"
       />
       <path
         d="M1 1L14.676 13.676L28.325 1.027"
         stroke="white"
-        stroke-width="2"
+        strokeWidth="2"
         strokeMiterlimit="10"
         strokeLinecap="round"
       />
