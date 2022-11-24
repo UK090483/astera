@@ -14,7 +14,7 @@ export function PersonCard(props: IPersonCardProps) {
     <Card.Wrap {...card} noLink className="mb-12">
       <Card.Image variant="round" elevated />
       <Card.Info center>
-        <Card.Title />
+        <Card.Title className=" text-white" />
         <Card.SubTitle />
         <Card.Link text={"Zum CV"} asButton={true} className="mt-6" />
       </Card.Info>

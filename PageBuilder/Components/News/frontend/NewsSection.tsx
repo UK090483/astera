@@ -1,4 +1,5 @@
 import { AIcon } from "@components/AIcon";
+import { BackButton } from "@components/BackButton";
 
 import Section from "@components/Section/Section";
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
@@ -10,8 +11,6 @@ export interface IPersonSectionProps {}
 export function NewsSection(props: IPersonSectionProps) {
   const { data } = usePageBuilderContext();
 
-  console.log(data);
-
   if (data?._type !== "news") return null;
 
   const date = data?.startDate;
@@ -20,6 +19,7 @@ export function NewsSection(props: IPersonSectionProps) {
 
   return (
     <Section width="l" className="">
+      <BackButton />
       {/* <div className=" relative w-full ">
         <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12">
           <SanityImage src={image} />

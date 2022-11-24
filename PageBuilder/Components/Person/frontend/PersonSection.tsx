@@ -1,3 +1,4 @@
+import { BackButton } from "@components/BackButton";
 import Card from "@components/Card/Card";
 import SanityImage from "@components/SanityImage";
 import Section from "@components/Section/Section";
@@ -18,20 +19,23 @@ export function PersonSection(props: IPersonSectionProps) {
   const accomplishments = data?.accomplishments;
 
   return (
-    <Section width="l" className=" md:flex md:flex-row-reverse gap-24">
-      <div className=" relative w-full ">
-        <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12">
-          <SanityImage src={image} />
+    <Section width="l">
+      <BackButton />
+      <div className="md:flex md:flex-row-reverse gap-24">
+        <div className=" relative w-full ">
+          <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12">
+            <SanityImage src={image} />
+          </div>
         </div>
-      </div>
-      <div>
-        <h1>{title}</h1>
-        <p>{description}</p>
+        <div>
+          <h1>{title}</h1>
+          <p>{description}</p>
 
-        {accomplishments &&
-          accomplishments.map((i, index) => (
-            <Accomplishment key={index} {...i} />
-          ))}
+          {accomplishments &&
+            accomplishments.map((i, index) => (
+              <Accomplishment key={index} {...i} />
+            ))}
+        </div>
       </div>
     </Section>
   );

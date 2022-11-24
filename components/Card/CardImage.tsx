@@ -1,4 +1,5 @@
 import SanityImage from "@components/SanityImage";
+import Typo from "@components/Typography/Typography";
 import clsx from "clsx";
 import * as React from "react";
 import { useCardContext } from "./CardContext";
@@ -42,7 +43,9 @@ const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
 
         {showTitle && (
           <div className="absolute text-center inset-0 flex justify-center items-center">
-            <h1>{title}</h1>
+            <Typo as="h2" className="text-6xl lg:text-7xl">
+              {title}
+            </Typo>
           </div>
         )}
       </div>
