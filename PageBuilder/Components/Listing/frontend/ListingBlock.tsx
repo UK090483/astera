@@ -55,7 +55,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
 
   const contentTypeKey = contentType + (variant ? "_" + variant : "");
 
-  const { listWrap, cardWrap, cardImage, section, cardInfo, cardDescription } =
+  const { listWrap, cardWrap, section, cardInfo, cardDescription } =
     presetList(contentTypeKey);
 
   if (contentType === "person") {
@@ -95,6 +95,8 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
           </div>
         )}
         <List.wrap
+          hasLoadMore={variant !== "carousel"}
+          contentType="news"
           variant={variant === "carousel" ? "carousel" : "grid"}
           items={items}
           useKey="key"

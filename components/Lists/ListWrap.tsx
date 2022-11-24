@@ -1,6 +1,8 @@
+import useButtonStyle from "@components/Button/useButtonStyle";
 import Carousel from "@components/Carousel/CarouselCss";
 
 import clsx from "clsx";
+import useLoadMore from "PageBuilder/Components/Listing/frontend/useLoadMore";
 import * as React from "react";
 
 interface IListWrapProps {
@@ -18,6 +20,8 @@ interface IListWrapAutoProps<T extends unknown = {}> {
   useKey: keyof T;
   noGap?: boolean;
   children: (props: T & { index: number }) => React.ReactNode;
+  contentType?: string;
+  hasLoadMore?: boolean;
 }
 
 function ListWrap<T>(props: IListWrapAutoProps<T>) {
@@ -29,13 +33,26 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
     useKey,
     variant = "grid",
     noGap,
+    contentType,
+    hasLoadMore,
   } = props;
+
+  const [_items, setItems] = React.useState(items);
+  const { loadMore } = useLoadMore<T>({
+    items: _items,
+    setItems,
+    contentType,
+    orderKey: "startDate",
+    orderDir: "asc",
+  });
+
+  const buttonStyle = useButtonStyle();
 
   if (variant === "carousel") {
     return (
       <Carousel>
-        {items &&
-          items.map((i, index) => (
+        {_items &&
+          _items.map((i, index) => (
             <li key={i[useKey] as string | number}>
               {children({ ...i, index })}
             </li>
@@ -45,30 +62,39 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
   }
 
   return (
-    <ul
-      className={clsx("grid grid-flow-row  list-none", {
-        "grid-cols-1": columnsMobile === 1,
-        "grid-cols-2": columnsMobile === 2,
-        "grid-cols-3": columnsMobile === 3,
-        "grid-cols-4": columnsMobile === 4,
-        "md:grid-cols-1": columns === 1,
-        "md:grid-cols-2": columns === 2,
-        "sm:grid-cols-2 lg:grid-cols-3": columns === 3,
-        "md:grid-cols-4": columns === 4,
-        "md:grid-cols-5": columns === 5,
-        "md:grid-cols-6": columns === 6,
-        "md:grid-cols-7": columns === 7,
-        "md:grid-cols-8": columns === 8,
-        "gap-8": !noGap,
-      })}
-    >
-      {items &&
-        items.map((i, index) => (
-          <li key={i[useKey] as string | number}>
-            {children({ ...i, index })}
-          </li>
-        ))}
-    </ul>
+    <>
+      <ul
+        className={clsx("grid grid-flow-row  list-none", {
+          "grid-cols-1": columnsMobile === 1,
+          "grid-cols-2": columnsMobile === 2,
+          "grid-cols-3": columnsMobile === 3,
+          "grid-cols-4": columnsMobile === 4,
+          "md:grid-cols-1": columns === 1,
+          "md:grid-cols-2": columns === 2,
+          "sm:grid-cols-2 lg:grid-cols-3": columns === 3,
+          "md:grid-cols-4": columns === 4,
+          "md:grid-cols-5": columns === 5,
+          "md:grid-cols-6": columns === 6,
+          "md:grid-cols-7": columns === 7,
+          "md:grid-cols-8": columns === 8,
+          "gap-8": !noGap,
+        })}
+      >
+        {_items &&
+          _items.map((i, index) => (
+            <li key={i[useKey] as string | number}>
+              {children({ ...i, index })}
+            </li>
+          ))}
+      </ul>
+      {hasLoadMore && (
+        <div className="flex justify-center items-center mt-12">
+          <button className={buttonStyle} onClick={() => loadMore()}>
+            Load More
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 

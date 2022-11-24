@@ -31,23 +31,21 @@ type queryProps = {
   locale?: string;
 };
 
+export const listingItemProjection: localizedQueryFn = (locale) => ` 
+bgColor,
+'key': coalesce(_id,_key),
+'slug': ${SLUG_PROJECTION(locale)},
+'link': link{${linkProjection(locale)}},
+${localizeValue("title", locale)},
+${localizeValue("description", locale)},
+'mainImage':mainImage{${IMAG_PROJECTION}},
+startDate,
+category,
+${localizeValue("subTitle", locale)},
+`;
+
 const listingQuery: localizedQueryFn = (locale) =>
-  buildQuery(
-    items,
-    `
-    bgColor,
-    'key': coalesce(_id,_key),
-    'slug': ${SLUG_PROJECTION(locale)},
-    'link': link{${linkProjection(locale)}},
-    ${localizeValue("title", locale)},
-    ${localizeValue("description", locale)},
-    'mainImage':mainImage{${IMAG_PROJECTION}},
-    startDate,
-    category,
-    ${localizeValue("subTitle", locale)},
-    
-  `
-  );
+  buildQuery(items, listingItemProjection(locale));
 
 export const listProjection: localizedQueryFn = (locale) => `
 _type == 'listing'=>{
