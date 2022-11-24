@@ -2,15 +2,9 @@ import { useRouter } from "next/router";
 import * as React from "react";
 import ArrowIcon from "./ArrowIcon";
 
-export interface IBackButtonProps {}
-
-export function BackButton(props: IBackButtonProps) {
-  const { locale, back, asPath } = useRouter();
-
-  console.log(asPath);
-
+export function BackButton() {
+  const { locale, back } = useRouter();
   const label = locale === "en" ? "ZURÜCK" : "BACK";
-
   return (
     <button
       onClick={back}
