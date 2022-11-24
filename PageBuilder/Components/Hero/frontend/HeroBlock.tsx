@@ -24,7 +24,9 @@ const Hero: React.FC<heroResult> = (props) => {
         { "h-[500px] md:h-[600px]": hasContent }
       )}
     >
-      {_image && <SanityImage fill className=" object-cover " src={_image} />}
+      {_image && (
+        <SanityImage priority fill className=" object-cover " src={_image} />
+      )}
       {hasContent && (
         <div className="typo typo-bright max-w-3xl px-sides  flex flex-col items-center text-center justify-center  mx-auto  absolute inset-0 mt-36">
           {content && <RichText content={content} />}
