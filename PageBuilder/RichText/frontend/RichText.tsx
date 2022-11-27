@@ -18,6 +18,9 @@ type RichTextPros = {
 const components: Partial<PortableTextReactComponents> = {
   marks: { linkMark: LinkMark },
   block: {
+    // h1: ({ children }) => {
+    //   return <h1 className=" text-4xl "> {children}</h1>;
+    // },
     normal: ({ children }) => {
       const empty = Array.isArray(children) ? children.every((i) => !i) : false;
 
@@ -30,7 +33,6 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     arrows: ({ children }) => <ul className="list-none">{children}</ul>,
-
     connectedDots: ({ children }) => (
       <ul className="list-none connectedDots">{children}</ul>
     ),

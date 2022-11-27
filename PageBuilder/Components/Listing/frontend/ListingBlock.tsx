@@ -81,14 +81,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   }
   if (contentType === "news") {
     return (
-      <Section
-        width="l"
-        noProse
-        noPadding
-        {...rest}
-        bg={backgroundColor}
-        {...section}
-      >
+      <Section width="l" noProse {...rest} bg={backgroundColor} {...section}>
         {title && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
             <RichText content={title} />
