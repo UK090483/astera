@@ -60,14 +60,14 @@ export const Section: React.FC<SectionProps> = (props) => {
           "bg-grey-light": bg === "grey",
           "bg-grey-dark": bg === "dark-grey",
           "pt-5 md:pt-10": topSpace === "s" || isDefault(topSpace),
-          "pt-9 md:pt-20": topSpace === "m",
-          "pt-12 md:pt-32": topSpace === "l",
+          "pt-8 md:pt-20": topSpace === "m",
+          "pt-12 md:pt-28": topSpace === "l",
           "pt-16 md:pt-44": topSpace === "xl",
           "pt-24 md:pt-60": topSpace === "xxl",
           "pb-5 md:pb-10": bottomSpace === "s" || isDefault(bottomSpace),
           "pb-9 md:pb-20": bottomSpace === "m",
-          "pb-16 md:pb-32": bottomSpace === "l",
-          "pb-12 md:pb-44": bottomSpace === "xl",
+          "pb-12 md:pb-32": bottomSpace === "l",
+          "pb-16 md:pb-44": bottomSpace === "xl",
           "pb-24 md:pb-60": bottomSpace === "xxl",
         })}
       >
