@@ -22,13 +22,12 @@ const Footer: React.FC = () => {
       <BigA />
       <Section as="div" width="l">
         <div className=" flex flex-wrap ">
-          <div className=" w-full  whitespace-pre-wrap">
+          <div className=" w-full  whitespace-pre-wrap mb-16">
             <p className=" text-primary  font-bold">Kontakt</p>
-            <a
-              href={`${data?.footer?.addressLink}`}
-              className="grid grid-cols-[40px_1fr]"
-              target="_blank"
-              rel="noreferrer"
+
+            <ContactItem
+              link={data?.footer?.addressLink}
+              text={data?.footer?.address}
             >
               <svg
                 width="16"
@@ -43,10 +42,11 @@ const Footer: React.FC = () => {
                   fillOpacity="0.5"
                 />
               </svg>
-
-              <p>{data?.footer?.address}</p>
-            </a>
-            <div className="grid grid-cols-[40px_1fr] pt-8">
+            </ContactItem>
+            <ContactItem
+              link={"tel:" + data?.footer?.phoneNumber}
+              text={data?.footer?.phoneNumber}
+            >
               <svg
                 width="20"
                 height="20"
@@ -60,13 +60,11 @@ const Footer: React.FC = () => {
                   fillOpacity="0.5"
                 />
               </svg>
+            </ContactItem>
 
-              <p> {data?.footer?.phoneNumber}</p>
-            </div>
-
-            <a
-              href={`mailto:${data?.footer?.emailAddress}`}
-              className="grid grid-cols-[40px_1fr] pt-8"
+            <ContactItem
+              link={`mailto:${data?.footer?.emailAddress}`}
+              text={data?.footer?.emailAddress}
             >
               <svg
                 width="22"
@@ -83,9 +81,7 @@ const Footer: React.FC = () => {
                   fillOpacity="0.5"
                 />
               </svg>
-
-              <p>{data?.footer?.emailAddress}</p>
-            </a>
+            </ContactItem>
           </div>
           {/* <div className=" w-1/3">
             <p className=" text-primary">Menü</p>
@@ -134,6 +130,25 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
+const ContactItem: React.FC<{ link?: string; text?: string }> = (props) => {
+  return (
+    <>
+      <a
+        href={`${props.link}`}
+        className="grid grid-cols-[40px_1fr] mb-12"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <div className="h-7 flex justify-start items-center ">
+          {props.children}
+        </div>
+
+        <p>{props.text}</p>
+      </a>
+    </>
+  );
+};
 
 const BigA = () => (
   <div className="absolute  inset-0 pointer-events-none ">
