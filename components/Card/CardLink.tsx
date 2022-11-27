@@ -27,14 +27,15 @@ const CardLink: React.FunctionComponent<ICardLinkProps> = ({
           {
             [btnClassName]: asButton,
             "w-fit mx-auto ": asButton,
-            "whitespace-nowrap font-bold  w-fit flex ": !asButton,
+            "whitespace-nowrap font-bold  w-fit flex justify-center items-center":
+              !asButton,
           },
           className
         )}
         internal={slug || link?.internal}
       >
         {!asButton && <Arrow />}
-        {text ? text : "Mehr Info"}
+        {text ? text : "MEHR INFO"}
       </Link>
     );
 
