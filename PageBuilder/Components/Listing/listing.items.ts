@@ -100,7 +100,7 @@ export const items: listingBuilderItem[] = [
         value: "all",
         queryFilter: {
           filter: `defined(_id)`,
-          order: "startDate",
+          order: "startDate desc",
           slice: { start: 0, end: 6 },
         },
       },

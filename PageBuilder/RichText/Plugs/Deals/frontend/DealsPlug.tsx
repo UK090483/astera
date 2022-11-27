@@ -67,18 +67,26 @@ const Accordion: React.FC<{
 
   return (
     <div
-      onClick={toggle}
       className={clsx("w-full block text-secondary ", { "mt-12": !isFirst })}
     >
-      <div className="flex mb-6">
-        <h2 className="mb-0 text-5xl">{title}</h2>
-        <button className="w-full h-11 ml-4 border-b-2 border-secondary flex justify-end">
+      <h2 onClick={toggle} className=" text-5xl flex mb-6 ">
+        {title}
+        <button
+          id={title + "_label"}
+          type="button"
+          aria-expanded={isOpen}
+          aria-controls={title}
+          className="w-full h-11 ml-4 border-b-2 border-secondary flex justify-end"
+        >
           <OpenIndicator
             className={clsx({ "rotate-180 transition-transform": isOpen })}
           />
         </button>
-      </div>
+      </h2>
+
       <div
+        aria-labelledby={title + "_label"}
+        id={title}
         style={{ maxHeight }}
         className="transition-all max-h-0 overflow-hidden"
       >

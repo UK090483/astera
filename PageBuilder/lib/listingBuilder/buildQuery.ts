@@ -1,4 +1,3 @@
-import { items } from "PageBuilder/Components/Listing/listing.items";
 import { listingBuilderItem, listingBuilderItemFilter } from "./types";
 
 const getVariant = (items: listingBuilderItem[]) =>

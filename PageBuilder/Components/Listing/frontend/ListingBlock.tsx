@@ -55,7 +55,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
 
   const contentTypeKey = contentType + (variant ? "_" + variant : "");
 
-  const { listWrap, cardWrap, cardImage, section, cardInfo, cardDescription } =
+  const { listWrap, cardWrap, section, cardInfo, cardDescription } =
     presetList(contentTypeKey);
 
   if (contentType === "person") {
@@ -81,20 +81,15 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   }
   if (contentType === "news") {
     return (
-      <Section
-        width="l"
-        noProse
-        noPadding
-        {...rest}
-        bg={backgroundColor}
-        {...section}
-      >
+      <Section width="l" noProse {...rest} bg={backgroundColor} {...section}>
         {title && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
             <RichText content={title} />
           </div>
         )}
         <List.wrap
+          hasLoadMore={variant !== "carousel"}
+          contentType="news"
           variant={variant === "carousel" ? "carousel" : "grid"}
           items={items}
           useKey="key"

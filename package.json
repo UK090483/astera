@@ -1,6 +1,10 @@
 {
   "name": "astera",
   "private": true,
+  "browserslist": [
+    "defaults",
+    "safari 12"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

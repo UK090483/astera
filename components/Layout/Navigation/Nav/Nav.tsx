@@ -8,6 +8,7 @@ import NavigationMobile from "PageBuilder/Navigation/Frontend/Navigation/Navigat
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
 import React from "react";
 import clsx from "clsx";
+import { NavigationItemBase } from "PageBuilder/Navigation/Frontend/Navigation";
 
 const Nav: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -21,7 +22,7 @@ const Nav: React.FC = () => {
     <>
       <nav className={clsx(" text-white transition-colors w-full ")}>
         <div className="container flex justify-between items-center w-full mx-auto px-sides">
-          <Link aria-label="Home" internal="/">
+          <Link className="pt-10" aria-label="Home" internal="/">
             <Logo />
           </Link>
 
@@ -30,11 +31,14 @@ const Nav: React.FC = () => {
               <HeaderNavigation
                 //@ts-ignore
                 items={navItems || []}
-                className="items-center justify-center hidden  menu:flex "
+                className="items-center justify-center hidden  menu:flex  "
+                NavigationItemBase={(props) => (
+                  <NavigationItemBase {...props} place="customHeader" />
+                )}
               />
             )}
           </div>
-          <div className="flex gap-4 flex-shrink-0 items-center  justify-end ">
+          <div className="flex gap-4 flex-shrink-0 items-center  justify-end  pt-10">
             <LangSwitch className="flex" LangSwitcherResult={langSwitchData} />
             <a href={`mailto:${data?.footer?.emailAddress}`}>
               <Letter></Letter>
@@ -47,10 +51,10 @@ const Nav: React.FC = () => {
               onClick={() => setOpen((s) => !s)}
               aria-label={"Open the menu"}
               aria-expanded={open}
-              className="menu:hidden mr-2"
+              className="menu:hidden mr-2 pt-10"
             >
               <Svg
-                className="w-[30px] h-[30px] fill-current"
+                className="w-[30px] h-[30px] fill-current "
                 icon="hamburger"
               />
             </button>
@@ -83,24 +87,13 @@ export default Nav;
 const Letter = () => {
   return (
     <svg
-      width="34.5"
       viewBox="0 0 30 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className=" stroke-white stroke-2  h-5"
     >
-      <path
-        d="M28.297 1H1V19.998H28.297V1Z"
-        stroke="white"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-      />
-      <path
-        d="M1 1L14.676 13.676L28.325 1.027"
-        stroke="white"
-        strokeWidth="2"
-        strokeMiterlimit="10"
-        strokeLinecap="round"
-      />
+      <path d="M28.297 1H1V19.998H28.297V1Z" />
+      <path d="M1 1L14.676 13.676L28.325 1.027" />
     </svg>
   );
 };
