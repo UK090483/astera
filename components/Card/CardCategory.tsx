@@ -12,13 +12,15 @@ export const CardCategory: React.FC<ICardCategoryProps> = ({ white }) => {
   const { category } = useCardContext();
   if (!category) return null;
 
+  console.log(category);
+
   return (
     <AIcon
       className={clsx("w-12 shrink-0 ", {
         "fill-primary": category === "financeDeal",
         "fill-secondary": category === "privateEquityDeal",
         "fill-bordeaux ": category === "event",
-        "fill-primary-dark": category === "person",
+        "fill-secondary-dark": category === "person",
         "fill-white": white,
       })}
     />
