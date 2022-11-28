@@ -12,8 +12,6 @@ export const CardCategory: React.FC<ICardCategoryProps> = ({ white }) => {
   const { category } = useCardContext();
   if (!category) return null;
 
-  console.log(category);
-
   return (
     <AIcon
       className={clsx("w-12 shrink-0 ", {
