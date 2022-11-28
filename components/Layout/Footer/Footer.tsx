@@ -98,7 +98,7 @@ const Footer: React.FC = () => {
               items={data?.menu.footerNav}
             />
           )}
-          <p className=" text-sm text-white opacity-25 py-2 ">
+          <p className=" text-sm text-white opacity-40 py-2 ">
             © All Rights Reserved © {year} ASTERA Legal
           </p>
         </div>
