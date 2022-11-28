@@ -29,16 +29,17 @@ export const NavigationItemBase: React.FC<NavItemBaseProps> = (props) => {
   return (
     <span
       className={clsx(
-        "block w-full px-5 py-4 tracking-wider leading-none whitespace-nowrap transition-colors text-base-mobile xl:text-base truncate ",
+        "block w-full px-5 py-4 tracking-wider leading-none whitespace-nowrap transition-colors  truncate ",
         "hover:underline decoration-2  underline-offset-4   items-center",
         {
           "text-black hover:bg-black  hover:text-white ":
             place === "dropdown/link",
           "font-bold": bold,
-          " bg-white text-primary ": active,
           "text-center": align === "center",
           "text-left pl-0": align === "left",
-          "h-[113px] pt-14 flex justify-end ": place === "customHeader",
+          "h-[113px] pt-14 flex justify-end text-base-mobile xl:text-base":
+            place === "customHeader",
+          " bg-white text-primary ": active && place === "customHeader",
         },
         className
       )}
