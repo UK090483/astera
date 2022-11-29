@@ -112,7 +112,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
       {...section}
     >
       {title && (
-        <div className="typo typo-spacings  mt-12 mb-24 text-center">
+        <div className="typo-spacings mt-12 mb-24 text-center">
           <RichText content={title} />
         </div>
       )}
@@ -125,10 +125,13 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
                 showTitle
                 half
                 variant="fillContainer"
-                className=" min-h-[350px]  lg:min-h-[600px] "
+                className=" min-h-[350px] lg:min-h-[600px] garamondFont text-white"
               />
               <Card.Info {...cardInfo}>
-                <Card.Description {...cardDescription} className="mb-4" />
+                <Card.Description
+                  {...cardDescription}
+                  className="mb-4 textBig"
+                />
                 <Card.Link className="text-primary" />
               </Card.Info>
             </Card.Wrap>

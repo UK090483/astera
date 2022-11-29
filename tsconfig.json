@@ -53,10 +53,10 @@
     "**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js",
+    "**/*.js", "PageBuilder/RichText/defaultRichText.schema.jsx",
   ],
   "exclude": [
-    "**/*.schema.tsx",
+    
     "node_modules",
     "studio/**",
     "cypress",

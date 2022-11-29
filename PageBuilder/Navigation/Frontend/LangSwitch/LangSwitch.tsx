@@ -33,7 +33,7 @@ export const LangSwitch: React.FC<LangSwitchProps> = (props) => {
             key={item.key}
             internal={item.link || "/"}
             locale={item.key}
-            className={`px-1 w-auto h-5 uppercase flex items-center justify-center  font-bold  border-current  leading-none hover:underline border-2 ${
+            className={`text-white px-1 w-auto h-5 uppercase flex items-center justify-center  font-bold  border-current  leading-none hover:underline border-2 ${
               item.key === locale ? "hidden" : ""
             } `}
           >

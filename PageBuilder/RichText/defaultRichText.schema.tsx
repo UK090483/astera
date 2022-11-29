@@ -1,4 +1,5 @@
 import { ArrayDefinition } from "../types";
+import React from "react";
 
 const defaultRichText: ArrayDefinition = {
   name: "defaultRichText",
@@ -12,8 +13,42 @@ const defaultRichText: ArrayDefinition = {
         { title: "Normal", value: "normal" },
         { title: "H1", value: "h1" },
         { title: "H2", value: "h2" },
-        { title: "H3", value: "h3" },
-        { title: "H4", value: "h4" },
+        {
+          title: "Header Serif",
+          value: "headerSerif",
+          //@ts-ignore
+          blockEditor: {
+            render: (props: any) => (
+              <span
+                style={{
+                  fontFamily: "Garamond",
+                  fontSize: "2em",
+                  fontWeight: 800,
+                }}
+              >
+                {props.children}
+              </span>
+            ),
+          },
+        },
+
+        { title: "Subheader official", value: "SubheaderSanSerif" },
+        {
+          title: "text big",
+          value: "textBig",
+          //@ts-ignore
+          blockEditor: {
+            render: (props: any) => (
+              <span
+                style={{
+                  fontSize: "1.2em",
+                }}
+              >
+                {props.children}
+              </span>
+            ),
+          },
+        },
       ],
       lists: [
         { title: "Bullet", value: "bullet" },

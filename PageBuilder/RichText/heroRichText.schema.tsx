@@ -1,4 +1,5 @@
 import { ArrayDefinition } from "../types";
+import React from "react";
 const headerRichText: ArrayDefinition = {
   name: "headerRichText",
   type: "array",
@@ -11,8 +12,24 @@ const headerRichText: ArrayDefinition = {
         { title: "Normal", value: "normal" },
         { title: "H1", value: "h1" },
         { title: "H2", value: "h2" },
-        { title: "H3", value: "h3" },
-        { title: "H4", value: "h4" },
+        {
+          title: "Header Serif",
+          value: "headerSerif",
+          //@ts-ignore
+          blockEditor: {
+            render: (props: any) => (
+              <span
+                style={{
+                  fontFamily: "Garamond",
+                  fontSize: "2em",
+                  fontWeight: 800,
+                }}
+              >
+                {props.children}
+              </span>
+            ),
+          },
+        },
       ],
 
       marks: {

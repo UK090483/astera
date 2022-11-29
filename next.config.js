@@ -8,9 +8,9 @@ const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  // experimental: {
-  //   appDir: true,
-  // },
+  experimental: {
+    // appDir: true,
+  },
   i18n: {
     locales: Object.keys(locale),
     defaultLocale: Object.entries(locale).reduce(
@@ -29,16 +29,6 @@ const config = {
     domains: ["picsum.photos", "cdn.sanity.io"],
   },
 
-  async redirects() {
-    return [
-      {
-        source: "/rewrite",
-        destination:
-          "https://nextjs.org/docs/api-reference/next.config.js/cdn-support-with-asset-prefix",
-        permanent: true,
-      },
-    ];
-  },
   webpack(config, options) {
     const { dev, isServer } = options;
 
