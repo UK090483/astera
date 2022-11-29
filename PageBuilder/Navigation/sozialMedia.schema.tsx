@@ -1,5 +1,5 @@
 import { BsFacebook, BsTwitter, BsInstagram, BsYoutube } from "react-icons/Bs";
-import { DocumentDefinition, ObjectDefinition } from "../types";
+import { ObjectDefinition } from "../types";
 
 const socialMediaItems = [
   { title: "FaceBook", value: "facebook", icon: BsFacebook },
