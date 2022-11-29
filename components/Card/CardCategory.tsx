@@ -18,7 +18,7 @@ export const CardCategory: React.FC<ICardCategoryProps> = ({ white }) => {
         "fill-primary": category === "financeDeal",
         "fill-secondary": category === "privateEquityDeal",
         "fill-bordeaux ": category === "event",
-        "fill-primary-dark": category === "person",
+        "fill-secondary-dark": category === "person",
         "fill-white": white,
       })}
     />

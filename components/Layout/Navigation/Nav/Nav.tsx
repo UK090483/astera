@@ -22,7 +22,7 @@ const Nav: React.FC = () => {
     <>
       <nav className={clsx(" text-white transition-colors w-full ")}>
         <div className="container flex justify-between items-center w-full mx-auto px-sides">
-          <Link className="pt-10" aria-label="Home" internal="/">
+          <Link className="pt-10 text-white" aria-label="Home" internal="/">
             <Logo />
           </Link>
 
@@ -31,9 +31,13 @@ const Nav: React.FC = () => {
               <HeaderNavigation
                 //@ts-ignore
                 items={navItems || []}
-                className="items-center justify-center hidden  menu:flex  "
+                className="items-center justify-center hidden   menu:flex  "
                 NavigationItemBase={(props) => (
-                  <NavigationItemBase {...props} place="customHeader" />
+                  <NavigationItemBase
+                    {...props}
+                    className="text-white"
+                    place="customHeader"
+                  />
                 )}
               />
             )}

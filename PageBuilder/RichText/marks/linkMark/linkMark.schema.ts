@@ -8,7 +8,7 @@ const linkMarkSchema: ObjectDefinition = {
       name: "internal",
       title: "Internal Link",
       type: "reference",
-      to: [{ type: "page" }],
+      to: [{ type: "page" }, { type: "person" }],
       options: {
         disableNew: true,
       },

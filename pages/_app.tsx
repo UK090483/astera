@@ -34,7 +34,16 @@ interface AppPropsWithStaticProps {
 
 function App({ Component, pageProps }: AppPropsWithStaticProps) {
   return (
-    <div className={ebGaramond.variable + " " + lexend.variable}>
+    <>
+      <style jsx global>{`
+        html {
+          font-family: ${lexend.style.fontFamily};
+        }
+        .garamondFont {
+          font-family: ${ebGaramond.style.fontFamily};
+        }
+      `}</style>
+
       <ErrorBoundary>
         <PageBuilderContextProvider
           query={pageProps.query}
@@ -48,7 +57,7 @@ function App({ Component, pageProps }: AppPropsWithStaticProps) {
           {/* <Cookie />  */}
         </PageBuilderContextProvider>
       </ErrorBoundary>
-    </div>
+    </>
   );
 }
 
