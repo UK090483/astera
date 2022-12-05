@@ -52,6 +52,25 @@ const customItem: ArrayOfType = withLocalization(
   locale
 )[0];
 
+const testimonialItem: ArrayOfType = withLocalization(
+  [
+    {
+      //@ts-ignore
+      name: "testimonial",
+      type: "object",
+      fields: [
+        {
+          name: "content",
+          type: "headerRichText",
+          title: "Description",
+          localize: true,
+        },
+      ],
+    },
+  ],
+  locale
+)[0];
+
 export type listingItem = {
   name: string;
   title: string;
@@ -60,6 +79,7 @@ export type listingItem = {
   filter?: { value: string; title: string; queryFilter: string }[];
   projection?: string;
   items?: ArrayOfType[];
+  content?: any;
 };
 
 export const items: listingBuilderItem[] = [
@@ -116,5 +136,10 @@ export const items: listingBuilderItem[] = [
     name: "custom",
     title: "Custom",
     items: [customItem],
+  },
+  {
+    name: "testimonial",
+    title: "Testimonial",
+    items: [testimonialItem],
   },
 ];

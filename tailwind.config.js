@@ -38,6 +38,7 @@ module.exports = {
           extraDark: "#002827",
           dark: "#003333",
           DEFAULT: "#007267",
+          medium: "#B4D6D1",
           light: "#E8F3F1",
         },
         bgWhite: "#fafafa",

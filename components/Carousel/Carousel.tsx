@@ -15,7 +15,6 @@ function Carousel(props: ICarouselProps) {
 
   return (
     <CarouselContextProvider items={children} {...rest}>
-      {/* <Navigation> */}
       <div className="w-full flex overflow-hidden pb-12">
         <CarouselItemWrap>
           {({ activeItemIndex, lastActiveItemIndex }) => {
@@ -26,7 +25,7 @@ function Carousel(props: ICarouselProps) {
                   ["aria-hidden"]: activeItemIndex === index ? "false" : "true",
                   className: clsx(
                     i.props?.className,
-                    "w-[120vw] pl-12 col-start-1 col-span-1 row-start-1 row-span-1 transition-all ",
+                    " col-start-1 col-span-1 row-start-1 row-span-1 transition-all ",
                     {
                       "opacity-100 translate-x-0 duration-500":
                         activeItemIndex === index,
@@ -43,7 +42,7 @@ function Carousel(props: ICarouselProps) {
           }}
         </CarouselItemWrap>
       </div>
-      {/* </Navigation> */}
+
       <Dots />
     </CarouselContextProvider>
   );

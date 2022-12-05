@@ -23,6 +23,7 @@ _type == 'block'=> {
   ...,
    ${markDefs(locale)}
 },
+...,
 ${embedQuery}
 ${videoPlugQuery}
 ${imagePlugProjection}

@@ -27,6 +27,7 @@ export type colorResult =
   | "primary"
   | "secondary"
   | "secondary-light"
+  | "secondary-medium"
   | "grey"
   | "dark-grey";
 
@@ -72,6 +73,7 @@ const backgroundColor = {
     list: [
       { title: "Coper", value: "primary" },
       { title: "Petrol", value: "secondary" },
+      { title: "Petrol-medium", value: "secondary-medium" },
       { title: "Petrol-light", value: "secondary-light" },
       { title: "Grey", value: "grey" },
       { title: "Dark-Grey", value: "dark-grey" },

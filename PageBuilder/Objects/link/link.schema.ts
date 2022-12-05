@@ -27,6 +27,10 @@ const linkSchema: ObjectDefinition = {
       title: "External Link",
       type: "url",
       hidden: ({ parent }: any) => !!parent.internal,
+      validation: (Rule) =>
+        Rule.uri({
+          scheme: ["http", "https", "mailto", "tel"],
+        }),
     },
   ],
 };

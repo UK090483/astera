@@ -25,6 +25,7 @@ export type ListingItem = {
   link?: linkResult;
   category?: string;
   subTitle?: string;
+  content?: any;
 };
 
 type queryProps = {
@@ -37,6 +38,7 @@ bgColor,
 'slug': ${SLUG_PROJECTION(locale)},
 'link': link{${linkProjection(locale)}},
 ${localizeValue("title", locale)},
+${localizeValue("content", locale)},
 ${localizeValue("description", locale)},
 'mainImage':mainImage{${IMAG_PROJECTION}},
 startDate,

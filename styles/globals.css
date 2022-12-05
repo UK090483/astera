@@ -57,19 +57,11 @@
   .typo-weights :where(h3, h4) {
     @apply font-bold;
   }
-
   .typo-sizes :where(ul, ol):not(.list-none) li {
     @apply mb-3;
   }
 
-  .typo :where(ul):not(.list-none) {
-    @apply text-base  list-disc pl-[0.8em];
-  }
-  .typo :where(ol):not(.list-none) {
-    @apply list-decimal pl-[1.1em];
-  }
-
-  ul li::marker {
+  ul::marker {
     color: var(--tw-typo-light);
   }
 

@@ -7,6 +7,7 @@ import Card from "@components/Card/Card";
 import RichText from "PageBuilder/RichText/frontend/RichText";
 import { NewsCard } from "PageBuilder/ContentTypes/news/frontend/NewsCard";
 import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard";
+import Carousel from "@components/Carousel/Carousel";
 
 const presetMap: Record<
   string,
@@ -102,6 +103,45 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
     );
   }
 
+  if (contentType === "testimonial") {
+    console.log(props);
+
+    return (
+      <Section
+        width="l"
+        noProse
+        noPadding
+        {...rest}
+        bg={backgroundColor}
+        {...section}
+      >
+        <div className=" bg-secondary max-w-3xl mx-auto relative pt-8 text-secondary-medium">
+          <div className=" top-0 left-12 -translate-y-9 text-9xl garamondFont text-white  w-fit h-fit absolute">
+            ”
+          </div>
+
+          {title && (
+            <div className="mt-12 mb-12 px-12 typo-invert">
+              <RichText content={title} />
+            </div>
+          )}
+
+          <Carousel>
+            {items.map((item) => (
+              <div
+                key={item.key}
+                className=" typo-invert typo-spacings text-secondary-medium  px-12 "
+              >
+                <RichText content={item.content} />
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </Section>
+    );
+  }
+
+  console.log(props);
   return (
     <Section
       width="l"
