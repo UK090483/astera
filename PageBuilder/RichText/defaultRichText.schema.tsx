@@ -89,7 +89,6 @@ const defaultRichText: ArrayDefinition = {
     { type: "videoPlug" },
     { type: "imagePlug" },
     { type: "dealsPlug" },
-    { type: "testimonialsPlug" },
   ],
 };
 

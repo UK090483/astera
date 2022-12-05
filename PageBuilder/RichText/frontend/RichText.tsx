@@ -1,13 +1,9 @@
-import {
-  PortableText,
-  PortableTextReactComponents,
-  defaultComponents,
-} from "@portabletext/react";
+import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 
 import EmbedHTML from "../Plugs/EmbedHTML/frontend/EmbedHTML";
 import ImagePlug from "../Plugs/ImagePlug/frontend/ImagePlug";
 import PlayerPlug from "../Plugs/videoPlug/frontend/PlayerPlug";
-import TestimonialsPlug from "../Plugs/Testimonials/frontend/TestimonialsPlug";
+
 import LinkMark from "../marks/linkMark/frontend/LinkMark";
 import React from "react";
 import ListingPlug from "../Plugs/ListingPlug/frontend/ListingPlug";
@@ -71,7 +67,6 @@ const components: Partial<PortableTextReactComponents> = {
     imagePlug: ImagePlug,
     listing: ListingPlug,
     dealsPlug: DealsPlug,
-    testimonialsPlug: TestimonialsPlug,
   },
 };
 
