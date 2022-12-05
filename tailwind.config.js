@@ -51,6 +51,7 @@ module.exports = {
         slideDown: "slideDown 0.25s ease-in forwards",
         slideInRight: "slideInRight 0.5s ease-in forwards",
         marquee: "marquee 25s linear infinite",
+        "marquee-reverse": "marquee reverse 25s linear infinite",
       },
       keyframes: {
         marquee: {

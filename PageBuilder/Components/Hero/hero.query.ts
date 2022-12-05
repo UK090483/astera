@@ -10,7 +10,10 @@ _type == 'hero'=>{
    _key,
    _type,
     'image': coalesce(image,*[_id=='baseConfig'][0].defaultHero){${IMAG_PROJECTION}},
-    'content':content[]{${headerRichTextQuery(locale)}}
+    'content':content[]{${headerRichTextQuery(locale)}},
+    'news':*[_type == 'news'] | order( startDate asc)[0...8] {
+      _id,
+       ${localizeValue("title", locale)}},
 },
 `;
 export type heroResult = {
@@ -18,4 +21,6 @@ export type heroResult = {
   _key: string;
   image?: ImageResult;
   content: headerRichTextQueryResult;
+
+  news?: { _id: string; title?: string }[];
 };
