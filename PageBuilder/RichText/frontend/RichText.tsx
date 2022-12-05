@@ -61,7 +61,7 @@ const components: Partial<PortableTextReactComponents> = {
           <AIcon className="w-full shrink-0  fill-current" />
           <div className="line h-full bg-current w-0.5 "></div>
         </div>
-        <p className="pb-8   w-full">{children}</p>
+        <span className="pb-16  w-full">{children}</span>
       </li>
     ),
   },
