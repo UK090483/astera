@@ -7,6 +7,7 @@ import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
 import RichText from "PageBuilder/RichText/frontend/RichText";
 import React from "react";
 import { heroResult } from "../hero.query";
+import NewsMarque from "./NewsTicker";
 
 const Hero: React.FC<heroResult> = (props) => {
   const { image, content, news } = props;
@@ -16,8 +17,6 @@ const Hero: React.FC<heroResult> = (props) => {
   const _image = image && image.url ? image : data?.mainImage;
 
   const hasContent = content && content.length > 0;
-
-  console.log(props);
 
   return (
     <>
@@ -43,37 +42,7 @@ const Hero: React.FC<heroResult> = (props) => {
           </div>
         )}
       </div>
-      <div>
-        <div className="garamondFont text-white bg-secondary-dark">NEWS</div>
-        <div>
-          {news && (
-            <>
-              <Marque items={news} className="">
-                {(item) => (
-                  <div
-                    className="text-secondary-dark inline uppercase  tracking-wider "
-                    key={item._id}
-                  >
-                    {item.title}
-                    <span className=" px-5 ">{"|"}</span>
-                  </div>
-                )}
-              </Marque>
-              <Marque items={news} reverse>
-                {(item) => (
-                  <div
-                    className="text-secondary-dark inline uppercase tracking-wider"
-                    key={item._id}
-                  >
-                    {item.title}
-                    <span className=" px-5 ">{"|"}</span>
-                  </div>
-                )}
-              </Marque>
-            </>
-          )}
-        </div>
-      </div>
+      <NewsMarque news={news} />
     </>
   );
 };
