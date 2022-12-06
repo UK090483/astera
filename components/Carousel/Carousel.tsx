@@ -3,6 +3,7 @@ import * as React from "react";
 import { CarouselContextProvider } from "./CarouselContext";
 import CarouselItemWrap from "./CarouselItemWrap";
 import Dots from "./Dots";
+import TitleDots from "./TitleDots";
 
 import { useCarouselProps } from "./useCarousel";
 
@@ -42,7 +43,6 @@ function Carousel(props: ICarouselProps) {
           }}
         </CarouselItemWrap>
       </div>
-
       <Dots />
     </CarouselContextProvider>
   );

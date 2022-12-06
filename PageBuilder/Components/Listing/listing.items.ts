@@ -71,6 +71,31 @@ const testimonialItem: ArrayOfType = withLocalization(
   locale
 )[0];
 
+const rankingItem: ArrayOfType = withLocalization(
+  [
+    {
+      //@ts-ignore
+      name: "ranking",
+      type: "object",
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Title",
+          validation: (Rule: any) => Rule.required(),
+        },
+        {
+          name: "content",
+          type: "headerRichText",
+          title: "Description",
+          localize: true,
+        },
+      ],
+    },
+  ],
+  locale
+)[0];
+
 export type listingItem = {
   name: string;
   title: string;
@@ -141,5 +166,10 @@ export const items: listingBuilderItem[] = [
     name: "testimonial",
     title: "Testimonial",
     items: [testimonialItem],
+  },
+  {
+    name: "ranking",
+    title: "Ranking",
+    items: [rankingItem],
   },
 ];

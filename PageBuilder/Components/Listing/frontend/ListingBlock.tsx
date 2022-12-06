@@ -8,6 +8,7 @@ import RichText from "PageBuilder/RichText/frontend/RichText";
 import { NewsCard } from "PageBuilder/ContentTypes/news/frontend/NewsCard";
 import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard";
 import Carousel from "@components/Carousel/Carousel";
+import RankingCarousel from "@components/Carousel/RankingCarousel";
 
 const presetMap: Record<
   string,
@@ -141,7 +142,29 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
     );
   }
 
-  console.log(props);
+  if (contentType === "ranking") {
+    return (
+      <Section
+        width="m"
+        noProse
+        noPadding
+        {...rest}
+        bg={backgroundColor}
+        {...section}
+      >
+        <div className=" mx-auto relative pt-8 text-secondary-medium">
+          {title && (
+            <div className="mt-12 mb-12 px-12 typo-invert">
+              <RichText content={title} />
+            </div>
+          )}
+
+          <RankingCarousel rankingItems={items} />
+        </div>
+      </Section>
+    );
+  }
+
   return (
     <Section
       width="l"
