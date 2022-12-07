@@ -67,7 +67,7 @@ function RankingCarousel(props: ICarouselProps) {
                       }
                     )}
                   >
-                    <div className={clsx("p-8 bg-primary")}>
+                    <div className={clsx("p-8 bg-primary typo-bright")}>
                       <RichText content={i.content} />
                     </div>
                   </div>
@@ -130,7 +130,7 @@ const Dot: React.FC<{
       {!isLast && (
         <div
           style={{ borderWidth: 1, height: "100%" }}
-          className={clsx("-z-10 absolute  top-1/2 left-1/2   border-primary")}
+          className={clsx("-z-10 absolute  top-1/2 left-1/2 border-primary")}
         ></div>
       )}
     </div>

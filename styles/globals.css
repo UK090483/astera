@@ -7,7 +7,7 @@
     --tw-typo-body: #003333;
     --tw-typo-headings: #007267;
     --tw-typo-lead: #4b5563;
-    --tw-typo-links: #111827;
+    --tw-typo-links: #bf664a;
     --tw-typo-bold: #111827;
     --tw-typo-light: #d1d5db;
     --tw-typo-invert-body: #d1d5db;
@@ -28,10 +28,17 @@
   }
   .typo-bright {
     --tw-typo-headings: #fff;
+    --tw-typo-body: #fff;
+    --tw-typo-links: #003333;
   }
 
   .typo-colors :where(p, a, ul, ol, blockquote, .typo-color) {
     color: var(--tw-typo-body);
+    font-family: var(--lexend-font);
+  }
+
+  .typo-colors :where(a) {
+    color: var(--tw-typo-links);
     font-family: var(--lexend-font);
   }
 
