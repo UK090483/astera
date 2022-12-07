@@ -16,7 +16,7 @@ const linkSchema: ObjectDefinition = {
       //   })}  })`;
       // },
 
-      to: [{ type: "page" }],
+      to: [{ type: "page" }, { type: "person" }],
       options: {
         disableNew: true,
       },

@@ -19,11 +19,11 @@ markDefs[]{
 `;
 
 export const defaultRichTextQuery: localizedQueryFn = (locale) => `
+...,
 _type == 'block'=> {
   ...,
    ${markDefs(locale)}
 },
-...,
 ${embedQuery}
 ${videoPlugQuery}
 ${imagePlugProjection}
