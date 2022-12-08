@@ -47,7 +47,7 @@ const components: Partial<PortableTextReactComponents> = {
     number: ({ children }) => <li>{children}</li>,
     arrows: ({ children }) => (
       <li className="flex mb-4">
-        <ArrowIcon className=" fill-secondary shrink-0 mt-[0.35em] mr-4" />
+        <ArrowIcon className=" fill-secondary shrink-0 mt-[0.35em] w-4 mr-4" />
         <p className=" ">{children}</p>
       </li>
     ),

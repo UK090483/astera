@@ -29,7 +29,7 @@ export function PersonSection(props: IPersonSectionProps) {
         </div>
         <div>
           <h1 className="garamondFont header1Serif">{title}</h1>
-          <p>{description}</p>
+          <p className="text-lg ">{description}</p>
           {accomplishments &&
             accomplishments.map((i, index) => (
               <Accomplishment key={index} {...i} />
@@ -43,7 +43,7 @@ export function PersonSection(props: IPersonSectionProps) {
 const Accomplishment: React.FC<testimonialItem> = (props) => {
   const { title, description, source } = props;
   return (
-    <div className=" bg-secondary-light  p-8">
+    <div className=" bg-secondary-medium  p-8">
       <p className=" font-bold mb-0">{title}</p>
       <p>{description}</p>
 
