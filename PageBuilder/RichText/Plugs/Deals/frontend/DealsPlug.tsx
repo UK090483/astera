@@ -69,7 +69,7 @@ const Accordion: React.FC<{
     <div
       className={clsx("w-full block text-secondary ", { "mt-12": !isFirst })}
     >
-      <h2 onClick={toggle} className=" text-5xl flex mb-6 ">
+      <h2 onClick={toggle} className="text-5xl flex mb-6  font-normal">
         {title}
         <button
           id={title + "_label"}

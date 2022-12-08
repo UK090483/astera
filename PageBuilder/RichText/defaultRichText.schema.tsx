@@ -1,10 +1,11 @@
 import { ArrayDefinition } from "../types";
 import React from "react";
-
+import CustomEditor from "./CustomRichtextEditor";
 const defaultRichText: ArrayDefinition = {
   name: "defaultRichText",
   title: "defaultRichText",
   type: "array",
+  // inputComponent: CustomEditor,
   of: [
     {
       type: "block",
@@ -53,7 +54,24 @@ const defaultRichText: ArrayDefinition = {
       lists: [
         { title: "Bullet", value: "bullet" },
         { title: "Numbered", value: "number" },
-        { title: "Arrows", value: "arrows" },
+        {
+          title: "Arrows",
+          value: "arrows",
+
+          //@ts-ignore
+          blockEditor: {
+            icon: () => "Blaaa",
+            render: (props: any) => (
+              <span
+                style={{
+                  color: "red",
+                }}
+              >
+                {props.children}
+              </span>
+            ),
+          },
+        },
         { title: "Connected Dots", value: "connectedDots" },
       ],
       marks: {

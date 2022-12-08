@@ -8,8 +8,10 @@ const LinkMark: PortableTextMarkComponent<linkMarkResult> = (props) => {
 
   const className = useButtonStyle();
 
+  if (!value?.href && !value?.internal) return <>{children}</>;
+
   return (
-    <Link className={value?.asButton ? className : " text-primary "} {...value}>
+    <Link className={value?.asButton ? className : ""} {...value}>
       {children}
     </Link>
   );

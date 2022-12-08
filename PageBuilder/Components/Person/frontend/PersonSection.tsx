@@ -21,16 +21,15 @@ export function PersonSection(props: IPersonSectionProps) {
   return (
     <Section width="l">
       <BackButton />
-      <div className="md:flex md:flex-row-reverse gap-24">
+      <div className="md:flex md:flex-row-reverse gap-24 ">
         <div className=" relative w-full ">
-          <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12">
+          <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12 md:mb-0 ">
             <SanityImage src={image} />
           </div>
         </div>
         <div>
-          <h1>{title}</h1>
-          <p>{description}</p>
-
+          <h1 className="garamondFont header1Serif">{title}</h1>
+          <p className="text-lg ">{description}</p>
           {accomplishments &&
             accomplishments.map((i, index) => (
               <Accomplishment key={index} {...i} />
@@ -44,7 +43,7 @@ export function PersonSection(props: IPersonSectionProps) {
 const Accomplishment: React.FC<testimonialItem> = (props) => {
   const { title, description, source } = props;
   return (
-    <div className=" bg-secondary-light  p-8">
+    <div className=" bg-secondary-medium  p-8">
       <p className=" font-bold mb-0">{title}</p>
       <p>{description}</p>
 

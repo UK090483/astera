@@ -7,7 +7,7 @@
     --tw-typo-body: #003333;
     --tw-typo-headings: #007267;
     --tw-typo-lead: #4b5563;
-    --tw-typo-links: #111827;
+    --tw-typo-links: #bf664a;
     --tw-typo-bold: #111827;
     --tw-typo-light: #d1d5db;
     --tw-typo-invert-body: #d1d5db;
@@ -28,10 +28,17 @@
   }
   .typo-bright {
     --tw-typo-headings: #fff;
+    --tw-typo-body: #fff;
+    --tw-typo-links: #003333;
   }
 
   .typo-colors :where(p, a, ul, ol, blockquote, .typo-color) {
     color: var(--tw-typo-body);
+    font-family: var(--lexend-font);
+  }
+
+  .typo-colors :where(a) {
+    color: var(--tw-typo-links);
     font-family: var(--lexend-font);
   }
 
@@ -57,19 +64,11 @@
   .typo-weights :where(h3, h4) {
     @apply font-bold;
   }
-
   .typo-sizes :where(ul, ol):not(.list-none) li {
     @apply mb-3;
   }
 
-  .typo :where(ul):not(.list-none) {
-    @apply text-base  list-disc pl-[0.8em];
-  }
-  .typo :where(ol):not(.list-none) {
-    @apply list-decimal pl-[1.1em];
-  }
-
-  ul li::marker {
+  ul::marker {
     color: var(--tw-typo-light);
   }
 

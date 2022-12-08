@@ -1,14 +1,17 @@
 import useInViewport from "@hooks/useInViewport";
+import clsx from "clsx";
 
 import React from "react";
 
 interface IMarqueProps<T extends unknown> {
   items: T[];
   children: (item: T, index: number) => React.ReactElement;
+  className?: string;
+  reverse?: boolean;
 }
 
 function Marque<T>(props: IMarqueProps<T>) {
-  const { items, children } = props;
+  const { items, children, className, reverse = false } = props;
   const ref = React.useRef<HTMLDivElement>(null);
   const inViewport = useInViewport(ref);
 
@@ -19,21 +22,29 @@ function Marque<T>(props: IMarqueProps<T>) {
 
   return (
     <div
+      style={{ borderBottomWidth: 1 }}
       aria-hidden={true}
       ref={ref}
-      className="flex overflow-x-hidden border-t-2 border-b-2  border-black w-full  font-header font-bold text-xl md:text-5xl py-0 whitespace-nowrap"
+      className={clsx(
+        "flex overflow-x-hidden w-full  border-secondary-dark whitespace-nowrap",
+        className
+      )}
     >
       <div
-        className={`${
-          inViewport ? "motion-reduce:animate-none  animate-marquee" : ""
-        } `}
+        className={clsx({
+          "motion-reduce:animate-none animate-marquee-reverse":
+            inViewport && reverse,
+          "motion-reduce:animate-none animate-marquee": inViewport && !reverse,
+        })}
       >
         {getParts}
       </div>
       <div
-        className={`${
-          inViewport ? "motion-reduce:animate-none  animate-marquee" : ""
-        } `}
+        className={clsx({
+          "motion-reduce:animate-none animate-marquee-reverse":
+            inViewport && reverse,
+          "motion-reduce:animate-none animate-marquee": inViewport && !reverse,
+        })}
       >
         {getParts}
       </div>

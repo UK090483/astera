@@ -12,7 +12,7 @@ const Dots: React.FC<DotsProps> = (props) => {
   return (
     <div
       aria-hidden={true}
-      className={`flex justify-center items-center${
+      className={`flex justify-start pl-12 items-start pb-12 gap-2 ${
         className ? className : ""
       }`}
     >

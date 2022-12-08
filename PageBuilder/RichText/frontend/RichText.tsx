@@ -1,12 +1,9 @@
-import {
-  PortableText,
-  PortableTextReactComponents,
-  defaultComponents,
-} from "@portabletext/react";
+import { PortableText, PortableTextReactComponents } from "@portabletext/react";
 
 import EmbedHTML from "../Plugs/EmbedHTML/frontend/EmbedHTML";
 import ImagePlug from "../Plugs/ImagePlug/frontend/ImagePlug";
 import PlayerPlug from "../Plugs/videoPlug/frontend/PlayerPlug";
+
 import LinkMark from "../marks/linkMark/frontend/LinkMark";
 import React from "react";
 import ListingPlug from "../Plugs/ListingPlug/frontend/ListingPlug";
@@ -28,6 +25,7 @@ const components: Partial<PortableTextReactComponents> = {
     h1: ({ children }) => <h1 className="header1">{children}</h1>,
     h2: ({ children }) => <h2 className=" header2">{children}</h2>,
     textBig: ({ children }) => <p className=" textBig"> {children}</p>,
+
     normal: ({ children }) => {
       const empty = Array.isArray(children) ? children.every((i) => !i) : false;
       if (empty) {
@@ -49,7 +47,7 @@ const components: Partial<PortableTextReactComponents> = {
     number: ({ children }) => <li>{children}</li>,
     arrows: ({ children }) => (
       <li className="flex mb-4">
-        <ArrowIcon className=" fill-secondary shrink-0 mt-[0.35em] mr-4" />
+        <ArrowIcon className=" fill-secondary shrink-0 mt-[0.35em] w-4 mr-4" />
         <p className=" ">{children}</p>
       </li>
     ),
@@ -59,7 +57,7 @@ const components: Partial<PortableTextReactComponents> = {
           <AIcon className="w-full shrink-0  fill-current" />
           <div className="line h-full bg-current w-0.5 "></div>
         </div>
-        <p className="pb-8   w-full">{children}</p>
+        <span className="pb-16  w-full">{children}</span>
       </li>
     ),
   },

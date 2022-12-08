@@ -11,7 +11,10 @@ import {
   linkProjection,
   linkResult,
 } from "PageBuilder/Objects/link/link.query";
-import { headerRichTextQueryResult } from "PageBuilder/RichText/headerRichText.query";
+import {
+  headerRichTextQuery,
+  headerRichTextQueryResult,
+} from "PageBuilder/RichText/headerRichText.query";
 
 export type ListingItem = {
   key: string;
@@ -25,6 +28,7 @@ export type ListingItem = {
   link?: linkResult;
   category?: string;
   subTitle?: string;
+  content?: any;
 };
 
 type queryProps = {
@@ -42,6 +46,9 @@ ${localizeValue("description", locale)},
 startDate,
 category,
 ${localizeValue("subTitle", locale)},
+'content':(coalesce(content_${locale},content))[]{${headerRichTextQuery(
+  locale
+)}},
 `;
 
 const listingQuery: localizedQueryFn = (locale) =>

@@ -38,6 +38,7 @@ module.exports = {
           extraDark: "#002827",
           dark: "#003333",
           DEFAULT: "#007267",
+          medium: "#B4D6D1",
           light: "#E8F3F1",
         },
         bgWhite: "#fafafa",
@@ -50,6 +51,7 @@ module.exports = {
         slideDown: "slideDown 0.25s ease-in forwards",
         slideInRight: "slideInRight 0.5s ease-in forwards",
         marquee: "marquee 25s linear infinite",
+        "marquee-reverse": "marquee reverse 25s linear infinite",
       },
       keyframes: {
         marquee: {

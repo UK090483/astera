@@ -11,6 +11,7 @@ interface SectionProps {
     | "primary"
     | "secondary"
     | "secondary-light"
+    | "secondary-medium"
     | "dark-grey";
 
   className?: string;
@@ -56,6 +57,7 @@ export const Section: React.FC<SectionProps> = (props) => {
           "bg-white": bg === "white",
           "bg-primary-light": bg === "primary",
           "bg-secondary-light": bg === "secondary-light",
+          "bg-secondary-medium": bg === "secondary-medium",
           "bg-secondary": bg === "secondary",
           "bg-grey-light": bg === "grey",
           "bg-grey-dark": bg === "dark-grey",

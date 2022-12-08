@@ -20,6 +20,11 @@ const HeroObject: ObjectDefinition = {
       type: "headerRichText",
       localize: true,
     },
+    {
+      title: "with News ticker",
+      name: "newsTicker",
+      type: "boolean",
+    },
   ],
   preview: {
     select: {
