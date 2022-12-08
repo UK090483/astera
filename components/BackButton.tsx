@@ -10,7 +10,7 @@ export function BackButton() {
       onClick={back}
       className=" text-primary font-bold typo-color mb-8 flex items-center"
     >
-      <ArrowIcon className=" fill-primary  rotate-180 " />
+      <ArrowIcon className=" fill-primary  rotate-180 w-6" />
       {label}
     </button>
   );
