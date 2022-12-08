@@ -1,23 +1,13 @@
 import clsx from "clsx";
 import { ListingItem } from "PageBuilder/Components/Listing/listing.query";
 import RichText from "PageBuilder/RichText/frontend/RichText";
+import { span } from "PageBuilder/__test__/richtextTestPrepare";
 
 import * as React from "react";
 
 interface ICarouselProps {
   rankingItems?: ListingItem[];
 }
-
-const itemsCount = 3;
-const getShowItems = (activeIndex: number, count: number) => {
-  if (activeIndex === 0) {
-    return [0, 1, 2];
-  }
-  if (activeIndex >= count - itemsCount + 1) {
-    return [count - 3, count - 2, count - 1];
-  }
-  return [activeIndex - 1, activeIndex, activeIndex + 1];
-};
 
 function RankingCarousel(props: ICarouselProps) {
   const { rankingItems } = props;
@@ -53,9 +43,8 @@ function RankingCarousel(props: ICarouselProps) {
                   active={dotActive}
                   isFirst={index === 0}
                   onClick={() => setActiveItemIndex(index)}
-                >
-                  {i.title}
-                </Dot>
+                  text={i.title}
+                />
 
                 <div className="h-fit md:h-0">
                   <div
@@ -88,7 +77,10 @@ const Dot: React.FC<{
   onClick: () => void;
   isLast: boolean;
   isFirst: boolean;
-}> = ({ children, active, onClick, isLast }) => {
+  text?: string;
+}> = ({ children, active, onClick, isLast, text }) => {
+  const preparedText = text?.slice(0, 2);
+
   return (
     <div
       className={clsx(
@@ -113,9 +105,14 @@ const Dot: React.FC<{
               e.stopPropagation();
               onClick();
             }}
-            className={`w-20 h-20 mx-0.5 flex items-center justify-center bg-primary rounded-full  transition-colors text-white`}
+            className={`w-24 h-24 mx-0.5 flex leading-7 flex-col items-center text-4xl justify-center bg-primary rounded-full  transition-colors text-white`}
           >
-            {children}
+            {text && (
+              <>
+                <span className="">{text?.slice(0, 2)}</span>
+                <span>{text?.slice(2, 4)}</span>
+              </>
+            )}
           </div>
         </div>
       </div>

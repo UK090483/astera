@@ -154,7 +154,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
       >
         <div className=" mx-auto relative pt-8 text-secondary-medium">
           {title && (
-            <div className="mt-12 mb-12 px-12 typo-invert">
+            <div className="mt-12  px-12 typo-spacings ">
               <RichText content={title} />
             </div>
           )}
