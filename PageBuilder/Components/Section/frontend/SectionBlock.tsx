@@ -91,8 +91,8 @@ const WithHeader: React.FC<{
       >
         <div
           className={clsx(" mb-6   shrink-0 ", {
-            "md:text-right md:w-1/4": place !== "r",
-            "md:text-right md:w-1/2": place === "l-1/2",
+            "md:text-right md:w-1/4": place === "l",
+            "text-left md:w-1/2": place === "l-1/2",
           })}
         >
           <RichText content={header} />
