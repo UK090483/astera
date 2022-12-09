@@ -36,6 +36,11 @@ const pageSchema = createContentType({
           _type: "hero",
           title: "Hero",
         },
+        {
+          _key: uniqueId(),
+          _type: "newsSection",
+          title: "News Section",
+        },
       ]
     ),
   ],
