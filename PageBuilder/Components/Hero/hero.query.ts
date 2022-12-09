@@ -9,8 +9,12 @@ export const heroQueryProjection: localizedQueryFn = (locale) => `
 _type == 'hero'=>{
    _key,
    _type,
-   
-    'image': coalesce(image,*[_id=='baseConfig'][0].defaultHero){${IMAG_PROJECTION}},
+    'image': select( 
+      defined(image) => image,
+      ^._type == 'news' => coalesce(*[_id=='baseConfig'][0].defaultNewsHero,*[_id=='baseConfig'][0].defaultHero),
+      ^._type == 'person' => coalesce(*[_id=='baseConfig'][0].defaultNewsPerson,*[_id=='baseConfig'][0].defaultHero),
+      *[_id=='baseConfig'][0].defaultHero
+          ){${IMAG_PROJECTION}},
     'content':content[]{${headerRichTextQuery(locale)}},
     'news': select( newsTicker => *[_type == 'news'] | order( startDate asc)[0...8] {
       _id,

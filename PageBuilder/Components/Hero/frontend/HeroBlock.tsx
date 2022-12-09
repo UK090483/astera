@@ -11,11 +11,8 @@ import NewsMarque from "./NewsTicker";
 
 const Hero: React.FC<heroResult> = (props) => {
   const { image, content, news } = props;
-
   const { data } = usePageBuilderContext();
-
   const _image = image && image.url ? image : data?.mainImage;
-
   const hasContent = content && content.length > 0;
 
   return (
