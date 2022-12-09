@@ -10,6 +10,8 @@ import { SeoQueryResult } from "../../Objects/Seo/Seo.query";
 import { EditorResult } from "../Base/Editor/editor.query";
 import type { BaseContentTypeResult } from "../helper";
 import { testimonialItem } from "PageBuilder/Objects/Testimonial/testimonialItem.type";
+import { linkProjection } from "PageBuilder/Objects/link/link.query";
+import { SLUG_PROJECTION } from "PageBuilder/constants";
 
 export const personQuery = (locale?: string) => `
 _type,
@@ -17,6 +19,12 @@ ${BaseContentTypeProjection(locale)}
 ${navigationQuery(locale)}
 'body':body[]{${editorQuery(locale)}},
 accomplishments,
+...(*[_id=='baseConfig'][0].personListingPage{
+  'personListingLink':{
+ ...(page->{ 'slug' :${SLUG_PROJECTION(locale)}}),
+ onPageLink,
+  }
+}),
 ${seoQuery(locale)}
 ${footerQuery(locale)}
 `;
@@ -26,6 +34,7 @@ export type PersonResult = BaseContentTypeResult &
   SeoQueryResult & {
     _type: "person";
     accomplishments: testimonialItem[];
+    personListingLink?: { slug?: string; onPageLink?: string };
     body: EditorResult;
     slug: string;
   } & footerResult;

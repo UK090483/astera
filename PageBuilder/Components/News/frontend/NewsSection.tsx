@@ -16,15 +16,14 @@ export function NewsSection(props: IPersonSectionProps) {
   const date = data?.startDate;
   const title = data?.title;
   const image = data?.mainImage;
+  const listingLink = data?.newsListingLink;
 
   return (
     <Section width="l" className="">
-      <BackButton />
-      {/* <div className=" relative w-full ">
-        <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12">
-          <SanityImage src={image} />
-        </div>
-      </div> */}
+      <BackButton
+        internal={listingLink?.slug}
+        onPageLink={listingLink?.onPageLink}
+      />
 
       <div className="flex">
         <AIcon />

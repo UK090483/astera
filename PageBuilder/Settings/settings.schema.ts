@@ -63,8 +63,8 @@ export const SettingsDocument: DocumentDefinition = {
       type: "defaultImage",
     },
     {
-      name: "heroListingPage",
-      title: "Hero Listing Page",
+      name: "newsListingPage",
+      title: "News Listing Page",
       type: "object",
       fields: [
         {

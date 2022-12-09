@@ -52,7 +52,7 @@ const presetList = (type: string) => {
 const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   props
 ) => {
-  const { items, backgroundColor, contentType, variant, title, ...rest } =
+  const { items, backgroundColor, contentType, variant, title, name, ...rest } =
     props;
 
   const contentTypeKey = contentType + (variant ? "_" + variant : "");
@@ -63,6 +63,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   if (contentType === "person") {
     return (
       <Section
+        id={name}
         width="l"
         noProse
         noPadding
@@ -82,8 +83,17 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
     );
   }
   if (contentType === "news") {
+    console.log(props);
+
     return (
-      <Section width="l" noProse {...rest} bg={backgroundColor} {...section}>
+      <Section
+        id={name}
+        width="l"
+        noProse
+        {...rest}
+        bg={backgroundColor}
+        {...section}
+      >
         {title && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
             <RichText content={title} />
@@ -107,6 +117,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   if (contentType === "testimonial") {
     return (
       <Section
+        id={name}
         width="l"
         noProse
         noPadding
@@ -143,6 +154,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   if (contentType === "ranking") {
     return (
       <Section
+        id={name}
         width="m"
         noProse
         noPadding
@@ -163,10 +175,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
     );
   }
 
-  console.log(props);
-
   return (
     <Section
+      id={name}
       width="l"
       noProse
       noPadding

@@ -17,10 +17,14 @@ export function PersonSection(props: IPersonSectionProps) {
   const title = data?.title;
   const image = data?.mainImage;
   const accomplishments = data?.accomplishments;
+  const listingLink = data?.personListingLink;
 
   return (
     <Section width="l">
-      <BackButton />
+      <BackButton
+        internal={listingLink?.slug}
+        onPageLink={listingLink?.onPageLink}
+      />
       <div className="md:flex md:flex-row-reverse gap-24 ">
         <div className=" relative w-full ">
           <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12 md:mb-0 ">
