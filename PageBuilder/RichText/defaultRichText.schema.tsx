@@ -1,11 +1,9 @@
 import { ArrayDefinition } from "../types";
 import React from "react";
-import CustomEditor from "./CustomRichtextEditor";
 const defaultRichText: ArrayDefinition = {
   name: "defaultRichText",
   title: "defaultRichText",
   type: "array",
-  // inputComponent: CustomEditor,
   of: [
     {
       type: "block",
@@ -89,6 +87,7 @@ const defaultRichText: ArrayDefinition = {
     { type: "videoPlug" },
     { type: "imagePlug" },
     { type: "dealsPlug" },
+    { type: "download" },
   ],
 };
 

@@ -30,7 +30,7 @@ export type SectionResult = {
   textDirection?: "left" | "center" | "right";
   content?: null | any;
   bgImage?: ImageResult;
-  headerPosition?: "l" | "r" | null;
+  headerPosition?: "l" | "r" | "l-1/2" | null;
   image?: ImageResult;
   type?: "m" | "l" | "s";
   header?: headerRichTextQueryResult;

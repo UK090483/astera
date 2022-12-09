@@ -9,6 +9,7 @@ import {
 import { linkMarkProjection } from "./marks/linkMark/linkMark.query";
 import { listProjection } from "PageBuilder/Components/Listing/listing.query";
 import { dealsPlugQuery } from "./Plugs/Deals/deals.query";
+import { downloadQuery } from "./Plugs/Download/download.query";
 const markDefs: localizedQueryFn = (locale) => `
 markDefs[]{
    ...,
@@ -25,6 +26,7 @@ _type == 'block'=> {
    ${markDefs(locale)}
 },
 ${embedQuery}
+${downloadQuery}
 ${videoPlugQuery}
 ${imagePlugProjection}
 ${dealsPlugQuery(locale)}

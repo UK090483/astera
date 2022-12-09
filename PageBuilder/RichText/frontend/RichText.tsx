@@ -4,6 +4,7 @@ import EmbedHTML from "../Plugs/EmbedHTML/frontend/EmbedHTML";
 import ImagePlug from "../Plugs/ImagePlug/frontend/ImagePlug";
 import PlayerPlug from "../Plugs/videoPlug/frontend/PlayerPlug";
 
+import Download from "../Plugs/Download/frontend/Download";
 import LinkMark from "../marks/linkMark/frontend/LinkMark";
 import React from "react";
 import ListingPlug from "../Plugs/ListingPlug/frontend/ListingPlug";
@@ -62,6 +63,7 @@ const components: Partial<PortableTextReactComponents> = {
     ),
   },
   types: {
+    download: Download,
     embed: EmbedHTML,
     videoPlug: PlayerPlug,
     imagePlug: ImagePlug,

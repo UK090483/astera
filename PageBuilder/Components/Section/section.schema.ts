@@ -65,6 +65,7 @@ const sectionSchema: ObjectDefinition = {
       options: {
         list: [
           { title: "Left (default)", value: "l" },
+          { title: "Left 1/2", value: "l-1/2" },
           { title: "Right", value: "r" },
         ],
       },

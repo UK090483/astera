@@ -1,4 +1,5 @@
 import React, { ComponentType } from "react";
+import ErrorBoundary from "./next/ErrorBoundary";
 import { usePageBuilderContext } from "./PageBuilderContext";
 
 export type BodyParserProps = {
@@ -16,7 +17,11 @@ const BodyParser: React.FC<BodyParserProps> = ({ components }) => {
         saveBlocks.map((block) => {
           if (components[block._type]) {
             const Component = components[block._type].component;
-            return <Component key={block._key} {...block} />;
+            return (
+              <ErrorBoundary name={block._type} key={block._key}>
+                <Component key={block._key} {...block} />
+              </ErrorBoundary>
+            );
           }
 
           return (

@@ -5,7 +5,7 @@ import SanityImage from "@components/SanityImage";
 import clsx from "clsx";
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
 import RichText from "PageBuilder/RichText/frontend/RichText";
-import React from "react";
+import React, { useEffect } from "react";
 import { heroResult } from "../hero.query";
 import NewsMarque from "./NewsTicker";
 

@@ -2,6 +2,7 @@ import React, { Component, ErrorInfo, ReactNode } from "react";
 
 interface Props {
   children?: ReactNode;
+  name?: string;
 }
 
 interface State {
@@ -19,7 +20,10 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
+    console.error(`Uncaught error in ${this.props.name}:`, {
+      error,
+      errorInfo,
+    });
   }
 
   public render() {

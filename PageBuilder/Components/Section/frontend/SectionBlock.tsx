@@ -79,7 +79,7 @@ const WithImage: React.FC<{
 };
 
 const WithHeader: React.FC<{
-  place: "l" | "r";
+  place: SectionResult["headerPosition"];
   header: headerRichTextQueryResult;
 }> = ({ children, place = "l", header }) => {
   return (
@@ -90,8 +90,9 @@ const WithHeader: React.FC<{
         })}
       >
         <div
-          className={clsx(" mb-6 md:w-1/4  shrink-0 ", {
-            "md:text-right": place !== "r",
+          className={clsx(" mb-6   shrink-0 ", {
+            "md:text-right md:w-1/4": place !== "r",
+            "md:text-right md:w-1/2": place === "l-1/2",
           })}
         >
           <RichText content={header} />
