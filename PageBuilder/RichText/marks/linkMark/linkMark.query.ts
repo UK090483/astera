@@ -1,4 +1,3 @@
-import { SLUG_PROJECTION } from "PageBuilder/constants";
 import { localizedQueryFn } from "PageBuilder/helper/withLocalization";
 import {
   linkProjection,

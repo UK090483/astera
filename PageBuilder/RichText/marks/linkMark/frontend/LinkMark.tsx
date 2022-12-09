@@ -10,8 +10,16 @@ const LinkMark: PortableTextMarkComponent<linkMarkResult> = (props) => {
 
   if (!value?.href && !value?.internal) return <>{children}</>;
 
+  const _internal = value?.internal
+    ? value.internal + `${value.onPageLink ? "#" + value.onPageLink : ""}`
+    : undefined;
+
   return (
-    <Link className={value?.asButton ? className : ""} {...value}>
+    <Link
+      className={value?.asButton ? className : ""}
+      {...value}
+      internal={_internal}
+    >
       {children}
     </Link>
   );

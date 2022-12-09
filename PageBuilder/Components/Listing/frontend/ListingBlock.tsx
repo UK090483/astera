@@ -105,8 +105,6 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   }
 
   if (contentType === "testimonial") {
-    console.log(props);
-
     return (
       <Section
         width="l"
@@ -164,6 +162,8 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
       </Section>
     );
   }
+
+  console.log(props);
 
   return (
     <Section

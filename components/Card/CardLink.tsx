@@ -20,7 +20,11 @@ const CardLink: React.FunctionComponent<ICardLinkProps> = ({
 
   const btnClassName = useButtonStyle();
 
-  if (slug || link)
+  const _link = link
+    ? link.internal + `${link.onPageLink ? "#" + link.onPageLink : ""}`
+    : undefined;
+
+  if (slug || _link)
     return (
       <Link
         className={clsx(
@@ -32,7 +36,7 @@ const CardLink: React.FunctionComponent<ICardLinkProps> = ({
           },
           className
         )}
-        internal={slug || link?.internal}
+        internal={slug || _link}
       >
         {!asButton && <Arrow />}
         {text ? text : "MEHR INFO"}

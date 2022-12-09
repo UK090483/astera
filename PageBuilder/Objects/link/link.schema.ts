@@ -9,18 +9,18 @@ const linkSchema: ObjectDefinition = {
       title: "Internal Link",
       type: "reference",
 
-      // query: (props) => {
-      //   const locale = props?.locale;
-      //   return `...(internal->{ 'internal': ${config.options?.slug.query({
-      //     locale,
-      //   })}  })`;
-      // },
-
       to: [{ type: "page" }, { type: "person" }],
       options: {
         disableNew: true,
       },
       hidden: ({ parent }: any) => !!parent.href,
+    },
+    {
+      name: "onPageLink",
+      title: "On page Link",
+      description: "must be the exact Title of a Section",
+      type: "string",
+      hidden: ({ parent }: any) => !parent.internal,
     },
     {
       name: "href",

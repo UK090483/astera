@@ -15,6 +15,13 @@ const linkMarkSchema: ObjectDefinition = {
       hidden: ({ parent }: any) => !!parent.href,
     },
     {
+      name: "onPageLink",
+      title: "On page Link",
+      description: "must be the exact Title of a Section",
+      type: "string",
+      hidden: ({ parent }: any) => !parent.internal,
+    },
+    {
       name: "href",
       title: "External Link",
       type: "url",
