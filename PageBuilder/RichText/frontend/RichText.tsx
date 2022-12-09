@@ -1,4 +1,8 @@
-import { PortableText, PortableTextReactComponents } from "@portabletext/react";
+import {
+  PortableText,
+  PortableTextReactComponents,
+  PortableTextListItemComponent,
+} from "@portabletext/react";
 
 import EmbedHTML from "../Plugs/EmbedHTML/frontend/EmbedHTML";
 import ImagePlug from "../Plugs/ImagePlug/frontend/ImagePlug";
@@ -12,10 +16,25 @@ import ListingPlug from "../Plugs/ListingPlug/frontend/ListingPlug";
 import ArrowIcon from "@components/ArrowIcon";
 import { AIcon } from "@components/AIcon";
 import DealsPlug from "../Plugs/Deals/frontend/DealsPlug";
+import { useSection } from "@components/Section/SectionContext";
+import clsx from "clsx";
 
 type RichTextPros = {
   content?: any;
 };
+
+// const contentDotsItem: PortableTextListItemComponent = ({ children }) => {
+//   const { bgColor } = useSection();
+//   return (
+//     <li className="flex ">
+//       <div className="bullet ">
+//         <AIcon className="w-full shrink-0  fill-current" />
+//         <div className="line h-full bg-current w-0.5 "></div>
+//       </div>
+//       <span className="pb-16  w-full">{children}</span>
+//     </li>
+//   );
+// };
 
 const components: Partial<PortableTextReactComponents> = {
   marks: { linkMark: LinkMark },
@@ -39,9 +58,9 @@ const components: Partial<PortableTextReactComponents> = {
     bullet: ({ children }) => <ul className="list-disc">{children}</ul>,
     number: ({ children }) => <ul className="list-decimal">{children}</ul>,
     arrows: ({ children }) => <ul className="list-none">{children}</ul>,
-    connectedDots: ({ children }) => (
-      <ul className="list-none connectedDots">{children}</ul>
-    ),
+    connectedDots: ({ children }) => {
+      return <ul className="list-none connectedDots ">{children}</ul>;
+    },
   },
   listItem: {
     bullet: ({ children }) => <li>{children}</li>,
@@ -52,15 +71,30 @@ const components: Partial<PortableTextReactComponents> = {
         <p className=" ">{children}</p>
       </li>
     ),
-    connectedDots: ({ children }) => (
-      <li className="flex ">
-        <div className="bullet ">
-          <AIcon className="w-full shrink-0  fill-current" />
-          <div className="line h-full bg-current w-0.5 "></div>
-        </div>
-        <span className="pb-16  w-full">{children}</span>
-      </li>
-    ),
+    connectedDots: ({ children }) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const { bgColor } = useSection();
+
+      return (
+        <li className="flex ">
+          <div className="bullet ">
+            <AIcon
+              className={clsx("w-full shrink-0  ", {
+                "fill-secondary": bgColor === "secondary-light",
+                "fill-current": bgColor !== "secondary-light",
+              })}
+            />
+            <div
+              className={clsx("line h-full  w-0.5 ", {
+                "bg-secondary": bgColor === "secondary-light",
+                "bg-current": bgColor !== "secondary-light",
+              })}
+            ></div>
+          </div>
+          <span className="pb-16  w-full">{children}</span>
+        </li>
+      );
+    },
   },
   types: {
     download: Download,
