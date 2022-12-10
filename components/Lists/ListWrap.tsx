@@ -2,6 +2,7 @@ import useButtonStyle from "@components/Button/useButtonStyle";
 import Carousel from "@components/Carousel/CarouselCss";
 
 import clsx from "clsx";
+import { useRouter } from "next/router";
 import useLoadMore from "PageBuilder/Components/Listing/frontend/useLoadMore";
 import * as React from "react";
 
@@ -38,6 +39,12 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
   } = props;
 
   const [_items, setItems] = React.useState(items);
+  const { locale } = useRouter();
+
+  React.useEffect(() => {
+    setItems(items);
+  }, [items, locale]);
+
   const { loadMore } = useLoadMore<T>({
     items: _items,
     setItems,
