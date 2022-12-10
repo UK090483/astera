@@ -3,6 +3,7 @@ import { ImageDefinition } from "PageBuilder/types";
 const defaultImage: ImageDefinition = {
   name: "defaultImage",
   type: "image",
+  title: "Image",
   options: {
     hotspot: true,
   },
@@ -13,9 +14,9 @@ const defaultImage: ImageDefinition = {
       type: "string",
 
       description: "Important for SEO and accessibility.",
-      options: {
-        isHighlighted: true,
-      },
+      // options: {
+      //   isHighlighted: true,
+      // },
       validation: (Rule) => {
         return Rule.custom((field, context) => {
           //@ts-ignore

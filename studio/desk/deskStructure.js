@@ -1,52 +1,43 @@
-import S from "@sanity/desk-tool/structure-builder";
+// import S from "@sanity/desk-tool/structure-builder";
 
-import Iframe from "sanity-plugin-iframe-pane";
-import resolveProductionUrl from "../parts/resolveProductionUrl";
+// import Iframe from "sanity-plugin-iframe-pane";
+// import resolveProductionUrl from "../parts/resolveProductionUrl";
 
-import { AiOutlineSetting } from "react-icons/ai";
+import {AiOutlineSetting} from 'react-icons/ai'
 
-export const getDefaultDocumentNode = (doc) => {
-  if (doc.schemaType !== "page") return S.document().views([S.view.form()]);
-  return S.document().views([
-    S.view.form(),
-    S.view
-      .component(Iframe)
-      .options({
-        url: (doc) => resolveProductionUrl(doc),
-        defaultSize: `mobile`,
-      })
-      .title("Preview"),
-  ]);
-};
+// export const getDefaultDocumentNode = (doc) => {
+//   if (doc.schemaType !== "page") return S.document().views([S.view.form()]);
+//   return S.document().views([
+//     S.view.form(),
+//     S.view
+//       .component(Iframe)
+//       .options({
+//         url: (doc) => resolveProductionUrl(doc),
+//         defaultSize: `mobile`,
+//       })
+//       .title("Preview"),
+//   ]);
+// };
 
-export default () =>
+export default (S, context) =>
   S.list()
-    .title("Base")
+    .title('Base')
     .items([
       S.listItem()
-        .title("Settings")
+        .title('Settings')
         .icon(AiOutlineSetting)
         .child(
           S.list()
-            .id("settings")
-            .title("Settings")
+            .id('settings')
+            .title('Settings')
             .items([
-              S.documentListItem()
-                .schemaType("baseConfig")
-                .title("Base Settings")
-                .id("baseConfig"),
-              S.documentListItem()
-                .schemaType("seoConfig")
-                .title("Seo")
-                .id("seoConfig"),
-              S.documentListItem()
-                .schemaType("menuConfig")
-                .title("Navigation")
-                .id("menuConfig"),
+              S.documentListItem().schemaType('baseConfig').title('Base Settings').id('baseConfig'),
+              S.documentListItem().schemaType('menuConfig').title('Navigation').id('menuConfig'),
+              S.documentListItem().schemaType('seoConfig').title('Seo').id('seoConfig'),
             ])
         ),
 
-      S.listItem().title("Page").child(S.documentTypeList("page")),
-      S.listItem().title("News").child(S.documentTypeList("news")),
-      S.listItem().title("Person").child(S.documentTypeList("person")),
-    ]);
+      S.listItem().title('Page').child(S.documentTypeList('page')),
+      S.listItem().title('News').child(S.documentTypeList('news')),
+      S.listItem().title('Person').child(S.documentTypeList('person')),
+    ])

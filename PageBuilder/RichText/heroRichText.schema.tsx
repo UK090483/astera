@@ -3,7 +3,7 @@ import React from "react";
 const headerRichText: ArrayDefinition = {
   name: "headerRichText",
   type: "array",
-
+  title: "Rich Text",
   of: [
     {
       type: "block",
