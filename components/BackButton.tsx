@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useRouter } from "next/router";
 import * as React from "react";
 import ArrowIcon from "./ArrowIcon";
@@ -6,8 +7,9 @@ import Link from "./Link";
 export const BackButton: React.FC<{
   internal?: string;
   onPageLink?: string;
+  direction?: "left" | "right";
 }> = (props) => {
-  const { internal, onPageLink } = props;
+  const { internal, onPageLink, children, direction = "left" } = props;
 
   const { locale } = useRouter();
   const label = locale === "en" ? "ZURÜCK" : "BACK";
@@ -17,10 +19,18 @@ export const BackButton: React.FC<{
   return (
     <Link
       internal={_internal}
-      className=" text-primary font-bold typo-color mb-8 flex items-center"
+      className={clsx(
+        " text-primary font-bold typo-color mb-8 flex gap-3 items-center",
+        { " flex-row-reverse": direction === "right" }
+      )}
     >
-      <ArrowIcon className=" fill-primary  rotate-180 w-6" />
-      {label}
+      <ArrowIcon
+        className={clsx(" fill-primary   w-6", {
+          " flex-row-reverse rotate-180": direction === "left",
+          " flex-row-reverse": direction === "right",
+        })}
+      />
+      {children ? children : label}
     </Link>
   );
 };

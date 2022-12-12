@@ -55,8 +55,10 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   list: {
-    bullet: ({ children }) => <ul className="list-disc">{children}</ul>,
-    number: ({ children }) => <ul className="list-decimal">{children}</ul>,
+    bullet: ({ children }) => <ul className="list-disc ml-4 ">{children}</ul>,
+    number: ({ children }) => (
+      <ul className="list-decimal list-inside">{children}</ul>
+    ),
     arrows: ({ children }) => <ul className="list-none">{children}</ul>,
     connectedDots: ({ children }) => {
       return <ul className="list-none connectedDots ">{children}</ul>;
@@ -67,8 +69,8 @@ const components: Partial<PortableTextReactComponents> = {
     number: ({ children }) => <li>{children}</li>,
     arrows: ({ children }) => (
       <li className="flex mb-4">
-        <ArrowIcon className=" fill-secondary shrink-0 mt-[0.35em] w-4 mr-4" />
-        <p className=" ">{children}</p>
+        <ArrowIcon className=" fill-secondary shrink-0  w-4 mr-4" />
+        <>{children}</>
       </li>
     ),
     connectedDots: ({ children }) => {
@@ -76,7 +78,7 @@ const components: Partial<PortableTextReactComponents> = {
       const { bgColor } = useSection();
 
       return (
-        <li className="flex ">
+        <li className="flex flex-nowrap gap-4">
           <div className="bullet ">
             <AIcon
               className={clsx("w-full shrink-0  ", {
@@ -91,7 +93,7 @@ const components: Partial<PortableTextReactComponents> = {
               })}
             ></div>
           </div>
-          <span className="pb-16  w-full">{children}</span>
+          <div className=" min-w-[100px] pb-16 break-words">{children}</div>
         </li>
       );
     },

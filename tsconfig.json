@@ -53,7 +53,8 @@
     "**/*.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js", "PageBuilder/RichText/defaultRichText.schema.jsx",
+    "**/*.js", 
+    
   ],
   "exclude": [
     

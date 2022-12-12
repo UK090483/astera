@@ -83,8 +83,6 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
     );
   }
   if (contentType === "news") {
-    console.log(props);
-
     return (
       <Section
         id={name}

@@ -4,6 +4,7 @@ import { CarouselContextProvider } from "./CarouselContext";
 import CarouselItemWrap from "./CarouselItemWrap";
 import Dots from "./Dots";
 import { useCarouselProps } from "./useCarousel";
+import useCssCarousel from "./useCssCarousel";
 
 interface ICarouselProps extends Omit<useCarouselProps, "items"> {
   children: React.ReactElement[];
@@ -14,9 +15,15 @@ function Carousel(props: ICarouselProps) {
 
   const ref = React.useRef<HTMLUListElement>(null);
 
+  const { handleScroll } = useCssCarousel({ ref });
+
   return (
     <CarouselContextProvider items={children} {...rest}>
-      <ul ref={ref} className="w-full flex overflow-scroll pl-side py-4">
+      <ul
+        onScroll={handleScroll}
+        ref={ref}
+        className="w-full flex overflow-scroll pl-side py-4"
+      >
         <CarouselItemWrap className="flex items-center gap-12">
           {({ activeItemIndex }) => {
             return children.map((i, index) => {

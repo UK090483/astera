@@ -16,6 +16,7 @@ import fetchStaticProps from "PageBuilder/lib/next/fetchStaticProps";
 
 import { pageQuery } from "PageBuilder/ContentTypes/Page/page.query";
 import { PersonSection } from "PageBuilder/Components/Person/frontend/PersonSection";
+import PersonNavigation from "PageBuilder/Components/Person/frontend/PersonNavigation";
 import { personQuery } from "PageBuilder/ContentTypes/Person/person.query";
 import { NewsSection } from "PageBuilder/Components/News/frontend/NewsSection";
 import { newsQuery } from "PageBuilder/ContentTypes/news/news.query";
@@ -41,6 +42,9 @@ const Page = () => {
           },
           personSection: {
             component: PersonSection,
+          },
+          personNavigation: {
+            component: PersonNavigation,
           },
           newsSection: {
             component: NewsSection,

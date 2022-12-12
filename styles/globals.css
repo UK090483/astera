@@ -82,15 +82,19 @@
     @apply text-primary;
   }
 
+  .connectedDots li {
+    @apply break-words;
+  }
+
   .text-right .connectedDots li {
     @apply flex-row-reverse;
   }
   .text-right .connectedDots .bullet {
-    @apply ml-12 mr-0;
+    @apply mr-0;
   }
 
   .connectedDots .bullet {
-    @apply w-8 shrink-0 flex flex-col  items-center mr-12;
+    @apply w-8 shrink-0 flex flex-col  items-center;
   }
 
   .connectedDots .line {
