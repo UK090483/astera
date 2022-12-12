@@ -16,7 +16,7 @@ const LinkMark: PortableTextMarkComponent<linkMarkResult> = (props) => {
 
   return (
     <Link
-      className={value?.asButton ? className : ""}
+      className={value?.asButton ? className : " font-bold"}
       {...value}
       internal={_internal}
     >

@@ -10,14 +10,10 @@ export interface IPersonSectionProps {}
 export function PersonNavigation(props: IPersonSectionProps) {
   const { data } = usePageBuilderContext();
 
-  console.log(data);
-
   if (data?._type !== "person") return null;
 
   const prev = data.prevItem;
   const next = data.nextItem;
-
-  const listingLink = data?.personListingLink;
 
   return (
     <Section topSpace="none" width="l" className="flex w-full justify-between">

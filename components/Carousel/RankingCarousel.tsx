@@ -110,7 +110,7 @@ const Dot: React.FC<{
           >
             {text && (
               <>
-                <span className="">{text?.slice(0, 2)}</span>
+                <span className=" mb-0.5">{text?.slice(0, 2)}</span>
                 <span>{text?.slice(2, 4)}</span>
               </>
             )}
