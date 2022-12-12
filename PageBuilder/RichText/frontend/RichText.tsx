@@ -55,8 +55,10 @@ const components: Partial<PortableTextReactComponents> = {
     },
   },
   list: {
-    bullet: ({ children }) => <ul className="list-disc">{children}</ul>,
-    number: ({ children }) => <ul className="list-decimal">{children}</ul>,
+    bullet: ({ children }) => <ul className="list-disc ml-4 ">{children}</ul>,
+    number: ({ children }) => (
+      <ul className="list-decimal list-inside">{children}</ul>
+    ),
     arrows: ({ children }) => <ul className="list-none">{children}</ul>,
     connectedDots: ({ children }) => {
       return <ul className="list-none connectedDots ">{children}</ul>;
@@ -67,8 +69,8 @@ const components: Partial<PortableTextReactComponents> = {
     number: ({ children }) => <li>{children}</li>,
     arrows: ({ children }) => (
       <li className="flex mb-4">
-        <ArrowIcon className=" fill-secondary shrink-0 mt-[0.35em] w-4 mr-4" />
-        <p className=" ">{children}</p>
+        <ArrowIcon className=" fill-secondary shrink-0  w-4 mr-4" />
+        <>{children}</>
       </li>
     ),
     connectedDots: ({ children }) => {

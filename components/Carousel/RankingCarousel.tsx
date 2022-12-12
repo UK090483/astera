@@ -18,8 +18,8 @@ function RankingCarousel(props: ICarouselProps) {
 
   return (
     <div className="relative">
-      <div className=" z-50 min-h-[10%] w-full absolute top-0 bg-gradient-to-b from-white  pointer-events-none" />
-      <div className="z-50 min-h-[30%] w-full absolute bottom-0 bg-gradient-to-b from-transparent to-white pointer-events-none" />
+      {/* <div className="z-50 min-h-[10%] w-full absolute top-0 bg-gradient-to-b from-white  pointer-events-none" />
+      <div className="z-50 min-h-[30%] w-full absolute bottom-0 bg-gradient-to-b from-transparent to-white pointer-events-none" /> */}
 
       <div className="w-full flex flex-col px-sides pb-12 max-h-[800px] md:max-h-[500px] overflow-hidden  ">
         <div
@@ -78,13 +78,12 @@ const Dot: React.FC<{
   isLast: boolean;
   isFirst: boolean;
   text?: string;
-}> = ({ children, active, onClick, isLast, text }) => {
-  const preparedText = text?.slice(0, 2);
-
+}> = ({ active, onClick, isLast, text, isFirst }) => {
   return (
     <div
       className={clsx(
-        "flex justify-center items-center flex-shrink-0  w-[200px] relative"
+        "flex justify-center items-start flex-shrink-0  w-[200px] relative ",
+        { "opacity-100 ": active, "opacity-40": !active }
       )}
     >
       <div
@@ -105,7 +104,9 @@ const Dot: React.FC<{
               e.stopPropagation();
               onClick();
             }}
-            className={`w-24 h-24 mx-0.5 flex leading-7 flex-col items-center text-4xl justify-center bg-primary rounded-full  transition-colors text-white`}
+            className={clsx(
+              `w-24 h-24 mx-0.5 flex leading-7 flex-col items-center text-4xl justify-center bg-primary rounded-full  transition-colors text-white`
+            )}
           >
             {text && (
               <>
@@ -124,9 +125,16 @@ const Dot: React.FC<{
         )}
       ></div>
 
+      {!isFirst && (
+        <div
+          style={{ borderWidth: 1, height: "50%" }}
+          className={clsx("-z-10 absolute  top-0 left-1/2 border-primary")}
+        ></div>
+      )}
+
       {!isLast && (
         <div
-          style={{ borderWidth: 1, height: "100%" }}
+          style={{ borderWidth: 1, height: "50%" }}
           className={clsx("-z-10 absolute  top-1/2 left-1/2 border-primary")}
         ></div>
       )}

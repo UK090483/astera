@@ -83,7 +83,7 @@
   }
 
   .connectedDots li {
-    @apply break-words border-red border-2;
+    @apply break-words;
   }
 
   .text-right .connectedDots li {
