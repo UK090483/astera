@@ -69,7 +69,7 @@ const Accordion: React.FC<{
     <div
       className={clsx("w-full block text-secondary ", { "mt-12": !isFirst })}
     >
-      <h2 onClick={toggle} className="text-5xl flex mb-6  font-normal">
+      <h2 onClick={toggle} className="text-5xl flex mb-6  font-thin">
         {title}
         <button
           id={title + "_label"}
@@ -105,11 +105,11 @@ const OpenIndicator = (props: { className?: string }) => (
   <svg
     width="101"
     height="47"
-    viewBox="0 0 101 47"
+    viewBox="0 0 35 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={clsx("fill-current w-9 ", props.className)}
+    className={clsx("fill-primary w-9 ", props.className)}
   >
-    <path d="M50.5 0L94.2343 35.25H6.76572L50.5 0Z" />
+    <path d="M17.52 0L0 20H35L17.52 0Z" />
   </svg>
 );
