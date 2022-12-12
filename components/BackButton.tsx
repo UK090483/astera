@@ -20,16 +20,19 @@ export const BackButton: React.FC<{
     <Link
       internal={_internal}
       className={clsx(
+        "group",
         " text-primary font-bold typo-color mb-8 flex gap-3 items-center",
         { " flex-row-reverse": direction === "right" }
       )}
     >
-      <ArrowIcon
-        className={clsx(" fill-primary   w-6", {
-          " flex-row-reverse rotate-180": direction === "left",
-          " flex-row-reverse": direction === "right",
-        })}
-      />
+      <div className="group-hover:animate-bounceSide">
+        <ArrowIcon
+          className={clsx(" fill-primary  w-6", {
+            " flex-row-reverse rotate-180": direction === "left",
+            " flex-row-reverse": direction === "right",
+          })}
+        />
+      </div>
       {children ? children : label}
     </Link>
   );

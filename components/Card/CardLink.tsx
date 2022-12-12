@@ -4,6 +4,7 @@ import { useCardContext } from "./CardContext";
 import Link from "components/Link";
 import useButtonStyle from "@components/Button/useButtonStyle";
 import clsx from "clsx";
+import ArrowIcon from "@components/ArrowIcon";
 
 interface ICardLinkProps {
   asButton?: boolean;
@@ -28,6 +29,7 @@ const CardLink: React.FunctionComponent<ICardLinkProps> = ({
     return (
       <Link
         className={clsx(
+          "group",
           {
             [btnClassName]: asButton,
             "w-fit mx-auto ": asButton,
@@ -38,7 +40,9 @@ const CardLink: React.FunctionComponent<ICardLinkProps> = ({
         )}
         internal={slug || _link}
       >
-        {!asButton && <Arrow />}
+        {!asButton && (
+          <ArrowIcon className="w-4 fill-current mr-2  group-hover:animate-bounceSide " />
+        )}
         {text ? text : "MEHR INFO"}
       </Link>
     );

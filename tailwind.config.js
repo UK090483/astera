@@ -52,6 +52,7 @@ module.exports = {
         slideInRight: "slideInRight 0.5s ease-in forwards",
         marquee: "marquee 25s linear infinite",
         "marquee-reverse": "marquee reverse 25s linear infinite",
+        bounceSide: "bounceSide 0.75s infinite",
       },
       keyframes: {
         marquee: {
@@ -86,6 +87,10 @@ module.exports = {
         slideInRight: {
           "0%": { transform: "translateX(100%)", opacity: 0 },
           "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+        bounceSide: {
+          "0%,100%": { transform: "translateX(0)" },
+          "50%": { transform: "translateX(25%)" },
         },
       },
     },
