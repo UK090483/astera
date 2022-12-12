@@ -34,8 +34,8 @@ export function NewsCard(props: INewsCardProps) {
           />
           <Card.Category white={isMonochrome} />
         </div>
-
         <Card.Description
+          isMonoChrome={variant === "monochrome"}
           widthDate
           className={clsx("line-clamp-3  text-base", {
             "text-white": isMonochrome,

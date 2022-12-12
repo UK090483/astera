@@ -19,20 +19,20 @@ export function NewsSection(props: IPersonSectionProps) {
   const listingLink = data?.newsListingLink;
 
   return (
-    <Section width="l" className="">
+    <Section width="l" className="" bottomSpace="none">
       <BackButton
         internal={listingLink?.slug}
         onPageLink={listingLink?.onPageLink}
       />
 
       <div className="flex">
-        <AIcon />
+        <AIcon className=" w-12 flex-shrink-0 " />
         <h1 className=" ml-6 typo-body  text-2xl text-secondary-dark  ">
           {title}
         </h1>
       </div>
 
-      <p className="mt-8 text-secondary font-bold"> {date}</p>
+      <p className="mt-8 text-secondary text-2xl font-bold"> {date}</p>
     </Section>
   );
 }

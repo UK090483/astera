@@ -26,7 +26,7 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
   return (
     <>
       <div className="flex overflow-hidden -translate-y-0.5">
-        <div className="garamondFont text-4xl flex justify-center items-center px-4 text-white bg-secondary-dark">
+        <div className="garamondFont text-4xl hidden  md:flex justify-center items-center px-4 text-white bg-secondary-dark">
           NEWS
         </div>
         <div>
@@ -38,13 +38,13 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
               }}
               className=" border-b-secondary-dark"
             >
-              <div className="flex w-fit ">
+              <div className="flex w-fit">
                 {news
                   .filter((i) => !!i.title)
                   .map((item) => (
                     <Link
                       internal={item.slug}
-                      className="text-secondary-dark whitespace-nowrap uppercase   tracking-wider "
+                      className="text-secondary-dark whitespace-nowrap uppercase tracking-wider "
                       key={item._id}
                     >
                       {item.title}

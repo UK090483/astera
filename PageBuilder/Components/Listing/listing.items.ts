@@ -123,7 +123,6 @@ export const items: listingBuilderItem[] = [
   },
   {
     name: "page",
-
     title: "Page",
     items: [{ type: "reference", to: [{ type: "page" }] }],
   },
