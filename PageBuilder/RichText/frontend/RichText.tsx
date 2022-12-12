@@ -76,7 +76,7 @@ const components: Partial<PortableTextReactComponents> = {
       const { bgColor } = useSection();
 
       return (
-        <li className="flex ">
+        <li className="flex flex-nowrap gap-4">
           <div className="bullet ">
             <AIcon
               className={clsx("w-full shrink-0  ", {
@@ -91,7 +91,7 @@ const components: Partial<PortableTextReactComponents> = {
               })}
             ></div>
           </div>
-          <span className="pb-16  w-full">{children}</span>
+          <div className=" min-w-[100px] pb-16 break-words">{children}</div>
         </li>
       );
     },
