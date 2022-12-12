@@ -1,6 +1,7 @@
 import { uniqueId } from "lodash";
 import { SchemaItem } from "PageBuilder/types";
 import { getEditorField } from "../Base/Editor/editor.field";
+
 import {
   getContentTypeBaseFields,
   getSlugField,
@@ -24,7 +25,12 @@ const pageSchema: SchemaItem = {
   ],
   fields: [
     getEditorField(
-      [{ type: "hero" }, { type: "section" }, { type: "personSection" }],
+      [
+        { type: "hero" },
+        { type: "section" },
+        { type: "personSection" },
+        { type: "personNavigation" },
+      ],
       [
         {
           _key: uniqueId(),
@@ -38,7 +44,11 @@ const pageSchema: SchemaItem = {
         },
       ]
     ),
-    ...getContentTypeBaseFields({ group: "base" }),
+    ...getContentTypeBaseFields({ group: "base" }).map((field) =>
+      field.name !== "description"
+        ? field
+        : { ...field, description: "", validation: undefined }
+    ),
     getSubTitleField({ title: "Job description", group: "content" }),
     {
       type: "array",

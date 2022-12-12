@@ -117,7 +117,7 @@ export const items: listingBuilderItem[] = [
       {
         title: "All",
         value: "all",
-        queryFilter: { filter: `defined(_id)` },
+        queryFilter: { filter: `defined(_id)`, order: "orderRank" },
       },
     ],
   },

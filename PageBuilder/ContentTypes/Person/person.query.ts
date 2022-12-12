@@ -26,7 +26,13 @@ accomplishments,
   }
 }),
 ${seoQuery(locale)}
-${footerQuery(locale)}
+${footerQuery(locale)},
+'prevItem': *[_type == 'person' && ^.orderRank > orderRank ] | order(orderRank desc) [0] {title,'slug' :${SLUG_PROJECTION(
+  locale
+)}},
+'nextItem': *[_type == 'person' && ^.orderRank < orderRank ] | order(orderRank asc) [0] {title,'slug' :${SLUG_PROJECTION(
+  locale
+)}}
 `;
 
 export type PersonResult = BaseContentTypeResult &
@@ -35,6 +41,8 @@ export type PersonResult = BaseContentTypeResult &
     _type: "person";
     accomplishments: testimonialItem[];
     personListingLink?: { slug?: string; onPageLink?: string };
+    prevItem?: { slug?: string; title?: string };
+    nextItem?: { slug?: string; title?: string };
     body: EditorResult;
     slug: string;
   } & footerResult;
