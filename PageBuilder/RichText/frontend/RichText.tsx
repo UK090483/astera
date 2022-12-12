@@ -93,7 +93,9 @@ const components: Partial<PortableTextReactComponents> = {
               })}
             ></div>
           </div>
-          <div className=" min-w-[100px] pb-16 break-words">{children}</div>
+          <div className="connectedDots-content min-w-[100px]  break-words">
+            {children}
+          </div>
         </li>
       );
     },

@@ -82,6 +82,10 @@
     @apply text-primary;
   }
 
+  .connectedDots li:not(:last-child) .connectedDots-content {
+    @apply pb-16;
+  }
+
   .connectedDots li {
     @apply break-words;
   }
