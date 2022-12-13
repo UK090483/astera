@@ -47,7 +47,7 @@ describe("<SanityImage />", () => {
     expect(image().src).toMatch(/auto=format/);
   });
   it("should add default quality", () => {
-    expect(image().src).toMatch(/q=75/);
+    expect(image().src).toMatch(/q=100/);
   });
   it("should add custom quality", () => {
     expect(image({ props: { quality: 50 } }).src).toMatch(/q=50/);

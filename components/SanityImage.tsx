@@ -9,7 +9,7 @@ export interface ISanityImageProps extends Omit<ImageProps, "src" | "alt"> {
 
 const loader: ImageLoader = (props) => {
   const { src, width, quality } = props;
-  const res = `${src}&w=${width}${`&q=${quality ? quality : "75"}`}`;
+  const res = `${src}&w=${width}${`&q=${quality ? quality : "100"}`}`;
   return res;
 };
 
