@@ -22,7 +22,11 @@ const Nav: React.FC = () => {
       <nav className={clsx(" text-white transition-colors w-full ")}>
         <div className="container flex justify-between items-center w-full mx-auto px-sides">
           <Link className="pt-10 text-white" aria-label="Home" internal="/">
-            <Logo />
+            <Logo
+              className={clsx("z-50", {
+                "stroke-primary fill-primary": open,
+              })}
+            />
           </Link>
 
           <div className=" h-full items-center justify-center ">
@@ -54,11 +58,14 @@ const Nav: React.FC = () => {
               onClick={() => setOpen((s) => !s)}
               aria-label={"Open the menu"}
               aria-expanded={open}
-              className="menu:hidden mr-2 pt-10"
+              className="menu:hidden mr-2 pt-10 z-50"
             >
               <Svg
-                className="w-[30px] h-[30px] fill-current "
-                icon="hamburger"
+                className={clsx(
+                  "w-[30px] h-[30px] stroke-current fill-current",
+                  { "stroke-primary fill-primary": open }
+                )}
+                icon={open ? "erase" : "hamburger"}
               />
             </button>
           )}
@@ -72,14 +79,7 @@ const Nav: React.FC = () => {
           closeMenu={() => {
             setOpen(false);
           }}
-        >
-          <LangSwitch
-            LangSwitcherResult={langSwitchData}
-            onClick={() => {
-              setOpen(false);
-            }}
-          />
-        </NavigationMobile>
+        ></NavigationMobile>
       )}
     </>
   );

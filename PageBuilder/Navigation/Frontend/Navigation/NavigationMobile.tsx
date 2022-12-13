@@ -109,7 +109,7 @@ const NavigationMobile: React.FC<NavigationMobileProps> = ({
                     className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center bg-white animate-fadeInFast"
                   >
                     <button
-                      className="absolute transform rotate-180 top-32 right-6 "
+                      className="absolute transform rotate-180 top-32 "
                       onClick={handleBackClick}
                     >
                       <Svg icon="chevronRight" />
