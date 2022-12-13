@@ -85,12 +85,12 @@ const Footer: React.FC = () => {
       </div>
       <div className="bg-secondary-extraDark">
         <div className="flex flex-col md:flex-row-reverse items-center justify-between container max-w-6xl mx-auto px-sides  py-2">
-          {data?.menu.mainNav && (
+          {data?.menu.footerNav && (
             <HeaderNavigation
               NavigationItemBase={(props) => (
                 <NavigationItemBase
                   {...props}
-                  className="text-sm text-white opacity-25"
+                  className="text-sm text-white opacity-40"
                 />
               )}
               className="flex"
