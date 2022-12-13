@@ -11,16 +11,16 @@ interface ICarouselProps {
 
 function RankingCarousel(props: ICarouselProps) {
   const { rankingItems } = props;
-
   const [activeItemIndex, setActiveItemIndex] = React.useState(0);
 
-  if (!rankingItems) return null;
+  const handleItemSize = React.useCallback((size) => {
+    console.log(size);
+  }, []);
+
+  if (!rankingItems || rankingItems?.length < 1) return null;
 
   return (
-    <div className="relative">
-      {/* <div className="z-50 min-h-[10%] w-full absolute top-0 bg-gradient-to-b from-white  pointer-events-none" />
-      <div className="z-50 min-h-[30%] w-full absolute bottom-0 bg-gradient-to-b from-transparent to-white pointer-events-none" /> */}
-
+    <div className="relative ">
       <div className="w-full flex flex-col px-sides pb-12 max-h-[800px] md:max-h-[500px] overflow-hidden  ">
         <div
           style={{
@@ -30,13 +30,13 @@ function RankingCarousel(props: ICarouselProps) {
         >
           {rankingItems.map((i, index) => {
             const dotActive = activeItemIndex === index;
+
             return (
-              <div
-                data-index={index}
+              <RankingItem
                 key={i.key}
-                className={clsx(
-                  "flex justify-center items-center flex-col md:flex-row "
-                )}
+                content={i.content}
+                active={dotActive}
+                handleItemSize={handleItemSize}
               >
                 <Dot
                   isLast={index === rankingItems.length - 1}
@@ -45,23 +45,7 @@ function RankingCarousel(props: ICarouselProps) {
                   onClick={() => setActiveItemIndex(index)}
                   text={i.title}
                 />
-
-                <div className="h-fit md:h-0">
-                  <div
-                    className={clsx(
-                      " transition-all max-h-0 overflow-hidden duration-700  md:-translate-y-1/2",
-                      {
-                        "opacity-0": !dotActive,
-                        "max-h-[400px] opacity-100": dotActive,
-                      }
-                    )}
-                  >
-                    <div className={clsx("p-8 bg-primary typo-bright")}>
-                      <RichText content={i.content} />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </RankingItem>
             );
           })}
         </div>
@@ -71,6 +55,52 @@ function RankingCarousel(props: ICarouselProps) {
 }
 
 export default RankingCarousel;
+
+const RankingItem: React.FC<{
+  active: boolean;
+  content: any;
+  handleItemSize: (size: number) => void;
+}> = ({ active, content, children, handleItemSize }) => {
+  const ref = React.useRef<HTMLDivElement>(null);
+
+  const [maxHeight, setMaxHeight] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!active) {
+      setMaxHeight(0);
+      return;
+    }
+    if (!ref.current) return;
+    const height = ref.current.clientHeight;
+    setMaxHeight(height);
+    handleItemSize(height);
+  }, [active, handleItemSize]);
+
+  return (
+    <div
+      className={clsx("flex justify-center items-center flex-col md:flex-row ")}
+    >
+      {children}
+
+      <div className="h-fit md:h-0">
+        <div
+          style={{ maxHeight }}
+          className={clsx(
+            " transition-all max-h-0 overflow-hidden duration-700  md:-translate-y-1/2",
+            {
+              "opacity-0": !active,
+              " opacity-100": active,
+            }
+          )}
+        >
+          <div ref={ref} className={clsx("p-8 bg-primary typo-bright")}>
+            <RichText content={content} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Dot: React.FC<{
   active: boolean;

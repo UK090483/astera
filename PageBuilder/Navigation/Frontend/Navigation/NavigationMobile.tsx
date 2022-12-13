@@ -65,7 +65,7 @@ const NavigationMobile: React.FC<NavigationMobileProps> = ({
   };
   useLockBodyScroll(render);
 
-  const ref = useFocusTrap(render);
+  // const ref = useFocusTrap(render);
 
   useKeyPress(
     {
@@ -81,7 +81,7 @@ const NavigationMobile: React.FC<NavigationMobileProps> = ({
       {render && (
         <Portal>
           <div
-            ref={ref}
+            // ref={ref}
             className={`flex flex-col items-center justify-center h-screen bg-white  fixed inset-0  z-10  transition-all transform duration-300 ${
               animation
                 ? " translate-y-0 opacity-100 "

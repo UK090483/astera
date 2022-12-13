@@ -11,5 +11,5 @@ export const CardSubTitle: React.FunctionComponent<ICardSubTitleProps> = ({
 }) => {
   const { subTitle } = useCardContext();
 
-  return <p className={clsx(className, "text-white p-sides ")}>{subTitle}</p>;
+  return <p className={clsx(className, " p-sides ")}>{subTitle}</p>;
 };

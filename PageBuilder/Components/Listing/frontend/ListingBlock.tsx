@@ -18,7 +18,14 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
 
   if (contentType === "person") {
     return (
-      <Section id={name} width="l" noProse noPadding {...rest}>
+      <Section
+        id={name}
+        width="l"
+        noProse
+        noPadding
+        {...rest}
+        bg={backgroundColor}
+      >
         {title && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
             <RichText content={title} />
