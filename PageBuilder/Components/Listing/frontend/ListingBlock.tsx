@@ -118,7 +118,6 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         id={name}
         width="l"
         noProse
-        noPadding
         {...rest}
         bg={backgroundColor}
         {...section}
@@ -138,7 +137,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
             {items.map((item) => (
               <div
                 key={item.key}
-                className=" typo-invert typo-spacings text-secondary-medium  px-12 "
+                className=" typo-bright typo-spacings   px-12 "
               >
                 <RichText content={item.content} />
               </div>

@@ -30,6 +30,22 @@ const headerRichText: ArrayDefinition = {
             ),
           },
         },
+        {
+          title: "text big",
+          value: "textBig",
+          //@ts-ignore
+          blockEditor: {
+            render: (props: any) => (
+              <span
+                style={{
+                  fontSize: "1.2em",
+                }}
+              >
+                {props.children}
+              </span>
+            ),
+          },
+        },
       ],
 
       marks: {

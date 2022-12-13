@@ -24,59 +24,57 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
 
   if (!news) return null;
   return (
-    <>
-      <div className="flex overflow-hidden -translate-y-0.5">
-        <div className="garamondFont text-4xl hidden  md:flex justify-center items-center px-4 text-white bg-secondary-dark">
-          NEWS
-        </div>
-        <div>
-          <div ref={ref} className="overflow-hidden">
-            <div
-              style={{
-                transform: `translateX(${percent * -15}%)`,
-                borderBottomWidth: 1,
-              }}
-              className=" border-b-secondary-dark"
-            >
-              <div className="flex w-fit">
-                {news
-                  .filter((i) => !!i.title)
-                  .map((item) => (
-                    <Link
-                      internal={item.slug}
-                      className="text-secondary-dark whitespace-nowrap uppercase tracking-wider "
-                      key={item._id}
-                    >
-                      {item.title}
-                      <span className="px-5">{"|"}</span>
-                    </Link>
-                  ))}
-              </div>
-            </div>
-            <div
-              style={{
-                transform: `translateX(${-20 + percent * 15}%)`,
-                borderBottomWidth: 1,
-              }}
-              className=" border-b-secondary-dark"
-            >
+    <div className="flex overflow-hidden -translate-y-0.5">
+      <div className="garamondFont text-5xl hidden  md:flex justify-center items-center px-4 text-white bg-secondary-dark">
+        News
+      </div>
+      <div>
+        <div ref={ref} className="overflow-hidden">
+          <div
+            style={{
+              transform: `translateX(${percent * -15}%)`,
+              borderBottomWidth: 1,
+            }}
+            className=" border-b-secondary-dark"
+          >
+            <div className="flex w-fit text-2xl font-light ">
               {news
                 .filter((i) => !!i.title)
                 .map((item) => (
                   <Link
                     internal={item.slug}
-                    className="text-secondary-dark inline uppercase  shrink-0 tracking-wider "
+                    className="text-secondary-dark whitespace-nowrap uppercase tracking-wider "
                     key={item._id}
                   >
                     {item.title}
-                    <span className="px-5">{"|"}</span>
+                    <span className="px-3">{"|"}</span>
                   </Link>
                 ))}
             </div>
           </div>
+          <div
+            style={{
+              transform: `translateX(${-20 + percent * 15}%)`,
+              borderBottomWidth: 1,
+            }}
+            className=" border-b-secondary-dark text-2xl font-light"
+          >
+            {news
+              .filter((i) => !!i.title)
+              .map((item) => (
+                <Link
+                  internal={item.slug}
+                  className="text-secondary-dark inline uppercase  shrink-0 tracking-wider "
+                  key={item._id}
+                >
+                  {item.title}
+                  <span className="px-3">{"|"}</span>
+                </Link>
+              ))}
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

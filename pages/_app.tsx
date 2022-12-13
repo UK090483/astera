@@ -21,7 +21,7 @@ const ebGaramond = EB_Garamond({
 });
 const lexend = Lexend({
   variable: "--lexend-font",
-  weight: ["200", "700"],
+  weight: ["200", "300", "700"],
   display: "swap",
   preload: true,
   style: "normal",

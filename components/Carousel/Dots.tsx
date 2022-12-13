@@ -20,8 +20,8 @@ const Dots: React.FC<DotsProps> = (props) => {
         <div
           onClick={() => set(index)}
           key={index}
-          className={`w-3 h-3 mx-0.5 rounded-full border-[0.5px] transition-colors border-current ${
-            activeItemIndex === index ? "bg-current" : " bg-transparent"
+          className={`w-3 h-3 mx-0.5 rounded-full border-[0.5px] transition-colors border-current bg-white ${
+            activeItemIndex === index ? "" : " opacity-40 "
           }`}
         />
       ))}

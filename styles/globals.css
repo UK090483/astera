@@ -52,7 +52,7 @@
   }
 
   .typo-spacings :where(h1, h2, h3, h4, p, a, ul, ol, blockquote) {
-    @apply mb-[1.2em] last:mb-0;
+    @apply mb-[0.8em] last:mb-0;
   }
 
   .typo-weights :where(h1) {

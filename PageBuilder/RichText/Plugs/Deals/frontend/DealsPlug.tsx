@@ -1,7 +1,7 @@
 import { PortableTextComponent } from "@portabletext/react";
 import React, { ReactElement, useMemo } from "react";
 import { dealsPlugResult } from "../deals.query";
-import Card from "@components/Card/Card";
+
 import clsx from "clsx";
 import useAccordion from "@hooks/useAccordion/useAccordion";
 import { NewsCard } from "PageBuilder/ContentTypes/news/frontend/NewsCard";
@@ -69,17 +69,19 @@ const Accordion: React.FC<{
     <div
       className={clsx("w-full block text-secondary ", { "mt-12": !isFirst })}
     >
-      <h2 onClick={toggle} className="text-5xl flex mb-6  font-thin">
+      <h2 onClick={toggle} className="text-5xl flex mb-6 font-thin">
         {title}
         <button
           id={title + "_label"}
           type="button"
           aria-expanded={isOpen}
           aria-controls={title}
-          className="w-full h-11 ml-4 border-b-2 border-secondary flex justify-end"
+          className="w-full h-11 ml-4 border-b-2 border-secondary flex justify-end -translate-y-0.5 "
         >
           <OpenIndicator
-            className={clsx({ "rotate-180 transition-transform": isOpen })}
+            className={clsx("translate-y-1", {
+              "rotate-180 transition-transform ": isOpen,
+            })}
           />
         </button>
       </h2>
@@ -108,7 +110,7 @@ const OpenIndicator = (props: { className?: string }) => (
     viewBox="0 0 35 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className={clsx("fill-primary w-9 ", props.className)}
+    className={clsx("fill-primary w-8 ", props.className)}
   >
     <path d="M17.52 0L0 20H35L17.52 0Z" />
   </svg>
