@@ -5,6 +5,7 @@ import {
 } from "../../lib/listingBuilder/buildSchema";
 import { ObjectDefinition, ArrayOfType } from "../../types";
 import { addComponentStyle } from "../componentStyle";
+import sectionTitle from "../sectionTitle";
 import { items } from "./listing.items";
 
 const listingSchema: ObjectDefinition = {
@@ -14,7 +15,8 @@ const listingSchema: ObjectDefinition = {
   groups: [{ name: "content", title: "Content", default: true }],
 
   fields: [
-    { name: "name", type: "string", title: "Name", group: "content" },
+    sectionTitle({ group: "content" }),
+
     {
       group: "content",
       title: "Content type",
@@ -36,20 +38,20 @@ const listingSchema: ObjectDefinition = {
 
     {
       group: "content",
-      title: "Title",
-      name: "title",
+      title: "Header",
+      name: "header",
       type: "headerRichText",
       localize: true,
     },
   ],
   preview: {
     select: {
-      name: "name",
+      title: "title",
       contentType: "contentType",
     },
-    prepare({ name, contentType }: any) {
+    prepare({ title, contentType }: any) {
       return {
-        title: name ? name : contentType,
+        title: title ? title : contentType,
         subtitle: `Listing: ${contentType ? " - " + contentType : ""}`,
       };
     },

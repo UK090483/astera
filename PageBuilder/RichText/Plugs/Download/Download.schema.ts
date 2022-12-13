@@ -1,3 +1,4 @@
+import { toPlainText } from "@portabletext/react";
 import { ObjectDefinition } from "../../../types";
 
 const DownloadPlugSchema: ObjectDefinition = {
@@ -19,6 +20,25 @@ const DownloadPlugSchema: ObjectDefinition = {
       hidden: ({ parent }: any) => !!parent.file,
     },
   ],
+  preview: {
+    select: {
+      description: "description",
+      file: "file",
+      image: "image",
+    },
+    prepare({ description, file, image }: any) {
+      const isFile = !!file;
+      const isImage = !!image;
+
+      const type = isFile ? "File" : isImage ? "Image" : "no file chosen";
+
+      return {
+        title: toPlainText(description) || "Download",
+        subtitle: `${type}`,
+        media: image || file,
+      };
+    },
+  },
 };
 
 export default DownloadPlugSchema;

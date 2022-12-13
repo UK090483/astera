@@ -16,11 +16,15 @@ export function PersonNavigation(props: IPersonSectionProps) {
   const next = data.nextItem;
 
   return (
-    <Section topSpace="none" width="l" className="flex w-full justify-between">
+    <Section
+      topSpace="none"
+      width="l"
+      className="flex flex-wrap md:flex-nowrap w-full  "
+    >
       <div>
         {prev && <BackButton internal={prev?.slug}>{prev.title}</BackButton>}
       </div>
-      <div>
+      <div className=" ml-auto ">
         {next && (
           <BackButton direction="right" internal={next?.slug}>
             {next.title}

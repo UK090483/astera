@@ -58,10 +58,10 @@ export const listProjection: localizedQueryFn = (locale) => `
 _type == 'listing'=>{
   _type,
   _key,
-
 ${listingQuery(locale)}
 ${componentStyleProjection}
 title,
+'header':(coalesce(header_${locale},header))[]{${headerRichTextQuery(locale)}},
 name,
 },
 `;
@@ -71,7 +71,8 @@ export type listingQueryResult = {
   _key: string;
   contentType: string;
   items: ListingItem[];
-  title?: headerRichTextQueryResult | null;
+  title?: string | null;
+  header?: headerRichTextQueryResult | null;
   variant: string;
   name?: string;
 } & componentStyleResult;

@@ -1,5 +1,6 @@
 import { addComponentStyle } from "../componentStyle";
 import { ObjectDefinition } from "../../types";
+import sectionTitle from "../sectionTitle";
 
 const sectionSchema: ObjectDefinition = {
   name: "section",
@@ -21,13 +22,7 @@ const sectionSchema: ObjectDefinition = {
     },
   ],
   fields: [
-    {
-      name: "title",
-      type: "string",
-      title: "Title",
-      localize: true,
-      group: "content",
-    },
+    sectionTitle({ group: "content" }),
     {
       name: "content",
       type: "defaultRichText",

@@ -1,16 +1,11 @@
 import { ObjectDefinition } from "PageBuilder/types";
+import sectionTitle from "../sectionTitle";
 
 const newsSectionSchema: ObjectDefinition = {
   name: "newsSection",
   title: "News Section",
   type: "object",
-  fields: [
-    {
-      title: "Title",
-      name: "title",
-      type: "string",
-    },
-  ],
+  fields: [sectionTitle({ initialValue: "News Section" })],
 };
 
 export default newsSectionSchema;

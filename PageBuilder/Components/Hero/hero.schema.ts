@@ -1,14 +1,11 @@
 import { ObjectDefinition } from "../../types";
+import sectionTitle from "../sectionTitle";
 const HeroObject: ObjectDefinition = {
   name: "hero",
   title: "Hero",
   type: "object",
   fields: [
-    {
-      title: "Title",
-      name: "title",
-      type: "string",
-    },
+    sectionTitle(),
     {
       title: "Image",
       name: "image",

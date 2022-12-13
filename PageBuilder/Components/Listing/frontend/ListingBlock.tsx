@@ -13,8 +13,16 @@ import RankingCarousel from "@components/Carousel/RankingCarousel";
 const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   props
 ) => {
-  const { items, backgroundColor, contentType, variant, title, name, ...rest } =
-    props;
+  const {
+    items,
+    backgroundColor,
+    contentType,
+    variant,
+    title,
+    header,
+    name,
+    ...rest
+  } = props;
 
   if (contentType === "person") {
     return (
@@ -26,9 +34,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         {...rest}
         bg={backgroundColor}
       >
-        {title && (
+        {header && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
-            <RichText content={title} />
+            <RichText content={header} />
           </div>
         )}
         <List.wrap items={items} useKey="key">
@@ -47,9 +55,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         {...rest}
         bg={backgroundColor}
       >
-        {title && (
+        {header && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
-            <RichText content={title} />
+            <RichText content={header} />
           </div>
         )}
         <List.wrap
@@ -75,9 +83,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
             ”
           </div>
 
-          {title && (
+          {header && (
             <div className="mt-12 mb-12 px-12 typo-invert">
-              <RichText content={title} />
+              <RichText content={header} />
             </div>
           )}
 
@@ -107,9 +115,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         bg={backgroundColor}
       >
         <div className=" mx-auto relative pt-8 text-secondary-medium">
-          {title && (
+          {header && (
             <div className="mt-12  px-12 typo-spacings ">
-              <RichText content={title} />
+              <RichText content={header} />
             </div>
           )}
 
@@ -128,9 +136,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
       {...rest}
       bg={backgroundColor}
     >
-      {title && (
+      {header && (
         <div className="typo-spacings mt-12 mb-24 text-center">
-          <RichText content={title} />
+          <RichText content={header} />
         </div>
       )}
 
