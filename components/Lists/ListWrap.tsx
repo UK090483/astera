@@ -1,5 +1,6 @@
 import useButtonStyle from "@components/Button/useButtonStyle";
 import Carousel from "@components/Carousel/CarouselCss";
+import { LoadMoreBtn } from "@components/LoadMoreBtn";
 
 import clsx from "clsx";
 import { useRouter } from "next/router";
@@ -45,15 +46,13 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
     setItems(items);
   }, [items, locale]);
 
-  const { loadMore } = useLoadMore<T>({
+  const { loadMore, loading, hasMore } = useLoadMore<T>({
     items: _items,
     setItems,
     contentType,
     orderKey: "startDate",
     orderDir: "asc",
   });
-
-  const buttonStyle = useButtonStyle();
 
   if (variant === "carousel") {
     return (
@@ -94,12 +93,8 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
             </li>
           ))}
       </ul>
-      {hasLoadMore && (
-        <div className="flex justify-center items-center mt-12">
-          <button className={buttonStyle} onClick={() => loadMore()}>
-            Load More
-          </button>
-        </div>
+      {hasLoadMore && hasMore && (
+        <LoadMoreBtn loading={loading} onClick={() => loadMore()} />
       )}
     </>
   );

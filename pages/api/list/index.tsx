@@ -7,6 +7,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const contentType = query.contentType;
   const orderKey = query.orderKey;
   const last = query.last;
+  const locale = query.locale?.toString();
+
+  console.log(locale);
 
   if (!contentType) {
     res.json({ items: [], error: true });
@@ -14,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const items =
     await sanityClient.fetch(`*[ _type == '${contentType}' && ${orderKey} < '${last}' ] | order(${orderKey} desc) [0...6] {
-        ${listingItemProjection("de")}
+        ${listingItemProjection(locale)}
     }`);
 
   res.json({ items });

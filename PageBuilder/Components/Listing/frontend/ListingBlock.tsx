@@ -10,67 +10,15 @@ import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard"
 import Carousel from "@components/Carousel/Carousel";
 import RankingCarousel from "@components/Carousel/RankingCarousel";
 
-const presetMap: Record<
-  string,
-  {
-    cardWrap?: Partial<React.ComponentProps<typeof Card.Wrap>>;
-    section?: React.ComponentProps<typeof Section>;
-    listWrap?: Partial<React.ComponentProps<typeof List.wrap>>;
-    cardInfo?: React.ComponentProps<typeof Card.Info>;
-    cardImage?: React.ComponentProps<typeof Card.Image>;
-    cardDescription?: React.ComponentProps<typeof Card.Description>;
-  }
-> = {
-  default: {},
-  news: {
-    cardWrap: { className: "p-8 border-2 h-full", noLink: true },
-    cardInfo: { className: "h-full justify-between" },
-    listWrap: { variant: "grid", columns: 3 },
-    cardDescription: { widthDate: true, small: true },
-    section: { width: "l" },
-  },
-  news_carousel: {
-    cardWrap: { className: "p-8 h-full border-2", noLink: true },
-    cardInfo: { className: "h-full justify-between" },
-    listWrap: { variant: "carousel" },
-    section: { width: "full", noPadding: true },
-    cardDescription: { widthDate: true, small: true },
-  },
-  custom: {
-    cardWrap: { variant: "horizontal", noLink: true },
-    section: { width: "full", noPadding: true },
-    listWrap: { noGap: true, columns: 1 },
-    cardInfo: { variant: "centerBox", className: "max-w-[600px] mx-auto" },
-    cardImage: { showTitle: true, half: true },
-  },
-};
-
-const presetList = (type: string) => {
-  return presetMap[type] ? presetMap[type] : presetMap.default;
-};
-
 const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   props
 ) => {
   const { items, backgroundColor, contentType, variant, title, name, ...rest } =
     props;
 
-  const contentTypeKey = contentType + (variant ? "_" + variant : "");
-
-  const { listWrap, cardWrap, section, cardInfo, cardDescription } =
-    presetList(contentTypeKey);
-
   if (contentType === "person") {
     return (
-      <Section
-        id={name}
-        width="l"
-        noProse
-        noPadding
-        {...rest}
-        bg={backgroundColor}
-        {...section}
-      >
+      <Section id={name} width="l" noProse noPadding {...rest}>
         {title && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
             <RichText content={title} />
@@ -86,11 +34,11 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
     return (
       <Section
         id={name}
-        width="l"
+        width={variant === "carousel" ? "full" : "l"}
+        noPadding={variant === "carousel"}
         noProse
         {...rest}
         bg={backgroundColor}
-        {...section}
       >
         {title && (
           <div className="typo typo-spacings  mt-12 mb-24 text-center">
@@ -114,14 +62,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
 
   if (contentType === "testimonial") {
     return (
-      <Section
-        id={name}
-        width="l"
-        noProse
-        {...rest}
-        bg={backgroundColor}
-        {...section}
-      >
+      <Section id={name} width="l" noProse {...rest} bg={backgroundColor}>
         <div className=" bg-secondary max-w-3xl mx-auto relative pt-8 text-secondary-medium">
           <div className=" top-0 left-12 -translate-y-9 text-9xl garamondFont text-white  w-fit h-fit absolute">
             ”
@@ -157,7 +98,6 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         noPadding
         {...rest}
         bg={backgroundColor}
-        {...section}
       >
         <div className=" mx-auto relative pt-8 text-secondary-medium">
           {title && (
@@ -175,12 +115,11 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   return (
     <Section
       id={name}
-      width="l"
+      width="full"
       noProse
       noPadding
       {...rest}
       bg={backgroundColor}
-      {...section}
     >
       {title && (
         <div className="typo-spacings mt-12 mb-24 text-center">
@@ -188,21 +127,18 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         </div>
       )}
 
-      <List.wrap {...listWrap} items={items} useKey="key">
+      <List.wrap columns={1} noGap={true} items={items} useKey="key">
         {(props) => {
           return (
-            <Card.Wrap {...props} {...cardWrap}>
+            <Card.Wrap {...props} variant="horizontal" noLink={true}>
               <Card.Image
                 showTitle
                 half
                 variant="fillContainer"
                 className=" min-h-[350px] lg:min-h-[600px] garamondFont text-white"
               />
-              <Card.Info {...cardInfo}>
-                <Card.Description
-                  {...cardDescription}
-                  className="mb-4 textBig"
-                />
+              <Card.Info variant="centerBox" className="max-w-[600px] mx-auto">
+                <Card.Description className="mb-4 textBig" />
                 <Card.Link className="text-primary" />
               </Card.Info>
             </Card.Wrap>

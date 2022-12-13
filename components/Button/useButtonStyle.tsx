@@ -3,7 +3,6 @@ import clsx from "clsx";
 
 const useButtonStyle = () => {
   const { bgColor } = useSection();
-  console.log(bgColor);
 
   const isDarkBg = bgColor === "secondary";
 

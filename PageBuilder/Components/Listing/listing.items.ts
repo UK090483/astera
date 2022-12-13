@@ -136,7 +136,7 @@ export const items: listingBuilderItem[] = [
         queryFilter: {
           filter: `defined(_id)`,
           order: "startDate",
-          slice: { start: 0, end: 10 },
+          slice: { start: 0, end: 6 },
         },
       },
       {
