@@ -11,25 +11,24 @@ const Protected: React.FunctionComponent<IProtectedProps> = ({ children }) => {
 
   return (
     <div className="staticshield-div">
-      <>
-        <Script
-          src="https://staticshield.vercel.app/script.js"
-          data-cap=""
-          data-site-id="5d61ae3a-9f05-4181-b1a7-d57e77fe3dfa"
-          strategy="beforeInteractive"
-        ></Script>
-        <style jsx>{`
-          .staticshield-div {
-            display: none;
-          }
-        `}</style>
-        <noscript>
-          <meta
-            httpEquiv="refresh"
-            content="0; url=https://staticshield.vercel.app/errors/noscript"
-          />
-        </noscript>
-      </>
+      <Script
+        src="https://staticshield.vercel.app/script.js"
+        data-cap=""
+        data-site-id="5d61ae3a-9f05-4181-b1a7-d57e77fe3dfa"
+        strategy="beforeInteractive"
+      ></Script>
+      <style jsx>{`
+        .staticshield-div {
+          display: none;
+        }
+      `}</style>
+      <noscript>
+        <meta
+          httpEquiv="refresh"
+          content="0; url=https://staticshield.vercel.app/errors/noscript"
+        />
+      </noscript>
+      {children}
     </div>
   );
 };
