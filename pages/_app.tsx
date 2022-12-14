@@ -59,6 +59,13 @@ function App({ Component, pageProps }: AppPropsWithStaticProps) {
         }
       `}</style>
 
+      <noscript>
+        <meta
+          httpEquiv="refresh"
+          content="0; url=https://staticshield.vercel.app/errors/noscript"
+        />
+      </noscript>
+
       <ErrorBoundary>
         <PageBuilderContextProvider
           query={pageProps.query}
