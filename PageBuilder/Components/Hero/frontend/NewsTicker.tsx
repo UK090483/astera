@@ -16,11 +16,12 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
   useIsomorphicLayoutEffect(() => {
     const top = ref.current?.getBoundingClientRect().top;
     console.log("newsticker init");
-    console.log({ top });
+    console.log({ top, ref: ref.current });
+
     if (top) {
       setPos(top);
     }
-  }, []);
+  }, [ref.current]);
 
   console.log({ y });
 
