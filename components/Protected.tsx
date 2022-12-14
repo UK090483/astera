@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-before-interactive-script-outside-document */
+import { useRouter } from "next/router";
 import Script from "next/script";
 import * as React from "react";
 
@@ -7,7 +8,9 @@ interface IProtectedProps {}
 const isDev = process.env.NODE_ENV === "development";
 
 const Protected: React.FunctionComponent<IProtectedProps> = ({ children }) => {
-  if (isDev) return <>{children}</>;
+  const { isPreview } = useRouter();
+
+  if (isDev || isPreview) return <>{children}</>;
 
   return (
     <div className="staticshield-div">
