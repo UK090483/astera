@@ -1,11 +1,9 @@
 import Link from "@components/Link";
-import Marque from "@components/Marque";
 import * as React from "react";
-import { useScrolling, useWindowScroll } from "react-use";
+import { useWindowScroll } from "react-use";
 import { heroResult } from "../hero.query";
 
 interface INewsMarqueProps {
-  // news?: { _id: string; title?: string | undefined }[];
   news?: heroResult["news"];
 }
 
@@ -16,11 +14,14 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
   const percent = pos ? y / pos : 0;
 
   React.useEffect(() => {
+    console.log("newsticker init");
     const top = ref.current?.getBoundingClientRect().top;
     if (top) {
       setPos(top);
     }
   }, []);
+
+  console.log({ y });
 
   if (!news) return null;
   return (
