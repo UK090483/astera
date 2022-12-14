@@ -14,8 +14,9 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
   const percent = pos ? y / pos : 0;
 
   React.useEffect(() => {
-    console.log("newsticker init");
     const top = ref.current?.getBoundingClientRect().top;
+    console.log("newsticker init");
+    console.log({ top });
     if (top) {
       setPos(top);
     }
