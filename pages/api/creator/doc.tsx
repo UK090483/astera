@@ -80,7 +80,7 @@ const news = async () => {
       "financeDeal",
       "privateEquityDeal",
       "event",
-      "person",
+      "other",
     ]),
     title: faker.random.words(Math.floor(Math.random() * 10)),
     title_en: "En" + faker.random.words(Math.floor(Math.random() * 10)),

@@ -131,11 +131,11 @@ export const items: listingBuilderItem[] = [
     title: "News",
     filter: [
       {
-        title: "Last 8",
-        value: "last 8",
+        title: "Last 6 Deals",
+        value: "list-a",
         queryFilter: {
-          filter: `defined(_id)`,
-          order: "startDate",
+          filter: `category in ['financeDeal','privateEquityDeal']`,
+          order: "startDate desc",
           slice: { start: 0, end: 6 },
         },
       },

@@ -7,7 +7,7 @@ type useLoadMoreProps<T = {}> = {
   orderKey: string;
   orderDir?: string;
   last?: string;
-  items: T[];
+  items?: T[];
 };
 
 function useLoadMore<T>(props: useLoadMoreProps<T>) {
@@ -16,9 +16,11 @@ function useLoadMore<T>(props: useLoadMoreProps<T>) {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
+  if (!items) return { loadMore: () => {}, loading: false, hasMore: false };
   const lastItem = items[items.length - 1];
+
   //@ts-ignore
-  const last = lastItem[orderKey] || null;
+  const last = lastItem ? lastItem[orderKey] || null : null;
 
   const loadMore = () => {
     if (!contentType || !last) return;

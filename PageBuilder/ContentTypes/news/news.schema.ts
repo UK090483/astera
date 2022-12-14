@@ -8,11 +8,17 @@ const pageSchema = createContentType({
   title: "News",
   fields: [
     getSlugField(),
-    { type: "date", name: "startDate", title: "Publish Date" },
+    {
+      type: "date",
+      name: "startDate",
+      title: "Publish Date",
+      group: "content",
+    },
     {
       type: "string",
       name: "category",
       title: "Category",
+      group: "content",
       options: {
         list: [
           { title: "Finance Deal", value: "financeDeal" },
