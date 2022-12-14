@@ -8,20 +8,30 @@ const useCssCarousel = ({ ref }: useCssCarouselProps) => {
   const [showNext, setShowNext] = useState(true);
   const [showPrev, setShowPrev] = useState(false);
 
-  // useEffect(() => {
-  //   const wrap = ref.current;
-  //   if (!wrap) return;
-
-  //   const handleScroll = () => {};
-
-  //   wrap.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     wrap.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, [ref]);
   const handleScroll: React.UIEventHandler<HTMLUListElement> = (e) => {
-    console.log(e.currentTarget.scrollLeft);
+    const scrollLeft = e.currentTarget.scrollLeft;
+
+    const fullScrollWidth =
+      e.currentTarget.scrollWidth -
+      e.currentTarget.getBoundingClientRect().width;
+
+    if (scrollLeft > 50) {
+      setShowPrev(true);
+    }
+    if (scrollLeft < 50) {
+      setShowPrev(false);
+    }
+    if (fullScrollWidth - scrollLeft > 50) {
+      setShowNext(true);
+    }
+    if (fullScrollWidth - scrollLeft < 50) {
+      setShowNext(false);
+    }
+
+    console.log({
+      scrollLeft,
+      fullScrollWidth,
+    });
   };
 
   const next = () => {};

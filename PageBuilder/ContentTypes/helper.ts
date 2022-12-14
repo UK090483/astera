@@ -103,6 +103,7 @@ export function createContentType(
       {
         name: "base",
         title: "Base",
+        default: true,
       },
       {
         name: "content",
