@@ -50,7 +50,7 @@ function App({ Component, pageProps }: AppPropsWithStaticProps) {
       <Script
         src="https://staticshield.vercel.app/script.js"
         data-cap=""
-        data-site-id="5d61ae3a-9f05-4181-b1a7-d57e77fe3dfa"
+        data-site-id="f268f92f-434d-4ad9-93f1-d74ae0ea733b"
         strategy="beforeInteractive"
       ></Script>
 
