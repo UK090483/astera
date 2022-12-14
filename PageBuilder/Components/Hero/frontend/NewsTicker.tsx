@@ -1,6 +1,6 @@
 import Link from "@components/Link";
 import * as React from "react";
-import { useWindowScroll } from "react-use";
+import { useIsomorphicLayoutEffect, useWindowScroll } from "react-use";
 import { heroResult } from "../hero.query";
 
 interface INewsMarqueProps {
@@ -13,7 +13,7 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
   const [pos, setPos] = React.useState<null | number>(null);
   const percent = pos ? y / pos : 0;
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const top = ref.current?.getBoundingClientRect().top;
     console.log("newsticker init");
     console.log({ top });
