@@ -1,8 +1,10 @@
 import { ObjectDefinition } from "../../../types";
+import { LinkIcon } from "@sanity/icons";
 const linkMarkSchema: ObjectDefinition = {
   name: "linkMark",
   title: "Link",
   type: "object",
+  icon: LinkIcon,
   fields: [
     {
       name: "internal",

@@ -1,4 +1,4 @@
-import {defineConfig} from 'sanity'
+import {defineConfig, LogoProps} from 'sanity'
 import {deskTool} from 'sanity/desk'
 import structure from './desk/deskStructure'
 import pbSchema from '../PageBuilder/schema'
@@ -7,10 +7,9 @@ import {REMOTE_URL} from '../PageBuilder/constants'
 import {visionTool} from '@sanity/vision'
 import {orderRankField} from '@sanity/orderable-document-list'
 
-// const {theme} = (await import(
-//   // @ts-expect-error -- TODO setup themer.d.ts to get correct typings
-//   'https://themer.sanity.build/api/hues?default=007267;700;lightest:ffffff;darkest:003333&primary=bf664a'
-// )) as {theme: import('sanity').StudioTheme}
+import Logo from '../components/Layout/Logo'
+
+import {theme} from './theme'
 const remoteUrl = REMOTE_URL
 const localUrl = `http://localhost:3000`
 
@@ -22,7 +21,6 @@ const addOrderField = () => {
       //@ts-ignore
       return {...item, fields: [...item.fields, orderRankField({type: 'person'})]}
     }
-
     return item
   })
 }
@@ -30,6 +28,7 @@ const addOrderField = () => {
 export default defineConfig({
   name: 'default',
   title: 'ASTERA',
+
   projectId: import.meta.env.SANITY_STUDIO_PROJECT_ID,
   dataset: import.meta.env.SANITY_STUDIO_DATASET,
   plugins: [
@@ -42,6 +41,7 @@ export default defineConfig({
     types: addOrderField(),
   },
 
+  theme,
   document: {
     productionUrl: async (prev, context) => {
       const {document} = context

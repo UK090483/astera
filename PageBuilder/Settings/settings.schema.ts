@@ -1,8 +1,8 @@
 import { DocumentDefinition } from "PageBuilder/types";
-import { AiOutlineLink } from "react-icons/ai";
+import { FiSettings } from "react-icons/fi";
 
 export const SettingsDocument: DocumentDefinition = {
-  icon: AiOutlineLink,
+  icon: FiSettings,
   name: "baseConfig",
   title: "Base config",
   type: "document",

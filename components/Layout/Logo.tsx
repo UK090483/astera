@@ -2,9 +2,13 @@
 
 import React from "react";
 
-export const Logo: React.FC<{ className?: string }> = ({ className }) => {
+export const Logo: React.FC<{
+  className?: string;
+  style: React.CSSProperties;
+}> = ({ className, style }) => {
   return (
     <svg
+      style={style}
       className={`w-40  md:w-48 h-full fill-current ${className}`}
       viewBox="0 0 366 104"
       fill="none"

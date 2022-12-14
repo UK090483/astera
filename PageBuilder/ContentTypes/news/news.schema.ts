@@ -2,10 +2,16 @@ import { uniqueId } from "lodash";
 import { addSeo } from "../../Objects/Seo/Seo.decorator";
 import { getEditorField } from "../Base/Editor/editor.field";
 import createContentType, { getSlugField } from "../helper";
+import { FaRegNewspaper } from "react-icons/fa";
+
+import {} from "@sanity/icons";
 
 const pageSchema = createContentType({
   name: "news",
   title: "News",
+  //@ts-ignore
+  icon: FaRegNewspaper,
+
   fields: [
     getSlugField(),
     {

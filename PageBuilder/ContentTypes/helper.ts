@@ -96,6 +96,7 @@ export function createContentType(
 
   const typeSlug = name === "page" ? "" : `${name}/`;
   return {
+    ...props,
     type: "document",
     name: name,
     title: title,
@@ -121,7 +122,7 @@ export function createContentType(
       prepare({ media, title, slug }) {
         return {
           title,
-          media: media,
+          // media: media,
           subtitle: `.../${typeSlug}${slug}`,
         };
       },

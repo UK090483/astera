@@ -19,6 +19,7 @@
     "@next/font": "^13.0.2",
     "@portabletext/react": "^1.0.6",
     "@sanity/client": "^3.4.1",
+    "@sanity/icons": "^2.1.0",
     "@sanity/image-url": "^1.0.1",
     "@vercel/og": "^0.0.19",
     "argon2": "^0.28.3",
