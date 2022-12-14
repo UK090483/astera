@@ -53,6 +53,11 @@ function App({ Component, pageProps }: AppPropsWithStaticProps) {
         data-site-id="f268f92f-434d-4ad9-93f1-d74ae0ea733b"
         strategy="beforeInteractive"
       ></Script>
+      <style jsx>{`
+        .staticshield-div {
+          display: none;
+        }
+      `}</style>
 
       <ErrorBoundary>
         <PageBuilderContextProvider
