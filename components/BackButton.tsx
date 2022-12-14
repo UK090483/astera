@@ -27,7 +27,7 @@ export const BackButton: React.FC<{
     >
       <div className="group-hover:animate-bounceSide">
         <ArrowIcon
-          className={clsx(" fill-primary  w-6", {
+          className={clsx(" fill-primary w-6", {
             " flex-row-reverse rotate-180": direction === "left",
             " flex-row-reverse": direction === "right",
           })}

@@ -15,7 +15,9 @@ function Carousel(props: ICarouselProps) {
 
   const ref = React.useRef<HTMLUListElement>(null);
 
-  const { handleScroll } = useCssCarousel({ ref });
+  const { handleScroll, showNext, showPrev, next, prev } = useCssCarousel({
+    ref,
+  });
 
   return (
     <CarouselContextProvider items={children} {...rest}>
@@ -42,6 +44,14 @@ function Carousel(props: ICarouselProps) {
           }}
         </CarouselItemWrap>
       </ul>
+      {/* <div className="flex ">
+        {showPrev && <button onClick={next}>Prev</button>}
+        {showNext && (
+          <button onClick={prev} className="ml-auto">
+            Next
+          </button>
+        )}
+      </div> */}
     </CarouselContextProvider>
   );
 }
