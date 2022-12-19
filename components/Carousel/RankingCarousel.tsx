@@ -69,15 +69,17 @@ const RankingItem: React.FC<{
   const [maxHeight, setMaxHeight] = React.useState(0);
 
   useIsomorphicLayoutEffect(() => {
+    console.log({ active, ref });
     if (!active) {
       setMaxHeight(0);
       return;
     }
     if (!ref?.current) return;
+
     const height = ref.current.clientHeight;
     setMaxHeight(height);
     handleItemSize(height);
-  }, [active, handleItemSize, ref.current]);
+  }, [active, handleItemSize, ref?.current]);
 
   return (
     <div
