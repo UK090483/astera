@@ -1,10 +1,13 @@
+import useBreakingPoint from "@hooks/useBreakingPoint";
 import clsx from "clsx";
 import { ListingItem } from "PageBuilder/Components/Listing/listing.query";
 import RichText from "PageBuilder/RichText/frontend/RichText";
 import { span } from "PageBuilder/__test__/richtextTestPrepare";
 
 import * as React from "react";
-import { useIsomorphicLayoutEffect } from "react-use";
+import { flushSync } from "react-dom";
+import { useMedia } from "react-use";
+import useBreakpoint from "use-breakpoint";
 
 interface ICarouselProps {
   rankingItems?: ListingItem[];
@@ -14,20 +17,61 @@ function RankingCarousel(props: ICarouselProps) {
   const { rankingItems } = props;
   const [activeItemIndex, setActiveItemIndex] = React.useState(0);
 
-  const handleItemSize = React.useCallback((size) => {
-    console.log(size);
+  const isMobile = useMedia("(max-width: 768px)");
+
+  const [maxHeight, setMaxHeight] = React.useState(0);
+
+  React.useEffect(() => {
+    setMaxHeight(isMobile ? 600 : 400);
+  }, [isMobile]);
+
+  React.useEffect(() => {
+    flushSync(() => {
+      setActiveItemIndex(1);
+    });
+    const t = setTimeout(() => {
+      setActiveItemIndex(0);
+    }, 500);
+
+    return () => clearTimeout(t);
   }, []);
+
+  const handleItemSize = React.useCallback(
+    (size) => {
+      if (isMobile && size > 120) {
+        setMaxHeight(size - 120 + 600);
+      }
+      if (!isMobile) {
+        if (size > 300) {
+          setMaxHeight(size + 100);
+        } else {
+          setMaxHeight(400);
+        }
+      }
+      console.log("handleSize", size);
+    },
+    [isMobile]
+  );
 
   if (!rankingItems || rankingItems?.length < 1) return null;
 
+  const translate = isMobile
+    ? -160 * (activeItemIndex === 0 ? 0 : activeItemIndex - 1)
+    : -160 * (activeItemIndex === 0 ? -1 : activeItemIndex - 1) +
+      (maxHeight - 400) / 2;
+
   return (
     <div className="relative ">
-      <div className="w-full flex flex-col px-sides pb-12 max-h-[800px] md:max-h-[500px] overflow-hidden  ">
+      <div
+        style={{ maxHeight }}
+        className={clsx(
+          "w-full flex flex-col px-sides pb-12 max-h-[600px] md:max-h-[500px] overflow-hidden transition-all duration-700",
+          {}
+        )}
+      >
         <div
           style={{
-            transform: `translateY(${
-              -160 * (activeItemIndex === 0 ? -1 : activeItemIndex - 1)
-            }px)`,
+            transform: `translateY(${translate}px)`,
           }}
           className="transition-transform duration-700"
         >
@@ -40,6 +84,7 @@ function RankingCarousel(props: ICarouselProps) {
                 content={i.content}
                 active={dotActive}
                 handleItemSize={handleItemSize}
+                isMobile={isMobile}
               >
                 <Dot
                   isLast={index === rankingItems.length - 1}
@@ -63,12 +108,13 @@ const RankingItem: React.FC<{
   active: boolean;
   content: any;
   handleItemSize: (size: number) => void;
-}> = ({ active, content, children, handleItemSize }) => {
+  isMobile: boolean;
+}> = ({ active, content, children, handleItemSize, isMobile }) => {
   const ref = React.useRef<HTMLDivElement>(null);
 
   const [maxHeight, setMaxHeight] = React.useState(0);
 
-  useIsomorphicLayoutEffect(() => {
+  React.useEffect(() => {
     console.log({ active, ref });
     if (!active) {
       setMaxHeight(0);
@@ -79,7 +125,7 @@ const RankingItem: React.FC<{
     const height = ref.current.clientHeight;
     setMaxHeight(height);
     handleItemSize(height);
-  }, [active, handleItemSize, ref?.current]);
+  }, [active, handleItemSize, ref]);
 
   return (
     <div
@@ -91,10 +137,10 @@ const RankingItem: React.FC<{
         <div
           style={{ maxHeight }}
           className={clsx(
-            " transition-all max-h-0 overflow-hidden duration-700  md:-translate-y-1/2",
+            "transition-all max-h-0 overflow-hidden duration-700 md:-translate-y-1/2",
             {
               "opacity-0": !active,
-              " opacity-100": active,
+              "opacity-100": active,
             }
           )}
         >
