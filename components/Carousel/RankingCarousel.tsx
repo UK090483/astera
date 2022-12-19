@@ -74,7 +74,7 @@ const RankingItem: React.FC<{
     const height = ref.current.clientHeight;
     setMaxHeight(height);
     handleItemSize(height);
-  }, [active, handleItemSize]);
+  }, [active, handleItemSize, ref]);
 
   return (
     <div
