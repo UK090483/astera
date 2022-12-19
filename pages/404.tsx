@@ -45,8 +45,10 @@ const Page404: React.FunctionComponent = () => {
           },
         }}
       />
-      <Section width="s" topSpace="l" bottomSpace="xl">
-        <div className="header1  text-right pr-16 ">OOOOPS!</div>
+      <Section className="max-w-3xl " width="s" topSpace="l" bottomSpace="xl">
+        <div className="header1  font-bold text-right pr-[6%] md:pr-16 ">
+          OOOOPS!
+        </div>
         <Image
           width={700}
           src={Image404}
