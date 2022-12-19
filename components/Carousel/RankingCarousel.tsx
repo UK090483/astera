@@ -1,13 +1,10 @@
-import useBreakingPoint from "@hooks/useBreakingPoint";
 import clsx from "clsx";
 import { ListingItem } from "PageBuilder/Components/Listing/listing.query";
 import RichText from "PageBuilder/RichText/frontend/RichText";
-import { span } from "PageBuilder/__test__/richtextTestPrepare";
 
 import * as React from "react";
 import { flushSync } from "react-dom";
 import { useMedia } from "react-use";
-import useBreakpoint from "use-breakpoint";
 
 interface ICarouselProps {
   rankingItems?: ListingItem[];
