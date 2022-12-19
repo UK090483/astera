@@ -4,6 +4,7 @@ import RichText from "PageBuilder/RichText/frontend/RichText";
 import { span } from "PageBuilder/__test__/richtextTestPrepare";
 
 import * as React from "react";
+import { useIsomorphicLayoutEffect } from "react-use";
 
 interface ICarouselProps {
   rankingItems?: ListingItem[];
@@ -24,7 +25,9 @@ function RankingCarousel(props: ICarouselProps) {
       <div className="w-full flex flex-col px-sides pb-12 max-h-[800px] md:max-h-[500px] overflow-hidden  ">
         <div
           style={{
-            transform: `translateY(${-144 * activeItemIndex + 150}px)`,
+            transform: `translateY(${
+              -160 * (activeItemIndex === 0 ? -1 : activeItemIndex - 1)
+            }px)`,
           }}
           className="transition-transform duration-700"
         >
@@ -65,16 +68,16 @@ const RankingItem: React.FC<{
 
   const [maxHeight, setMaxHeight] = React.useState(0);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (!active) {
       setMaxHeight(0);
       return;
     }
-    if (!ref.current) return;
+    if (!ref?.current) return;
     const height = ref.current.clientHeight;
     setMaxHeight(height);
     handleItemSize(height);
-  }, [active, handleItemSize, ref]);
+  }, [active, handleItemSize, ref.current]);
 
   return (
     <div
@@ -82,7 +85,7 @@ const RankingItem: React.FC<{
     >
       {children}
 
-      <div className="h-fit md:h-0">
+      <div className="h-fit md:h-0 w-full">
         <div
           style={{ maxHeight }}
           className={clsx(
