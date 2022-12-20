@@ -27,7 +27,7 @@ export function NewsCard(props: INewsCardProps) {
       <Card.Info className="h-full justify-between">
         <div className=" flex gap-4 justify-between items-start">
           <Card.Title
-            className={clsx("line-clamp-2 h-[50px] lg:h-[60px] text-lg", {
+            className={clsx("line-clamp-3 h-[50px] lg:h-[85px] text-lg", {
               "text-white": isMonochrome,
               "text-secondary-dark": !isMonochrome,
             })}

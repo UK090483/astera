@@ -1,3 +1,4 @@
+import useDate from "@hooks/useDate";
 import clsx from "clsx";
 import * as React from "react";
 import { useCardContext } from "./CardContext";
@@ -13,9 +14,7 @@ export const CardDescription: React.FunctionComponent<
 > = ({ widthDate, small, className, isMonoChrome }) => {
   const { description, startDate } = useCardContext();
 
-  const dateString = startDate
-    ? new Date(startDate).toLocaleDateString("de")
-    : "date Missing";
+  const dateString = useDate({ date: startDate });
 
   return (
     <p className={`${small && "text-base"} ${className && className}`}>

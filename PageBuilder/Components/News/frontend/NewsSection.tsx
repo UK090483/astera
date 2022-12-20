@@ -2,6 +2,7 @@ import { CategoryAIcon } from "@components/AIcon";
 import { BackButton } from "@components/BackButton";
 
 import Section from "@components/Section/Section";
+import useDate from "@hooks/useDate";
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
 
 import * as React from "react";
@@ -10,6 +11,11 @@ export interface IPersonSectionProps {}
 
 export function NewsSection(props: IPersonSectionProps) {
   const { data } = usePageBuilderContext();
+
+  const dateString = useDate({
+    //@ts-ignore
+    date: data?.startDate,
+  });
 
   if (data?._type !== "news") return null;
 
@@ -33,7 +39,7 @@ export function NewsSection(props: IPersonSectionProps) {
         </h1>
       </div>
 
-      <p className="mt-8 text-secondary text-2xl font-bold"> {date}</p>
+      <p className="mt-8 text-secondary text-2xl font-bold"> {dateString}</p>
     </Section>
   );
 }
