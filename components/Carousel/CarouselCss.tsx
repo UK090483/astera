@@ -44,14 +44,14 @@ function Carousel(props: ICarouselProps) {
           }}
         </CarouselItemWrap>
       </div>
-      <div className="flex ">
+      {/* <div className="flex ">
         {showPrev && <button onClick={next}>Prev</button>}
         {showNext && (
           <button onClick={prev} className="ml-auto">
             Next
           </button>
         )}
-      </div>
+      </div> */}
     </CarouselContextProvider>
   );
 }
