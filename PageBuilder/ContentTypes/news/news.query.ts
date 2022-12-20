@@ -24,7 +24,8 @@ startDate,
   }
 }),
 ${seoQuery(locale)}
-${footerQuery(locale)}
+${footerQuery(locale)},
+category,
 `;
 
 export type NewsResult = BaseContentTypeResult &
@@ -32,6 +33,7 @@ export type NewsResult = BaseContentTypeResult &
   SeoQueryResult & {
     _type: "news";
     startDate?: string;
+    category?: string;
     newsListingLink?: { slug?: string; onPageLink?: string };
     body: EditorResult;
     slug: string;

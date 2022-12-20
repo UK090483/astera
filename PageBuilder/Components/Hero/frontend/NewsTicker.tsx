@@ -56,7 +56,7 @@ const NewsMarque: React.FunctionComponent<INewsMarqueProps> = ({ news }) => {
               transform: `translateX(${-20 + percent * 15}%)`,
               borderBottomWidth: 1,
             }}
-            className=" border-b-secondary-dark text-2xl font-light"
+            className=" flex border-b-secondary-dark w-fit text-2xl font-light"
           >
             {news
               .filter((i) => !!i.title)

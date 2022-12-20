@@ -13,7 +13,7 @@ interface ICarouselProps extends Omit<useCarouselProps, "items"> {
 function Carousel(props: ICarouselProps) {
   const { children, ...rest } = props;
 
-  const ref = React.useRef<HTMLUListElement>(null);
+  const ref = React.useRef<HTMLDivElement>(null);
 
   const { handleScroll, showNext, showPrev, next, prev } = useCssCarousel({
     ref,
@@ -21,12 +21,12 @@ function Carousel(props: ICarouselProps) {
 
   return (
     <CarouselContextProvider items={children} {...rest}>
-      <ul
+      <div
         onScroll={handleScroll}
         ref={ref}
         className="w-full flex overflow-scroll pl-side py-4"
       >
-        <CarouselItemWrap className="flex items-center gap-12">
+        <CarouselItemWrap className="flex items-center gap-12 px-16">
           {({ activeItemIndex }) => {
             return children.map((i, index) => {
               return React.cloneElement(
@@ -43,15 +43,15 @@ function Carousel(props: ICarouselProps) {
             });
           }}
         </CarouselItemWrap>
-      </ul>
-      {/* <div className="flex ">
+      </div>
+      <div className="flex ">
         {showPrev && <button onClick={next}>Prev</button>}
         {showNext && (
           <button onClick={prev} className="ml-auto">
             Next
           </button>
         )}
-      </div> */}
+      </div>
     </CarouselContextProvider>
   );
 }

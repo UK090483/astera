@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import * as React from "react";
 
 export interface IAIconProps {
@@ -19,3 +20,21 @@ export function AIcon(props: IAIconProps) {
     </svg>
   );
 }
+
+export const CategoryAIcon: React.FC<{
+  category?: string;
+  white?: boolean;
+  className?: string;
+}> = ({ category, white, className }) => {
+  return (
+    <AIcon
+      className={clsx(className, "w-12 shrink-0 ", {
+        "fill-primary": category === "financeDeal",
+        "fill-secondary": category === "privateEquityDeal",
+        "fill-bordeaux ": category === "event",
+        "fill-secondary-dark": category === "other" || category === "person",
+        "fill-white": white,
+      })}
+    />
+  );
+};

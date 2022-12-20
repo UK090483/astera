@@ -1,4 +1,4 @@
-import { AIcon } from "@components/AIcon";
+import { CategoryAIcon } from "@components/AIcon";
 import { BackButton } from "@components/BackButton";
 
 import Section from "@components/Section/Section";
@@ -17,6 +17,7 @@ export function NewsSection(props: IPersonSectionProps) {
   const title = data?.title;
   const image = data?.mainImage;
   const listingLink = data?.newsListingLink;
+  const category = data?.category;
 
   return (
     <Section width="l" className="" bottomSpace="none">
@@ -26,7 +27,7 @@ export function NewsSection(props: IPersonSectionProps) {
       />
 
       <div className="flex">
-        <AIcon className=" w-12 flex-shrink-0 " />
+        <CategoryAIcon category={category} className=" w-12 flex-shrink-0 " />
         <h1 className=" ml-6 typo-body  text-2xl text-secondary-dark  ">
           {title}
         </h1>

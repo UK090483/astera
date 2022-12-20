@@ -7,8 +7,6 @@ import {REMOTE_URL} from '../PageBuilder/constants'
 import {visionTool} from '@sanity/vision'
 import {orderRankField} from '@sanity/orderable-document-list'
 
-import Logo from '../components/Layout/Logo'
-
 import {theme} from './theme'
 const remoteUrl = REMOTE_URL
 const localUrl = `http://localhost:3000`
@@ -43,6 +41,18 @@ export default defineConfig({
 
   theme,
   document: {
+    newDocumentOptions: (prev, context) => {
+      return prev.filter((i) => !['menuConfig', 'seoConfig'].includes(i.templateId))
+    },
+    actions: (prev, context) => {
+      if (['menuConfig', 'seoConfig'].includes(context.schemaType)) {
+        return prev.filter(
+          (p) => !['unpublish', 'duplicate', 'delete'].includes(p.action || 'noname')
+        )
+      }
+
+      return prev
+    },
     productionUrl: async (prev, context) => {
       const {document} = context
       if (!['page', 'news', 'person'].includes(document?._type)) return prev

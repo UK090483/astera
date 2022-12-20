@@ -14,20 +14,20 @@ const linkMarkSchema: ObjectDefinition = {
       options: {
         disableNew: true,
       },
-      hidden: ({ parent }: any) => !!parent.href,
+      hidden: ({ parent }: any) => !!parent?.href,
     },
     {
       name: "onPageLink",
       title: "On page Link",
       description: "must be the exact Title of a Section",
       type: "string",
-      hidden: ({ parent }: any) => !parent.internal,
+      hidden: ({ parent }: any) => !parent?.internal,
     },
     {
       name: "href",
       title: "External Link",
       type: "url",
-      hidden: ({ parent }: any) => !!parent.internal,
+      hidden: ({ parent }: any) => !!parent?.internal,
       validation: (Rule) =>
         Rule.uri({
           scheme: ["http", "https", "mailto", "tel"],

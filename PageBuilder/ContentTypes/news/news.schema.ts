@@ -20,6 +20,7 @@ const pageSchema = createContentType({
       title: "Publish Date",
       group: "content",
     },
+
     {
       type: "string",
       name: "category",
@@ -55,6 +56,30 @@ const pageSchema = createContentType({
         },
       ]
     ),
+    {
+      type: "array",
+      name: "involvedPeople",
+      title: "Involved People",
+      of: [
+        {
+          type: "reference",
+          title: "Internal Person",
+          options: { disableNew: true },
+          to: [{ type: "person" }],
+        },
+        {
+          title: "External Person",
+          type: "object",
+          fields: [
+            {
+              type: "string",
+              name: "Name",
+            },
+          ],
+        },
+      ],
+      group: "content",
+    },
   ],
 });
 
