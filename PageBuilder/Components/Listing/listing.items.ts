@@ -2,6 +2,7 @@ import { withLocalization } from "../../helper/withLocalization";
 import { listingBuilderItem } from "PageBuilder/lib/listingBuilder/types";
 import { ArrayOfType } from "PageBuilder/types";
 import { colorList } from "../componentStyle";
+import { toPlainText } from "@portabletext/react";
 
 import { locale } from "../../constants";
 
@@ -66,6 +67,19 @@ const testimonialItem: ArrayOfType = withLocalization(
           localize: true,
         },
       ],
+
+      preview: {
+        select: {
+          content: "content",
+        },
+        prepare(selection) {
+          const { content, date } = selection;
+          return {
+            //@ts-ignore
+            title: content ? toPlainText(content) : "no Content yet",
+          };
+        },
+      },
     },
   ],
   locale
@@ -121,11 +135,7 @@ export const items: listingBuilderItem[] = [
       },
     ],
   },
-  {
-    name: "page",
-    title: "Page",
-    items: [{ type: "reference", to: [{ type: "page" }] }],
-  },
+
   {
     name: "news",
     title: "News",

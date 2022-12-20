@@ -114,9 +114,9 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
         {...rest}
         bg={backgroundColor}
       >
-        <div className=" mx-auto relative pt-8 text-secondary-medium">
+        <div className=" mx-auto relative text-secondary-medium">
           {header && (
-            <div className="mt-12  px-12 typo-spacings ">
+            <div className="px-sides typo-spacings">
               <RichText content={header} />
             </div>
           )}
