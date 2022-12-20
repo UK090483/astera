@@ -1,7 +1,7 @@
 import useButtonStyle from "@components/Button/useButtonStyle";
-import Carousel from "@components/Carousel/CarouselCss";
+import Carousel from "@components/Carousel/KeenSlider";
 import { LoadMoreBtn } from "@components/LoadMoreBtn";
-
+import { KeenSliderOptions } from "keen-slider/react";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import useLoadMore from "PageBuilder/Components/Listing/frontend/useLoadMore";
@@ -25,6 +25,29 @@ interface IListWrapAutoProps<T extends unknown = {}> {
   contentType?: string;
   hasLoadMore?: boolean;
 }
+
+const carouselOptions: KeenSliderOptions = {
+  mode: "free-snap",
+  renderMode: "performance",
+  breakpoints: {
+    "(min-width: 800px)": {
+      slides: {
+        perView: 2.5,
+        spacing: 30,
+      },
+    },
+    "(min-width: 1200px)": {
+      slides: {
+        perView: 3.5,
+        spacing: 30,
+      },
+    },
+  },
+  slides: {
+    perView: 1.5,
+    spacing: 30,
+  },
+};
 
 function ListWrap<T>(props: IListWrapAutoProps<T>) {
   const {
@@ -56,7 +79,7 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
 
   if (variant === "carousel") {
     return (
-      <Carousel>
+      <Carousel options={carouselOptions}>
         {_items &&
           _items.map((i, index) => (
             <li key={i[useKey] as string | number}>

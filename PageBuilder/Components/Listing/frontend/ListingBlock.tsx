@@ -7,7 +7,7 @@ import Card from "@components/Card/Card";
 import RichText from "PageBuilder/RichText/frontend/RichText";
 import { NewsCard } from "PageBuilder/ContentTypes/news/frontend/NewsCard";
 import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard";
-import Carousel from "@components/Carousel/Carousel";
+import Carousel from "@components/Carousel/KeenSlider";
 import RankingCarousel from "@components/Carousel/RankingCarousel";
 
 const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
@@ -89,11 +89,11 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
             </div>
           )}
 
-          <Carousel>
+          <Carousel dots={true}>
             {items.map((item) => (
               <div
                 key={item.key}
-                className=" typo-bright typo-spacings   px-12 "
+                className=" typo-bright typo-spacings px-12 pb-12 "
               >
                 <RichText content={item.content} />
               </div>

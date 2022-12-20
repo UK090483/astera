@@ -54,8 +54,8 @@ function RankingCarousel(props: ICarouselProps) {
 
   const translate = isMobile
     ? -160 * (activeItemIndex === 0 ? 0 : activeItemIndex - 1)
-    : -160 * (activeItemIndex === 0 ? -1 : activeItemIndex - 1) +
-      (maxHeight - 400) / 2;
+    : -160 * (activeItemIndex === 0 ? -0.7 : activeItemIndex - 1) + 0;
+  (maxHeight - 470) / 2;
 
   return (
     <div className="relative ">
