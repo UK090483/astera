@@ -16,7 +16,7 @@ export const CardCategory: React.FC<ICardCategoryProps> = ({ white }) => {
     <CategoryAIcon
       category={category}
       white={white}
-      className={clsx("w-12 shrink-0")}
+      className={clsx("w-10 shrink-0 mt-1.5")}
     />
   );
 };

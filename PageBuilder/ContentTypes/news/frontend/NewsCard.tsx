@@ -26,13 +26,13 @@ export function NewsCard(props: INewsCardProps) {
     >
       <Card.Info className="h-full justify-between">
         <div className=" flex gap-4 justify-between items-start">
+          <Card.Category white={isMonochrome} />
           <Card.Title
             className={clsx("line-clamp-3 h-[50px] lg:h-[85px] text-lg", {
               "text-white": isMonochrome,
               "text-secondary-dark": !isMonochrome,
             })}
           />
-          <Card.Category white={isMonochrome} />
         </div>
         <Card.Description
           isMonoChrome={variant === "monochrome"}

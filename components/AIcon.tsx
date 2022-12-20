@@ -28,7 +28,7 @@ export const CategoryAIcon: React.FC<{
 }> = ({ category, white, className }) => {
   return (
     <AIcon
-      className={clsx(className, "w-12 shrink-0 ", {
+      className={clsx(className, {
         "fill-primary": category === "financeDeal",
         "fill-secondary": category === "privateEquityDeal",
         "fill-bordeaux ": category === "event",
