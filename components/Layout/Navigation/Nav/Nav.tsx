@@ -15,7 +15,6 @@ const Nav: React.FC = () => {
   const navItems = data?.menu.mainNav;
 
   const langSwitchData = data?.menu.langSwitcher;
-  // const scrolled = useScrollThreshold(100);
 
   return (
     <>
