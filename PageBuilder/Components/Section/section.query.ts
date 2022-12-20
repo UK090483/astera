@@ -6,7 +6,10 @@ import {
   componentStyleProjection,
   componentStyleResult,
 } from "../componentStyle";
-import { headerRichTextQueryResult } from "PageBuilder/RichText/headerRichText.query";
+import {
+  headerRichTextQuery,
+  headerRichTextQueryResult,
+} from "PageBuilder/RichText/headerRichText.query";
 
 export const sectionBlockQuery: localizedQueryFn = (locale) => `
 _type == "section" => {
@@ -16,8 +19,10 @@ _type == "section" => {
   type,
   headerPosition,
   textDirection,
-  ${localizeValue("header")},
   'image':image{${IMAG_PROJECTION}},
+  'header':(coalesce(header_${locale},header))[]{${headerRichTextQuery(
+  locale
+)}},
   'content':(coalesce(content_${locale},content))[]{${defaultRichTextQuery(
   locale
 )}},

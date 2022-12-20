@@ -21,6 +21,8 @@ const SectionBlock: React.FC<SectionResult> = (props) => {
     header,
   } = props;
 
+  console.log(props);
+
   const hasImage = image && image.url;
   const autoType = hasImage ? "m" : "l";
 
