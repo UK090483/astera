@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider, KeenSliderOptions } from "keen-slider/react";
-import { set } from "lodash";
+import { useTimeoutFn } from "react-use";
 
 type KeenSliderProps = {};
 
@@ -27,6 +27,10 @@ function Carousel(props: ICarouselProps) {
     },
     ...options,
   });
+
+  useTimeoutFn(() => {
+    instanceRef.current?.update();
+  }, 500);
 
   return (
     <>
