@@ -79,8 +79,8 @@ const Accordion: React.FC<{
           className="w-full h-11 ml-4 border-b-2 border-secondary flex justify-end -translate-y-0.5 "
         >
           <OpenIndicator
-            className={clsx("translate-y-1", {
-              "rotate-180 transition-transform ": isOpen,
+            className={clsx("translate-y-1 rotate-180", {
+              "rotate-0 transition-transform ": isOpen,
             })}
           />
         </button>
