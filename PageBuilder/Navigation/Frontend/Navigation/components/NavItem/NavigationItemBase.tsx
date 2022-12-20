@@ -39,7 +39,8 @@ export const NavigationItemBase: React.FC<NavItemBaseProps> = (props) => {
           "text-left pl-0": align === "left",
           "h-[113px] pt-14 flex justify-end text-base-mobile xl:text-base":
             place === "customHeader",
-          " bg-white text-primary ": active && place === "customHeader",
+          " bg-white bg-opacity-90 text-primary ":
+            active && place === "customHeader",
         },
         className
       )}
