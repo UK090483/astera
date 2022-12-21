@@ -1,5 +1,6 @@
 import Card from "@components/Card/Card";
 import { useSection } from "@components/Section/SectionContext";
+import useTranslation from "@hooks/useTranslation";
 import clsx from "clsx";
 
 import { ListingItem } from "PageBuilder/Components/Listing/listing.query";
@@ -13,6 +14,10 @@ export function PersonCard(props: IPersonCardProps) {
   const { showLink = true, ...card } = props;
 
   const { bgColor } = useSection();
+
+  const { linkText } = useTranslation({
+    linkText: { default: "Zum CV", en: "To CV" },
+  });
 
   const isDarkBg = bgColor === "secondary";
 
@@ -32,7 +37,7 @@ export function PersonCard(props: IPersonCardProps) {
             "text-white": isDarkBg,
           })}
         />
-        <Card.Link text={"Zum CV"} asButton={true} className="mt-6" />
+        <Card.Link text={linkText} asButton={true} className="mt-6" />
       </Card.Info>
     </Card.Wrap>
   );
