@@ -30,6 +30,12 @@ const carouselOptions: KeenSliderOptions = {
   mode: "free-snap",
   renderMode: "performance",
   breakpoints: {
+    "(min-width: 400px)": {
+      slides: {
+        perView: 1.5,
+        spacing: 30,
+      },
+    },
     "(min-width: 800px)": {
       slides: {
         perView: 2.5,
@@ -44,7 +50,7 @@ const carouselOptions: KeenSliderOptions = {
     },
   },
   slides: {
-    perView: 1.5,
+    perView: 1,
     spacing: 30,
   },
 };
