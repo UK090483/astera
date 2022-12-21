@@ -27,7 +27,7 @@ export function PersonSection(props: IPersonSectionProps) {
       />
       <div className="md:flex md:flex-row-reverse gap-24 ">
         <div className=" relative w-full ">
-          <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[450px]  lg:h-[450px]  mx-auto  relative  mb-12 md:mb-0 ">
+          <div className=" overflow-hidden rounded-full w-72 h-72 lg:w-[350px]  lg:h-[350px]  mx-auto  relative  mb-12 md:mb-0 ">
             <SanityImage src={image} fill />
           </div>
         </div>

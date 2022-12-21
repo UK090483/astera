@@ -28,7 +28,7 @@ export function NewsCard(props: INewsCardProps) {
         <div className=" flex gap-4 justify-between items-start">
           <Card.Category white={isMonochrome} />
           <Card.Title
-            className={clsx("line-clamp-3 h-[50px] lg:h-[85px] text-lg", {
+            className={clsx("line-clamp-3 h-[85px] lg:h-[85px] text-lg", {
               "text-white": isMonochrome,
               "text-secondary-dark": !isMonochrome,
             })}
@@ -37,7 +37,7 @@ export function NewsCard(props: INewsCardProps) {
         <Card.Description
           isMonoChrome={variant === "monochrome"}
           widthDate
-          className={clsx("line-clamp-3  text-base", {
+          className={clsx("line-clamp-3 text-base", {
             "text-white": isMonochrome,
             "text-secondary-dark": !isMonochrome,
           })}
