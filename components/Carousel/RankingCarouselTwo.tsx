@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import { ListingItem } from "PageBuilder/Components/Listing/listing.query";
 import RichText from "PageBuilder/RichText/frontend/RichText";
-
-import * as React from "react";
+import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import React, { useState } from "react";
 import { flushSync } from "react-dom";
 import { useMedia } from "react-use";
 
@@ -13,6 +14,52 @@ interface ICarouselProps {
 function RankingCarousel(props: ICarouselProps) {
   const { rankingItems } = props;
   const [activeItemIndex, setActiveItemIndex] = React.useState(0);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+
+  const AdaptiveHeight: KeenSliderPlugin = (slider) => {
+    function updateHeight() {
+      console.log(slider);
+      const activeSlide = slider.slides[slider.track.details.rel];
+
+      const activeSlideContent =
+        activeSlide.querySelector<HTMLDivElement>("#slideContent");
+
+      console.log({
+        activeSlide,
+        activeH: activeSlideContent?.offsetHeight,
+        activeSlideContent,
+      });
+
+      // slider.container.style.height =
+      //   slider.slides[slider.track.details.rel].offsetHeight + "px"
+    }
+    slider.on("created", updateHeight);
+    slider.on("slideChanged", updateHeight);
+  };
+
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      mode: "free-snap",
+      slides: {
+        origin: "center",
+        perView: 3,
+      },
+
+      vertical: true,
+      slideChanged(slider) {
+        setCurrentSlide(slider.track.details.rel);
+      },
+      created() {
+        setLoaded(true);
+      },
+    },
+    [AdaptiveHeight]
+  );
+
+  const set: (itemIndex: number) => void = (itemIndex) =>
+    instanceRef.current?.moveToIdx(itemIndex);
 
   const isMobile = useMedia("(max-width: 768px)");
 
@@ -45,55 +92,36 @@ function RankingCarousel(props: ICarouselProps) {
           setMaxHeight(400);
         }
       }
+      console.log("handleSize", size);
     },
     [isMobile]
   );
 
   if (!rankingItems || rankingItems?.length < 1) return null;
 
-  const translate = isMobile
-    ? -160 * (activeItemIndex === 0 ? 0 : activeItemIndex - 1)
-    : -160 * (activeItemIndex === 0 ? -0.7 : activeItemIndex - 1) + 0;
-  (maxHeight - 470) / 2;
-
   return (
-    <div className="relative ">
-      <div
-        style={{ maxHeight }}
-        className={clsx(
-          "w-full flex flex-col px-sides pb-12 max-h-[600px] md:max-h-[500px] overflow-hidden transition-all duration-700",
-          {}
-        )}
-      >
-        <div
-          style={{
-            transform: `translateY(${translate}px)`,
-          }}
-          className="transition-transform duration-700"
-        >
-          {rankingItems.map((i, index) => {
-            const dotActive = activeItemIndex === index;
+    <div ref={sliderRef} className="keen-slider h-[600px]">
+      {rankingItems.map((i, index) => {
+        const dotActive = currentSlide === index;
 
-            return (
-              <RankingItem
-                key={i.key}
-                content={i.content}
-                active={dotActive}
-                handleItemSize={handleItemSize}
-                isMobile={isMobile}
-              >
-                <Dot
-                  isLast={index === rankingItems.length - 1}
-                  active={dotActive}
-                  isFirst={index === 0}
-                  onClick={() => setActiveItemIndex(index)}
-                  text={i.title}
-                />
-              </RankingItem>
-            );
-          })}
-        </div>
-      </div>
+        return (
+          <RankingItem
+            key={i.key}
+            content={i.content}
+            active={dotActive}
+            handleItemSize={handleItemSize}
+            isMobile={isMobile}
+          >
+            <Dot
+              isLast={index === rankingItems.length - 1}
+              active={dotActive}
+              isFirst={index === 0}
+              onClick={() => set(index)}
+              text={i.title}
+            />
+          </RankingItem>
+        );
+      })}
     </div>
   );
 }
@@ -124,7 +152,9 @@ const RankingItem: React.FC<{
 
   return (
     <div
-      className={clsx("flex justify-center items-center flex-col md:flex-row ")}
+      className={clsx(
+        "flex justify-center items-center flex-col md:flex-row keen-slider__slide !overflow-visible"
+      )}
     >
       {children}
 
@@ -141,7 +171,8 @@ const RankingItem: React.FC<{
         >
           <div
             ref={ref}
-            className={clsx("p-sides md:p-8 bg-primary typo-bright")}
+            id="slideContent"
+            className={clsx("p-8 bg-primary typo-bright")}
           >
             <RichText content={content} />
           </div>
