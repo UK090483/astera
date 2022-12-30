@@ -11,7 +11,6 @@ import PreviewIndicator from "PageBuilder/lib/Preview/PreviewIndicator";
 import ErrorBoundary from "PageBuilder/lib/next/ErrorBoundary";
 
 import { EB_Garamond, Lexend } from "@next/font/google";
-import Protected from "@components/Protected";
 
 const ebGaramond = EB_Garamond({
   variable: "--eb_garamond-font",
@@ -36,7 +35,7 @@ interface AppPropsWithStaticProps {
 
 function App({ Component, pageProps }: AppPropsWithStaticProps) {
   return (
-    <Protected>
+    <>
       <style jsx global>{`
         html {
           font-family: ${lexend.style.fontFamily};
@@ -59,7 +58,7 @@ function App({ Component, pageProps }: AppPropsWithStaticProps) {
           {/* <Cookie />  */}
         </PageBuilderContextProvider>
       </ErrorBoundary>
-    </Protected>
+    </>
   );
 }
 
