@@ -8,16 +8,19 @@ const testimonialItem: ObjectDefinition = {
       title: "Title",
       name: "title",
       type: "string",
+      localize: true,
     },
     {
       title: "Description",
       name: "description",
       type: "text",
+      localize: true,
     },
     {
       title: "Source",
       name: "source",
       type: "string",
+      localize: true,
     },
   ],
 };

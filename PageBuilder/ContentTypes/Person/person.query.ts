@@ -9,8 +9,10 @@ import { NavigationResult } from "../../Navigation/navigation.types";
 import { SeoQueryResult } from "../../Objects/Seo/Seo.query";
 import { EditorResult } from "../Base/Editor/editor.query";
 import type { BaseContentTypeResult } from "../helper";
-import { testimonialItem } from "PageBuilder/Objects/Testimonial/testimonialItem.type";
-import { linkProjection } from "PageBuilder/Objects/link/link.query";
+import {
+  testimonialItem,
+  testimonialItemQuery,
+} from "PageBuilder/Objects/Testimonial/testimonialItem.query";
 import { SLUG_PROJECTION } from "PageBuilder/constants";
 
 export const personQuery = (locale?: string) => `
@@ -18,7 +20,7 @@ _type,
 ${BaseContentTypeProjection(locale)}
 ${navigationQuery(locale)}
 'body':body[]{${editorQuery(locale)}},
-accomplishments,
+'accomplishments':accomplishments[]{${testimonialItemQuery(locale)}},
 ...(*[_id=='baseConfig'][0].personListingPage{
   'personListingLink':{
  ...(page->{ 'slug' :${SLUG_PROJECTION(locale)}}),

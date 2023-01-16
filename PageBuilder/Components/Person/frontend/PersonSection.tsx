@@ -3,7 +3,7 @@ import Card from "@components/Card/Card";
 import SanityImage from "@components/SanityImage";
 import Section from "@components/Section/Section";
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
-import { testimonialItem } from "PageBuilder/Objects/Testimonial/testimonialItem.type";
+import { testimonialItem } from "PageBuilder/Objects/Testimonial/testimonialItem.query";
 import * as React from "react";
 
 export interface IPersonSectionProps {}
