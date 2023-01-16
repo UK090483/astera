@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider, KeenSliderOptions } from "keen-slider/react";
 import { useTimeoutFn } from "react-use";
