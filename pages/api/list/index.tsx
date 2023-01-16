@@ -9,8 +9,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const last = query.last;
   const locale = query.locale?.toString();
 
-  console.log(locale);
-
   if (!contentType) {
     res.json({ items: [], error: true });
   }
