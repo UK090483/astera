@@ -1,3 +1,4 @@
+import useTranslation from "@hooks/useTranslation";
 import clsx from "clsx";
 import * as React from "react";
 import useButtonStyle from "./Button/useButtonStyle";
@@ -9,6 +10,10 @@ export interface ILoadMoreBtnProps {
 
 export function LoadMoreBtn({ onClick, loading }: ILoadMoreBtnProps) {
   const buttonStyle = useButtonStyle();
+
+  const { loadMore } = useTranslation({
+    loadMore: { default: "Mehr Laden", en: "Load More" },
+  });
   return (
     <div className="flex justify-center items-center mt-12">
       <button
@@ -34,7 +39,7 @@ export function LoadMoreBtn({ onClick, loading }: ILoadMoreBtnProps) {
             fill="currentFill"
           />
         </svg>
-        Load More
+        {loadMore}
       </button>
     </div>
   );

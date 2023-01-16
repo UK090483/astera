@@ -1,12 +1,8 @@
 {
+  "cSpell.language": "en,de",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "cSpell.words": [
-    "clsx",
-    "hotspot",
-    "lqip",
-    "testid"
-  ],
+  "cSpell.words": ["clsx", "hotspot", "lqip", "testid"],
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
