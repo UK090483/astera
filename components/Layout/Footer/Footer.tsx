@@ -7,9 +7,14 @@ import {
   HeaderNavigation,
   NavigationItemBase,
 } from "PageBuilder/Navigation/Frontend/Navigation";
+import useTranslation from "@hooks/useTranslation";
 
 const Footer: React.FC = () => {
   const year = React.useMemo(() => new Date().getFullYear(), []);
+
+  const { contact } = useTranslation({
+    contact: { default: "KONTAKT", en: "CONTACT" },
+  });
 
   const { data } = usePageBuilderContext();
 
@@ -18,12 +23,12 @@ const Footer: React.FC = () => {
       data-testid="footer"
       className="  bg-secondary-dark relative  typo-invert overflow-hidden"
     >
-      <div className=" relative  ">
+      <div className="relative">
         <BigA />
         <Section as="div" width="l" topSpace="m">
           <div className=" flex flex-wrap ">
             <div className="w-full whitespace-pre-wrap mb-8">
-              <p className="text-primary font-bold text-xl">KONTAKT</p>
+              <p className="text-primary font-bold text-xl">{contact}</p>
 
               <ContactItem
                 link={data?.footer?.addressLink}
