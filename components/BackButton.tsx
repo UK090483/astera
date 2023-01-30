@@ -1,5 +1,6 @@
+import useTranslation from "@hooks/useTranslation";
 import clsx from "clsx";
-import { useRouter } from "next/router";
+
 import * as React from "react";
 import ArrowIcon from "./ArrowIcon";
 import Link from "./Link";
@@ -11,8 +12,10 @@ export const BackButton: React.FC<{
 }> = (props) => {
   const { internal, onPageLink, children, direction = "left" } = props;
 
-  const { locale } = useRouter();
-  const label = locale === "en" ? "ZURÜCK" : "BACK";
+  const { label } = useTranslation({
+    label: { en: "BACK", default: "ZURÜCK" },
+  });
+
   if (!internal) return null;
 
   const _internal = onPageLink ? `${internal}#${onPageLink}` : internal;
