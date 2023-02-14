@@ -27,7 +27,11 @@ export const SettingsDocument: DocumentDefinition = {
       title: "Email",
       type: "string",
     },
-
+    {
+      name: "linkedInLink",
+      title: "LinkedIn Link",
+      type: "url",
+    },
     {
       name: "defaultHero",
       title: "Default Hero image",

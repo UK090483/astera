@@ -80,6 +80,37 @@ const Footer: React.FC = () => {
                   />
                 </svg>
               </ContactItem>
+              <ContactItem
+                link={`${data?.footer?.linkedInLink}`}
+                text={"LinkedIn"}
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  width="22"
+                  height="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className=" fill-white opacity-50  -translate-y-[2px]"
+                >
+                  <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                </svg>
+                {/* <svg
+                  width="22"
+                  height="17"
+                  viewBox="0 0 22 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className=" fill-white opacity-50 "
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M5.84126e-06 1.88693V0.890631H0.996842C0.99913 0.890623 1.00142 0.890623 1.00371 0.890631H20.9615H21.9615V1.70808C21.9889 1.8414 21.9888 1.97898 21.9615 2.11185V15.6337V16.6337H20.9615H1.00001H5.84126e-06V15.6337V1.89379C-1.96542e-06 1.89151 -1.96604e-06 1.88922 5.84126e-06 1.88693ZM2.00001 4.16425V14.6337H19.9615V4.20232L11.6766 11.7975L11.0008 12.4171L10.3251 11.7975L2.00001 4.16425ZM18.4327 2.89063H3.57033L11.0009 9.70374L18.4327 2.89063Z"
+                  />
+                </svg> */}
+              </ContactItem>
             </div>
           </div>
 
