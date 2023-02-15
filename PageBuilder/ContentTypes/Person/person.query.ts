@@ -14,6 +14,10 @@ import {
   testimonialItemQuery,
 } from "PageBuilder/Objects/Testimonial/testimonialItem.query";
 import { SLUG_PROJECTION } from "PageBuilder/constants";
+import {
+  ListingItem,
+  listingItemProjection,
+} from "PageBuilder/Components/Listing/listing.query";
 
 export const personQuery = (locale?: string) => `
 _type,
@@ -34,7 +38,11 @@ ${footerQuery(locale)},
 )}},
 'nextItem': *[_type == 'person' && ^.orderRank < orderRank ] | order(orderRank asc) [0] {title,'slug' :${SLUG_PROJECTION(
   locale
-)}}
+)}},
+'newsItems': *[_type == 'news' &&  category in [ "financeDeal","privateEquityDeal"]  && references(^._id) ][]{
+  ${listingItemProjection(locale)}
+}
+
 `;
 
 export type PersonResult = BaseContentTypeResult &
@@ -45,6 +53,7 @@ export type PersonResult = BaseContentTypeResult &
     personListingLink?: { slug?: string; onPageLink?: string };
     prevItem?: { slug?: string; title?: string };
     nextItem?: { slug?: string; title?: string };
+    newsItems?: ListingItem[] | null;
     body: EditorResult;
     slug: string;
   } & footerResult;

@@ -37,3 +37,5 @@ export const locale = {
   de: { title: "Deutsch", isDefault: true, flag: "🇩🇪" },
   en: { title: "Englisch", flag: "🇺🇸" },
 };
+
+export const hostName = "https://www.astera-legal.com";

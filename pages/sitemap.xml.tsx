@@ -1,6 +1,7 @@
 import { getSanityClient } from "@lib/SanityService/sanity.server";
 import buildSitemap from "@lib/SiteMap/buildSitemap";
 import { GetServerSideProps } from "next";
+import { hostName, locale } from "PageBuilder/constants";
 
 const Sitemap = () => {};
 
@@ -18,19 +19,18 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
       `*[_type == 'page'][]{   
       'slug':  coalesce('/'+pageType->slug.current,'') + '/' + slug.current,
       'slug_en': coalesce('/'+pageType->slug_en.current,pageType->slug.current,'') +'/'+  coalesce(slug_en,slug).current,
-      'slug_da': coalesce('/'+pageType->slug_da.current,pageType->slug.current,'') +'/'+  coalesce(slug_da,slug).current 
     }
       `
     );
   }
-  // const sitemap = await buildSitemap({
-  //   pages: pages || [],
-  //   hostname: AppConfig.hostname,
-  //   locales: AppConfig.locales,
-  // });
+  const sitemap = await buildSitemap({
+    pages: pages || [],
+    hostname: hostName,
+    locales: locale,
+  });
 
   res.setHeader("Content-Type", "text/xml");
-  res.write("sitemap");
+  res.write(sitemap);
   res.end();
 
   return {

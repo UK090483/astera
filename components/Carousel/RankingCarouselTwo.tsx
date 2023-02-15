@@ -20,17 +20,10 @@ function RankingCarousel(props: ICarouselProps) {
 
   const AdaptiveHeight: KeenSliderPlugin = (slider) => {
     function updateHeight() {
-      console.log(slider);
       const activeSlide = slider.slides[slider.track.details.rel];
 
       const activeSlideContent =
         activeSlide.querySelector<HTMLDivElement>("#slideContent");
-
-      console.log({
-        activeSlide,
-        activeH: activeSlideContent?.offsetHeight,
-        activeSlideContent,
-      });
 
       // slider.container.style.height =
       //   slider.slides[slider.track.details.rel].offsetHeight + "px"

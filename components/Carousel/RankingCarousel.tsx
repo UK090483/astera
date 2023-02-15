@@ -14,7 +14,7 @@ function RankingCarousel(props: ICarouselProps) {
   const { rankingItems } = props;
   const [activeItemIndex, setActiveItemIndex] = React.useState(0);
 
-  const isMobile = useMedia("(max-width: 768px)");
+  const isMobile = useMedia("(max-width: 768px)", true);
 
   const [maxHeight, setMaxHeight] = React.useState(0);
 

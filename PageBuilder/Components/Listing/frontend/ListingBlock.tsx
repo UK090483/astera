@@ -9,6 +9,7 @@ import { NewsCard } from "PageBuilder/ContentTypes/news/frontend/NewsCard";
 import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard";
 import Carousel from "@components/Carousel/KeenSlider";
 import RankingCarousel from "@components/Carousel/RankingCarousel";
+import NewsList from "./NewList";
 
 const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   props
@@ -60,7 +61,8 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
             <RichText content={header} />
           </div>
         )}
-        <List.wrap
+        <NewsList {...props} />
+        {/* <List.wrap
           hasLoadMore={variant !== "carousel"}
           contentType="news"
           variant={variant === "carousel" ? "carousel" : "grid"}
@@ -70,7 +72,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
           {(props) => {
             return <NewsCard {...props} />;
           }}
-        </List.wrap>
+        </List.wrap> */}
       </Section>
     );
   }

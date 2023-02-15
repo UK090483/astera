@@ -30,6 +30,7 @@ const pageSchema: SchemaItem = {
         { type: "section" },
         { type: "personSection" },
         { type: "personNavigation" },
+        { type: "personProjects" },
       ],
       [
         {
@@ -50,6 +51,7 @@ const pageSchema: SchemaItem = {
         : { ...field, description: "", validation: undefined }
     ),
     getSubTitleField({ title: "Job description", group: "content" }),
+
     {
       type: "array",
       title: "Accomplishments",

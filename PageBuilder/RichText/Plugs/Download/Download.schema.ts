@@ -33,7 +33,7 @@ const DownloadPlugSchema: ObjectDefinition = {
       const type = isFile ? "File" : isImage ? "Image" : "no file chosen";
 
       return {
-        title: toPlainText(description) || "Download",
+        title: toPlainText(description || []) || "Download",
         subtitle: `${type}`,
         media: image || file,
       };

@@ -20,6 +20,7 @@ import PersonNavigation from "PageBuilder/Components/Person/frontend/PersonNavig
 import { personQuery } from "PageBuilder/ContentTypes/Person/person.query";
 import { NewsSection } from "PageBuilder/Components/News/frontend/NewsSection";
 import { newsQuery } from "PageBuilder/ContentTypes/news/news.query";
+import PersonProjects from "PageBuilder/Components/Person/frontend/PersonProjects";
 
 export type PageResult = { content?: any };
 
@@ -45,6 +46,9 @@ const Page = () => {
           },
           personNavigation: {
             component: PersonNavigation,
+          },
+          personProjects: {
+            component: PersonProjects,
           },
           newsSection: {
             component: NewsSection,

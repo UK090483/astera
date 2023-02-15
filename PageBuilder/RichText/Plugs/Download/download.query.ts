@@ -2,11 +2,13 @@ export const downloadQuery = `
 _type=='download'=>{
     _type,
     _key,
-    "fileURL": coalesce(file.asset->url,image.asset->url)
+    description,
+    ...coalesce(file.asset,image.asset)->{url,extension},
 },
 `;
 
 export type downloadQueryResult = {
   description?: any;
-  fileURL?: string;
+  extension?: string | null;
+  url?: string;
 };

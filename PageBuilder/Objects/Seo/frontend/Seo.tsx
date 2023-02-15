@@ -1,14 +1,12 @@
 import React from "react";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { hostName } from "PageBuilder/constants";
 
 import { usePageBuilderContext } from "../../../lib/PageBuilderContext";
 
 const metaImageParams = "?w=1200&h=630&bg=fff&fit=fillmax";
 const titlePrefix = "ASTERA | ";
-
-const hostName = "https://www.astera-legal.com";
-const ogImageEndpoint = "api/og";
 
 const Seo: React.FC = (props) => {
   const { pathname, asPath } = useRouter();
@@ -31,8 +29,8 @@ const Seo: React.FC = (props) => {
 
   return (
     <NextSeo
-      nofollow={true}
-      noindex={true}
+      nofollow={false}
+      noindex={false}
       title={title}
       description={metaDesc || ""}
       canonical={canonical}
