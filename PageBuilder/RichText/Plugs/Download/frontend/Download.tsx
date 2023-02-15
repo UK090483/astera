@@ -8,7 +8,7 @@ const EmbedHTML: PortableTextComponent<downloadQueryResult> = (props) => {
   const { value } = props;
 
   return (
-    <a href={`${props.value.url}?dl=`} className=" flex gap-8">
+    <a href={`${props.value.url}?dl=`} className=" flex gap-2 flex-col">
       {value.extension === "vcf" ? <VCardIcon /> : <Icon />}
 
       <div>
