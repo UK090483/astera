@@ -16,38 +16,33 @@ const defaultRichText = {
         {
           title: "Header Serif",
           value: "headerSerif",
-          //@ts-ignore
-          blockEditor: {
-            render: (props: any) => (
-              <span
-                style={{
-                  fontFamily: "Garamond",
-                  fontSize: "2em",
-                  fontWeight: 800,
-                }}
-              >
-                {props.children}
-              </span>
-            ),
-          },
+
+          component: (props: any) => (
+            <span
+              style={{
+                fontFamily: "Garamond",
+                fontSize: "2em",
+                fontWeight: 800,
+              }}
+            >
+              {props.children}
+            </span>
+          ),
         },
 
         { title: "Subheader official", value: "SubheaderSanSerif" },
         {
           title: "text big",
           value: "textBig",
-          //@ts-ignore
-          blockEditor: {
-            render: (props: any) => (
-              <span
-                style={{
-                  fontSize: "1.2em",
-                }}
-              >
-                {props.children}
-              </span>
-            ),
-          },
+          component: (props: any) => (
+            <span
+              style={{
+                fontSize: "1.2em",
+              }}
+            >
+              {props.children}
+            </span>
+          ),
         },
       ],
       lists: [
@@ -56,18 +51,12 @@ const defaultRichText = {
         {
           title: "Arrows",
           value: "arrows",
-
-          blockEditor: {
-            icon: () => <ArrowIcon />,
-          },
+          icon: () => <ArrowIcon />,
         },
         {
           title: "Connected Dots",
           value: "connectedDots",
-
-          blockEditor: {
-            icon: () => <AIcon />,
-          },
+          icon: () => <AIcon />,
         },
       ],
       marks: {

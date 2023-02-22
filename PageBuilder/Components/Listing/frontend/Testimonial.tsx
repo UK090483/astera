@@ -45,16 +45,15 @@ const Testimonial: React.FC<listingQueryResult> = (props) => {
         {header && (
           <div
             className={clsx("mt-12 mb-12 px-12 ", {
-              "typo-invert": !backgroundColor,
-              "typo-bright":
-                isPrimary || isSecondary || isSecMedium || isSecLight || isGrey,
+              "typo-invert": !backgroundColor || isSecMedium,
+              "typo-bright": isPrimary || isSecondary || isSecLight || isGrey,
             })}
           >
             <RichText content={header} />
           </div>
         )}
 
-        <Carousel dots={items.length < 1}>
+        <Carousel dots={items.length > 1}>
           {items.map((item) => (
             <div
               key={item.key}
