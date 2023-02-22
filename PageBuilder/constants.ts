@@ -5,7 +5,7 @@ export const SLUG_PROJECTION = (locale?: string) =>
 
 export type SlugResult = string;
 
-export const REMOTE_URL = "https://astera.vercel.app/";
+export const REMOTE_URL = "https://www.astera-legal.com";
 
 export const IMAG_PROJECTION = `
 crop,
@@ -38,4 +38,4 @@ export const locale = {
   en: { title: "Englisch", flag: "🇺🇸" },
 };
 
-export const hostName = "https://www.astera-legal.com";
+export const hostName = REMOTE_URL;

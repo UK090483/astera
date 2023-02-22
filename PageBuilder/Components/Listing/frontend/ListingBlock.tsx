@@ -10,6 +10,8 @@ import { PersonCard } from "PageBuilder/ContentTypes/Person/frontend/PersonCard"
 import Carousel from "@components/Carousel/KeenSlider";
 import RankingCarousel from "@components/Carousel/RankingCarousel";
 import NewsList from "./NewList";
+import Testimonial from "./Testimonial";
+import PersonList from "./PersonList";
 
 const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   props
@@ -26,25 +28,7 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
   } = props;
 
   if (contentType === "person") {
-    return (
-      <Section
-        id={name}
-        width="l"
-        noProse
-        noPadding
-        {...rest}
-        bg={backgroundColor}
-      >
-        {header && (
-          <div className="typo typo-spacings  mt-12 mb-24 text-center">
-            <RichText content={header} />
-          </div>
-        )}
-        <List.wrap items={items} useKey="key">
-          {(props) => <PersonCard {...props} />}
-        </List.wrap>
-      </Section>
-    );
+    return <PersonList {...props} />;
   }
   if (contentType === "news") {
     return (
@@ -62,48 +46,12 @@ const ListingBlock: React.FC<listingQueryResult & componentStyleResult> = (
           </div>
         )}
         <NewsList {...props} />
-        {/* <List.wrap
-          hasLoadMore={variant !== "carousel"}
-          contentType="news"
-          variant={variant === "carousel" ? "carousel" : "grid"}
-          items={items}
-          useKey="key"
-        >
-          {(props) => {
-            return <NewsCard {...props} />;
-          }}
-        </List.wrap> */}
       </Section>
     );
   }
 
   if (contentType === "testimonial") {
-    return (
-      <Section id={name} width="l" noProse {...rest} bg={backgroundColor}>
-        <div className=" bg-secondary max-w-3xl mx-auto relative pt-8 text-secondary-medium">
-          <div className=" top-0 left-12 -translate-y-9 text-9xl garamondFont text-white  w-fit h-fit absolute">
-            ”
-          </div>
-
-          {header && (
-            <div className="mt-12 mb-12 px-12 typo-invert">
-              <RichText content={header} />
-            </div>
-          )}
-
-          <Carousel dots={true}>
-            {items.map((item) => (
-              <div
-                key={item.key}
-                className=" typo-bright typo-spacings px-12 pb-12 "
-              >
-                <RichText content={item.content} />
-              </div>
-            ))}
-          </Carousel>
-        </div>
-      </Section>
-    );
+    return <Testimonial {...props} />;
   }
 
   if (contentType === "ranking") {

@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { PortableTextComponent } from "@portabletext/react";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player/lazy";
 import { videoPlugResult } from "../video.query";
 import { useVideoContext, VideoContextWrap } from "./VideoContext";
@@ -10,6 +10,14 @@ import Typo from "@components/Typography/Typography";
 const VideoPlug: PortableTextComponent<videoPlugResult> = (props) => {
   const { url, urls } = props.value;
 
+  const [hasWindow, setHasWindow] = useState(false);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setHasWindow(true);
+    }
+  }, []);
+
+  if (!hasWindow) return null;
   const hasMultiple = urls && urls.length > 1;
 
   if (url) {

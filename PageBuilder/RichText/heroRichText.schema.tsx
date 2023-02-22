@@ -16,35 +16,32 @@ const headerRichText: ArrayDefinition = {
           title: "Header Serif",
           value: "headerSerif",
           //@ts-ignore
-          blockEditor: {
-            render: (props: any) => (
-              <span
-                style={{
-                  fontFamily: "Garamond",
-                  fontSize: "2em",
-                  fontWeight: 800,
-                }}
-              >
-                {props.children}
-              </span>
-            ),
-          },
+          component: (props: any) => (
+            <span
+              style={{
+                fontFamily: "Garamond",
+                fontSize: "2em",
+                fontWeight: 800,
+              }}
+            >
+              {props.children}
+            </span>
+          ),
         },
         {
           title: "text big",
           value: "textBig",
           //@ts-ignore
-          blockEditor: {
-            render: (props: any) => (
-              <span
-                style={{
-                  fontSize: "1.2em",
-                }}
-              >
-                {props.children}
-              </span>
-            ),
-          },
+
+          component: (props: any) => (
+            <span
+              style={{
+                fontSize: "1.2em",
+              }}
+            >
+              {props.children}
+            </span>
+          ),
         },
       ],
 
