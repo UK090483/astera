@@ -17,7 +17,7 @@ interface IListWrapProps {
 interface IListWrapAutoProps<T extends unknown = {}> {
   columns?: number;
   columnsMobile?: number;
-  variant?: "grid" | "carousel";
+  variant?: "grid" | "carousel" | "flex";
   items: T[];
   useKey: keyof T;
   noGap?: boolean;
@@ -93,6 +93,24 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
             </li>
           ))}
       </Carousel>
+    );
+  }
+
+  if (variant === "flex") {
+    return (
+      <ul className="flex flex-wrap justify-center gap-2">
+        {_items &&
+          _items.map((i, index) => (
+            <li
+              className={clsx(
+                "w-full min-w-[320px] max-w-[30%] flex-shrink-0 "
+              )}
+              key={i[useKey] as string | number}
+            >
+              {children({ ...i, index })}
+            </li>
+          ))}
+      </ul>
     );
   }
 

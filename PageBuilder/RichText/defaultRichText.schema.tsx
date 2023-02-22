@@ -1,7 +1,7 @@
 import { ArrayDefinition } from "../types";
 import React from "react";
 
-const defaultRichText: ArrayDefinition = {
+const defaultRichText = {
   name: "defaultRichText",
   title: "defaultRichText",
   type: "array",
@@ -57,7 +57,6 @@ const defaultRichText: ArrayDefinition = {
           title: "Arrows",
           value: "arrows",
 
-          //@ts-ignore
           blockEditor: {
             icon: () => <ArrowIcon />,
           },
@@ -65,7 +64,7 @@ const defaultRichText: ArrayDefinition = {
         {
           title: "Connected Dots",
           value: "connectedDots",
-          //@ts-ignore
+
           blockEditor: {
             icon: () => <AIcon />,
           },
@@ -76,7 +75,6 @@ const defaultRichText: ArrayDefinition = {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
-          { title: "Code", value: "code" },
           { title: "Underline", value: "underline" },
           { title: "Strike", value: "strike-through" },
         ],
@@ -90,7 +88,7 @@ const defaultRichText: ArrayDefinition = {
   ],
 };
 
-export default defaultRichText;
+export default defaultRichText as ArrayDefinition;
 
 const ArrowIcon: React.FC<{ className?: string }> = (props) => {
   return (

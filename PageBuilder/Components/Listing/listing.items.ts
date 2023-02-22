@@ -10,6 +10,7 @@ const customItem: ArrayOfType = withLocalization(
   [
     {
       //@ts-ignore
+      title: "Custom List Item",
       name: "bla",
       type: "object",
       fields: [

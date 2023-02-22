@@ -14,7 +14,7 @@ const pageSchema = createContentType({
       { type: "hero" },
       { type: "section" },
       { type: "listing" },
-      { type: "imageGalleryPlug" },
+      // { type: "imageGalleryPlug" },
     ]),
   ],
 });
