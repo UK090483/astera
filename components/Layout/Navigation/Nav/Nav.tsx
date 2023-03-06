@@ -7,7 +7,6 @@ import NavigationMobile from "PageBuilder/Navigation/Frontend/Navigation/Navigat
 import { usePageBuilderContext } from "PageBuilder/lib/PageBuilderContext";
 import React from "react";
 import clsx from "clsx";
-import { NavigationItemBase } from "PageBuilder/Navigation/Frontend/Navigation";
 
 const Nav: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -32,15 +31,8 @@ const Nav: React.FC = () => {
             {navItems && (
               <HeaderNavigation
                 //@ts-ignore
-                items={navItems || []}
+                items={navItems}
                 className="items-center justify-center hidden   menu:flex  "
-                NavigationItemBase={(props) => (
-                  <NavigationItemBase
-                    {...props}
-                    className="text-white"
-                    place="customHeader"
-                  />
-                )}
               />
             )}
           </div>

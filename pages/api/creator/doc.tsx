@@ -16,10 +16,11 @@ const client = createClient({
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const arr = new Array(10).fill("whatever");
 
-  const docs = arr.map(() => createDocument({ client, type: "post" }));
+  // const docs = arr.map(() => createDocument({ client, type: "post" }));
 
-  const result = await Promise.all(docs);
-  res.json({ result });
+  //const result = await Promise.all(docs);
+  // res.json({ result });
+  res.json({ nope: true });
 };
 
 export default handler;

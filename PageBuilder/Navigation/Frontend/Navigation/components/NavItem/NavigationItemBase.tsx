@@ -6,7 +6,13 @@ export type NavItemBaseProps = {
   icon?: boolean;
   hover?: boolean;
   bold?: boolean;
-  place?: "link" | "dropdown" | "header" | "dropdown/link" | "customHeader";
+  place?:
+    | "link"
+    | "dropdown"
+    | "header"
+    | "dropdown/link"
+    | "customHeader"
+    | "unstyled";
   item: NavItem;
   align?: "center" | "left";
 
@@ -26,21 +32,24 @@ export const NavigationItemBase: React.FC<NavItemBaseProps> = (props) => {
   } = props;
   const active = useIsActive(item);
 
+  const isCustom = place === "link" || place === "dropdown";
+
+  const shouldUnderline = ["dropdown/link", "link"].includes(place || "");
+
   return (
     <span
       className={clsx(
         "block w-full px-5 py-4 tracking-wider leading-none whitespace-nowrap transition-colors  truncate ",
-        "hover:underline decoration-2  underline-offset-4   items-center",
+        " decoration-2  items-center",
         {
-          "text-black hover:bg-black  hover:text-white ":
-            place === "dropdown/link",
+          "hover:underline underline-offset-4": shouldUnderline,
+          "text-primary  ": place === "dropdown/link",
           "font-bold": bold,
           "text-center": align === "center",
           "text-left pl-0": align === "left",
-          "h-[113px] pt-14 flex justify-end text-base-mobile xl:text-base":
-            place === "customHeader",
-          " bg-white bg-opacity-90 text-primary ":
-            active && place === "customHeader",
+          "h-[113px] pt-14 text-white flex justify-end text-base-mobile xl:text-base":
+            isCustom,
+          " bg-white bg-opacity-90 text-primary ": active && isCustom,
         },
         className
       )}
