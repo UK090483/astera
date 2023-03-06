@@ -124,6 +124,7 @@ const Footer: React.FC = () => {
                 <NavigationItemBase
                   {...props}
                   className="text-sm text-white opacity-40"
+                  place="unstyled"
                 />
               )}
               className="flex"

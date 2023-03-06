@@ -22,7 +22,7 @@ const navigationSettingsDocument: DocumentDefinition = {
       title: "Main Navigation",
       of: [
         { type: "navigationItem" },
-        // { type: "navigationDropdown" },
+        { type: "navigationDropdown" },
         // { type: "navigationMegaMenu" },
       ],
       // validation: (Rule) => Rule.required(),
