@@ -1,7 +1,7 @@
 import SanityImage from "@components/SanityImage";
 import Typo from "@components/Typography/Typography";
 import clsx from "clsx";
-import * as React from "react";
+import React, { useMemo } from "react";
 import { useCardContext } from "./CardContext";
 
 interface ICardImageProps {
@@ -15,6 +15,17 @@ interface ICardImageProps {
 const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
   const { variant = "aspect", showTitle, elevated, half, className } = props;
   const { mainImage, title } = useCardContext();
+
+  const longestWord = useMemo(
+    () =>
+      title
+        ? title.split(" ").reduce((acc, item) => {
+            if (item.length > acc) return item.length;
+            return acc;
+          }, 0)
+        : 0,
+    [title]
+  );
 
   if (!mainImage) return null;
 
@@ -43,7 +54,13 @@ const CardImage: React.FunctionComponent<ICardImageProps> = (props) => {
 
         {showTitle && (
           <div className="absolute text-center inset-0 flex justify-center items-center">
-            <Typo as="h2" className="text-6xl lg:text-7xl">
+            <Typo
+              as="h2"
+              className={clsx("lg:text-7xl", {
+                "text-4xl ": longestWord >= 9,
+                "text-6xl ": longestWord < 9,
+              })}
+            >
               {title}
             </Typo>
           </div>
