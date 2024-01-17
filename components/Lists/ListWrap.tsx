@@ -88,7 +88,10 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
       <Carousel options={carouselOptions}>
         {_items &&
           _items.map((i, index) => (
-            <li key={i[useKey] as string | number}>
+            <li
+              // key={i[useKey] as string | number}
+              key={index}
+            >
               {children({ ...i, index })}
             </li>
           ))}
@@ -105,7 +108,8 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
               className={clsx(
                 "w-full min-w-[320px] max-w-[30%] flex-shrink-0 "
               )}
-              key={i[useKey] as string | number}
+              // key={i[useKey] as string | number}
+              key={index}
             >
               {children({ ...i, index })}
             </li>
@@ -135,7 +139,10 @@ function ListWrap<T>(props: IListWrapAutoProps<T>) {
       >
         {_items &&
           _items.map((i, index) => (
-            <li key={i[useKey] as string | number}>
+            <li
+              // key={i[useKey] as string | number}
+              key={index}
+            >
               {children({ ...i, index })}
             </li>
           ))}
